@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Clock, MapPin, Phone } from "lucide-react";
 import { PHONE_NUMBER, CLINIC_ADDRESS, CLINIC_HOURS, CLINIC_MAPS_EMBED } from "@/lib/constants";
 import { pushEvent } from "@/lib/gtm";
+import { fbqEvent, capiEvent, generateEventId } from "@/lib/meta";
 
 const CODIGOS_PAIS = [
   { code: "+593", label: "EC +593" },
@@ -74,6 +75,9 @@ export default function ContactSection() {
       if (!res.ok) throw new Error();
       setStatus("ok");
       pushEvent("contact_form_submit");
+      const eventId = generateEventId();
+      fbqEvent("Lead", {}, eventId);
+      capiEvent({ event_name: "Lead", event_id: eventId, event_source_url: window.location.href });
       setNombre(""); setTelefono(""); setMensaje("");
       setCodigo("+593"); setConsent(false); setErrors({});
     } catch {

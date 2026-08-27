@@ -8,8 +8,10 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import CookieBanner from "@/components/layout/CookieBanner";
 import HighLevelWidget from "@/components/layout/HighLevelWidget";
+import MetaPixel from "@/components/layout/MetaPixel";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schemas";
+import { META_PIXEL_ID } from "@/lib/meta";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -88,6 +90,14 @@ export default function RootLayout({
         {!isAdmin && <WhatsAppButton />}
         {!isAdmin && <CookieBanner />}
         {!isAdmin && <HighLevelWidget />}
+        {!isAdmin && <MetaPixel />}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`,
+          }}
+        />
         <Script
           id="gtm"
           strategy="afterInteractive"
