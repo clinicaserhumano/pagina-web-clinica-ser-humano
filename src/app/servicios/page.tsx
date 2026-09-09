@@ -29,7 +29,7 @@ const DETALLE = [
   {
     slug: "nadia-donadonibus",
     tagline: "Psicoterapia individual, familiar y de pareja",
-    imagen: "/nadia/nadia-hero.jpeg",
+    imagen: "/fotos/hero-nadia.webp",
     objPos: "center 15%",
     wa: WHATSAPP_MESSAGES.nadia,
   },

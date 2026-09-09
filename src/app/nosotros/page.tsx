@@ -9,7 +9,7 @@ export const metadata = buildMeta({
   title: "Nosotros | Clínica Ser Humano",
   description: "Somos una institución con más de 30 años de experiencia en salud integral. Conoce nuestro equipo y enfoque humanista.",
   path: "/nosotros",
-  image: `${BASE_URL}/fotos/nosotros-hero.png`,
+  image: `${BASE_URL}/fotos/hero-somos-nosotros.webp`,
 });
 
 const EQUIPO = [
@@ -59,7 +59,7 @@ export default function NosotrosPage() {
       {/* Mobile: imagen con overlay */}
       <section className="relative min-h-[520px] overflow-hidden lg:hidden">
         <Image
-          src="/fotos/nosotros-hero.png"
+          src="/fotos/hero-somos-nosotros.webp"
           alt="Equipo Clínica Ser Humano"
           fill
           priority
@@ -100,7 +100,7 @@ export default function NosotrosPage() {
         </div>
         <div className="relative">
           <Image
-            src="/fotos/nosotros-hero.png"
+            src="/fotos/hero-somos-nosotros.webp"
             alt="Equipo Clínica Ser Humano"
             fill
             priority

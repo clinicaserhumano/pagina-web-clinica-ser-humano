@@ -11,7 +11,7 @@ export const metadata = buildMeta({
   title: "Dra. Nadia Donadonibus · Psicoterapeuta | Clínica Ser Humano",
   description: "Psicoterapeuta y psicoanalista con más de 40 años de experiencia en Italia y Ecuador. Psicoterapia individual, familiar y de pareja en Guayaquil.",
   path: "/servicios/nadia-donadonibus",
-  image: `${BASE_URL}/nadia/nadia-hero.jpeg`,
+  image: `${BASE_URL}/fotos/hero-nadia.webp`,
 });
 
 const ENFOQUE = [
@@ -165,7 +165,7 @@ export default function PsicoterapiaPage() {
         name: "Dra. Nadia Donadonibus · Psicoterapeuta y Psicoanalista",
         description: "Más de 40 años acompañando procesos de sanación. Psicoterapia individual, familiar y de pareja en Guayaquil, Ecuador.",
         url: "https://www.clinicaserhumano.ec/servicios/nadia-donadonibus",
-        image: "https://www.clinicaserhumano.ec/nadia/nadia-hero.jpeg",
+        image: "https://www.clinicaserhumano.ec/fotos/hero-nadia.webp",
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Inicio",    url: "https://www.clinicaserhumano.ec" },
@@ -182,14 +182,14 @@ export default function PsicoterapiaPage() {
         name: "Dra. Nadia Donadonibus",
         description: "Psicoterapeuta y psicoanalista con más de 40 años de experiencia en Italia y Ecuador. Creadora de la Metodología Donado.",
         url: "https://www.clinicaserhumano.ec/servicios/nadia-donadonibus",
-        image: "https://www.clinicaserhumano.ec/nadia/nadia-hero.jpeg",
+        image: "https://www.clinicaserhumano.ec/fotos/hero-nadia.webp",
         jobTitle: "Psicoterapeuta · Psicoanalista · Ms.C",
         specialty: "Psychology",
       })} />
       {/* ── HERO ── */}
       <section className="relative min-h-[640px] overflow-hidden lg:min-h-[700px]">
         <Image
-          src="/nadia/nadia-hero.jpeg"
+          src="/fotos/hero-nadia.webp"
           alt="Dra. Nadia Donadonibus - Psicoterapeuta"
           fill
           priority
@@ -277,7 +277,7 @@ export default function PsicoterapiaPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-3xl shadow-2xl">
                 <Image
-                  src="/nadia/nadia1.jpeg"
+                  src="/nadia/nadia.webp"
                   alt="Dra. Nadia Donadonibus"
                   width={1536}
                   height={2752}
@@ -376,25 +376,27 @@ export default function PsicoterapiaPage() {
               {/* Columna izquierda: imagen grande */}
               <div className="relative flex-1 overflow-hidden rounded-2xl">
                 <Image
-                  src="/nadia/nadia-sesion1.jpeg"
+                  src="/nadia/IMG_0015 (1).webp"
                   alt="Dra. Nadia Donadonibus en sesión"
                   fill
                   className="object-cover object-center"
+                  style={{ objectPosition: "center 5%" }}
                 />
               </div>
               {/* Columna derecha: dos imágenes apiladas */}
               <div className="flex w-40 flex-col gap-3">
                 <div className="relative flex-1 overflow-hidden rounded-2xl">
                   <Image
-                    src="/nadia/nadia-sesion2.jpeg"
+                    src="/nadia/IMG_0027 (1).webp"
                     alt="Consulta de psicoterapia"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover"
+                    style={{ objectPosition: "center 40%" }}
                   />
                 </div>
                 <div className="relative flex-1 overflow-hidden rounded-2xl">
                   <Image
-                    src="/nadia/nadia4.jpeg"
+                    src="/nadia/IMG_0030 (2) (1).webp"
                     alt="Dra. Nadia Donadonibus"
                     fill
                     className="object-cover object-top"
@@ -503,7 +505,7 @@ export default function PsicoterapiaPage() {
         <div className="grid lg:grid-cols-2">
           <div className="relative h-80 lg:min-h-[420px]">
             <Image
-              src="/nadia/nadia2.jpeg"
+              src="/nadia/frase-nadia.webp"
               alt="Dra. Nadia Donadonibus"
               fill
               className="object-cover"
