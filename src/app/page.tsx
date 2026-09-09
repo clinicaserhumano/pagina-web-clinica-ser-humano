@@ -235,31 +235,36 @@ export default function Home() {
   return (
     <>
       {/* SECCIÓN 1 — HERO */}
-      <section className="relative flex min-h-[620px] items-center md:min-h-[680px]">
-        <Image
-          src="/fotos/hero-clinica.png"
-          alt="Clínica Ser Humano"
-          fill
-          priority
-          className="object-cover object-center lg:object-[center_35%]"
+      <section className="relative flex min-h-[620px] items-center overflow-hidden md:min-h-[680px]">
+        <video
+          src="/videos/hero-clinica.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+          disablePictureInPicture
+          controlsList="nodownload noplaybackrate nofullscreen"
+          className="absolute inset-0 h-full w-full object-cover object-center lg:object-[center_35%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/20" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90" />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 text-center md:py-28">
           <motion.div
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-xl"
+            className="mx-auto max-w-2xl"
           >
             <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl">
               Recuperar equilibrio también es salud.
             </h1>
-            <p className="mt-6 max-w-md text-lg text-white/85">
-              Acompañamos procesos de recuperación y bienestar desde una visión humana, integral
-              y clínicamente precisa: salud mental, medicina funcional, regulación del sistema
-              nervioso y acompañamiento terapéutico.
+            <p className="mt-4 text-lg text-white/85">
+              Descubre{" "}
+              <a href="#programas" className="text-brand-orange hover:underline">
+                nuestros tratamientos
+              </a>
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="#programas" size="lg">
                 Ver tratamientos
               </Button>
