@@ -17,7 +17,7 @@ const EQUIPO = [
     nombre: "Dra. Sara Ochoa",
     cargo: "Directora Médico",
     especialidad: "Experta en neuromodulación.",
-    foto: "/team/sara.jpg",
+    foto: "/fotos/especialista-sara.webp",
     objPos: "center 10%",
     zoom: 1,
   },
@@ -25,18 +25,18 @@ const EQUIPO = [
     nombre: "Dra. Nadia Donadonibus",
     cargo: "Psicoterapeuta",
     especialidad: "Especialista en conductas adictivas y terapia de parejas.",
-    foto: "/team/nadia.jpeg",
+    foto: "/fotos/especialista-nadia.webp",
     objPos: "center 10%",
-    zoom: 2,
+    zoom: 1,
   },
   {
     nombre: "Nat. Fabián Ochoa Palau",
     cargo: "Director General",
 
     especialidad: "Especialista en medicina integrativa.",
-    foto: "/team/fabian.jpg",
+    foto: "/fotos/especialista-fabian.webp",
     objPos: "center 10%",
-    zoom: 1.3,
+    zoom: 1,
   },
 ];
 

@@ -135,14 +135,14 @@ const ESPECIALISTAS = [
   {
     nombre: "Dra. Sara Ochoa",
     titulo: "Especialista en neuromodulación",
-    foto: "/neurolab/saraochoa.jpeg",
+    foto: "/fotos/especialista-sara.webp",
     descripcion:
       "Especializada en Medicina Funcional y Neuromodulación. Enfocada en el abordaje del deterioro psicocognitivo, así como en el tratamiento del dolor crónico, la fatiga y los trastornos psicosomáticos, promoviendo la regulación del sistema nervioso.",
   },
   {
     nombre: "Dra. Nadia Donadonibus M.sc",
     titulo: "Máster en Salud Mental",
-    foto: "/team/nadia.jpeg",
+    foto: "/fotos/especialista-nadia.webp",
     descripcion:
       "Psicoterapeuta especializada en intervención familiar, con formación en rehabilitación neuropsicológica y estimulación cognitiva. Capacitada en la aplicación de nuevas tecnologías para el abordaje del deterioro cognitivo.",
   },

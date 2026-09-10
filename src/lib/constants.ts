@@ -136,19 +136,19 @@ export const UNIVERSIDADES = [
 export const EQUIPO = [
   {
     nombre: "Dra. Sara Ochoa",
-    foto: "/team/sara.jpg",
+    foto: "/fotos/especialista-sara.webp",
     cargo: "Dirección General",
     descripcion: "Lidera la visión integral de Ser Humano, acompañando procesos de bienestar desde la cercanía y la claridad.",
   },
   {
     nombre: "Nat. Fabián Ochoa",
-    foto: "/team/fabian.jpg",
+    foto: "/fotos/especialista-fabian.webp",
     cargo: "Director General",
     descripcion: "Orienta el enfoque clínico de la institución desde la precisión y el acompañamiento humano.",
   },
   {
     nombre: "Dra. Nadia Donadonibus",
-    foto: "/team/nadia.jpeg",
+    foto: "/fotos/especialista-nadia.webp",
     cargo: "Psicoterapeuta",
     descripcion: "Acompaña procesos de bienestar emocional desde la psicoterapia y la escucha activa.",
   },
