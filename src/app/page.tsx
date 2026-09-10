@@ -256,7 +256,28 @@ export default function Home() {
             className="mx-auto max-w-2xl"
           >
             <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl">
-              Recuperar equilibrio también es salud.
+              Recuperar equilibrio también es{" "}
+              <span className="relative inline-block text-brand-orange">
+                salud
+                <motion.svg
+                  viewBox="0 0 200 20"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-2 left-0 h-3 w-full md:-bottom-3 md:h-4"
+                  aria-hidden="true"
+                >
+                  <motion.path
+                    d="M4 16 Q 100 2, 196 15"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 0.45, delay: 0.3, ease: "easeInOut" }}
+                  />
+                </motion.svg>
+              </span>
+              <span className="text-brand-orange">.</span>
             </h1>
             <p className="mt-4 text-lg text-white/85">
               Descubre{" "}
