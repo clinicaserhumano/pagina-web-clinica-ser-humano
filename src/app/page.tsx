@@ -349,13 +349,14 @@ export default function Home() {
                   alt="Nat. Fabián Ochoa con tecnología VR" sizes="(max-width:768px) 100vw, 25vw" />
               </div>
               <div className="relative col-span-1 row-span-1 overflow-hidden">
-                <Image fill className="object-cover" src="/nadia/nadia-sesion2.jpeg"
+                <Image fill className="object-cover" src="/fotos/principal-nadia.webp"
                   alt="Dra. Nadia Donadonibus en sesión" sizes="(max-width:768px) 100vw, 25vw"
-                  style={{ objectPosition: "center -40px" }} />
+                  style={{ objectPosition: "center 20%" }} />
               </div>
               <div className="relative col-span-1 row-span-1 overflow-hidden">
-                <Image fill className="object-cover object-center" src="/fotos/collage-consulta.jpg"
-                  alt="Consulta Clínica Ser Humano" sizes="(max-width:768px) 100vw, 25vw" />
+                <Image fill className="object-cover" src="/fotos/principal-sara.webp"
+                  alt="Dra. Sara Ochoa en consulta" sizes="(max-width:768px) 100vw, 25vw"
+                  style={{ objectPosition: "center 25%" }} />
               </div>
             </motion.div>
           </div>
