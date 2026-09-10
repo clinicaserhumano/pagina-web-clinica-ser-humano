@@ -82,15 +82,17 @@ const EQUIPO = [
     nombre: "Dra. Sara Ochoa",
     cargo: "Directora General · Neuroni",
     foto: "/fotos/especialista-sara.webp",
-    objPos: "center 34%",
+    objPos: "center 37%",
     zoom: 1.8,
+    zoomX: 50,
   },
   {
     nombre: "Nat. Fabián Ochoa",
     cargo: "Director General",
     foto: "/fotos/especialista-fabian.webp",
-    objPos: "center 64%",
-    zoom: 1.8,
+    objPos: "center 70%",
+    zoom: 1.9,
+    zoomX: 40,
   },
 ];
 
@@ -325,7 +327,7 @@ export default function NeuroniPage() {
                     alt={m.nombre}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ objectPosition: m.objPos, transform: `scale(${m.zoom})`, transformOrigin: "center top" }}
+                    style={{ objectPosition: m.objPos, transform: `scale(${m.zoom})`, transformOrigin: `${m.zoomX ?? 50}% top` }}
                   />
                 </div>
                 <div className="p-5">

@@ -445,24 +445,27 @@ export default function ProgramaSERPage() {
                 cargo: "Directora Médica",
                 especialidad: "Neuromodulación y regulación del sistema nervioso para el tratamiento de conductas adictivas.",
                 foto: "/fotos/especialista-sara.webp",
-                objPos: "center 10%",
-                zoom: 1,
+                objPos: "center 37%",
+                zoom: 1.8,
+                zoomX: 50,
               },
               {
                 nombre: "Dra. Nadia Donadonibus",
                 cargo: "Psicoterapeuta · Psicoanalista",
                 especialidad: "Intervención psicoterapéutica profunda en procesos de dependencia, trauma y recuperación emocional.",
                 foto: "/fotos/especialista-nadia.webp",
-                objPos: "center 10%",
-                zoom: 1,
+                objPos: "50% 23%",
+                zoom: 2.5,
+                zoomX: 55,
               },
               {
                 nombre: "Nat. Fabián Ochoa Palau",
                 cargo: "Director General",
                 especialidad: "Medicina funcional y ortomolecular aplicada al detox físico y la restauración integral del organismo.",
                 foto: "/fotos/especialista-fabian.webp",
-                objPos: "center 10%",
-                zoom: 1,
+                objPos: "center 70%",
+                zoom: 1.9,
+                zoomX: 40,
               },
             ].map((m) => (
               <div
@@ -478,7 +481,7 @@ export default function ProgramaSERPage() {
                     style={{
                       objectPosition: m.objPos,
                       transform: `scale(${m.zoom})`,
-                      transformOrigin: "center top",
+                      transformOrigin: `${m.zoomX ?? 50}% top`,
                     }}
                   />
                 </div>

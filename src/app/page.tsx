@@ -515,13 +515,19 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
                 className="flex flex-col items-center text-center"
               >
-                <Image
-                  src={persona.foto}
-                  alt={persona.nombre}
-                  width={224}
-                  height={224}
-                  className="h-28 w-28 rounded-full object-cover object-top"
-                />
+                <div className="relative h-28 w-28 overflow-hidden rounded-full">
+                  <Image
+                    src={persona.foto}
+                    alt={persona.nombre}
+                    fill
+                    className="object-cover"
+                    style={{
+                      objectPosition: persona.objPos ?? "center top",
+                      transform: `scale(${persona.zoom ?? 1})`,
+                      transformOrigin: `${persona.zoomX ?? 50}% top`,
+                    }}
+                  />
+                </div>
                 <h3 className="mt-4 text-lg font-medium text-brand-gray-dark">{persona.nombre}</h3>
                 <p className="text-sm font-medium text-brand-orange">{persona.cargo}</p>
                 <p className="mt-2 max-w-xs text-sm text-brand-gray-dark/75">{persona.descripcion}</p>

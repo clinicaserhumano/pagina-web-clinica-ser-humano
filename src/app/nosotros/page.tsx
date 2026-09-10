@@ -18,16 +18,18 @@ const EQUIPO = [
     cargo: "Directora Médico",
     especialidad: "Experta en neuromodulación.",
     foto: "/fotos/especialista-sara.webp",
-    objPos: "center 10%",
-    zoom: 1,
+    objPos: "center 37%",
+    zoom: 1.8,
+    zoomX: 50,
   },
   {
     nombre: "Dra. Nadia Donadonibus",
     cargo: "Psicoterapeuta",
     especialidad: "Especialista en conductas adictivas y terapia de parejas.",
     foto: "/fotos/especialista-nadia.webp",
-    objPos: "center 10%",
-    zoom: 1,
+    objPos: "50% 23%",
+    zoom: 2.5,
+    zoomX: 55,
   },
   {
     nombre: "Nat. Fabián Ochoa Palau",
@@ -35,8 +37,9 @@ const EQUIPO = [
 
     especialidad: "Especialista en medicina integrativa.",
     foto: "/fotos/especialista-fabian.webp",
-    objPos: "center 10%",
-    zoom: 1,
+    objPos: "center 70%",
+    zoom: 1.9,
+    zoomX: 40,
   },
 ];
 
@@ -201,7 +204,7 @@ export default function NosotrosPage() {
                     alt={m.nombre}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ objectPosition: m.objPos, transform: `scale(${m.zoom ?? 1})`, transformOrigin: "center top" }}
+                    style={{ objectPosition: m.objPos, transform: `scale(${m.zoom ?? 1})`, transformOrigin: `${m.zoomX ?? 50}% top` }}
                   />
                 </div>
                 <div className="border-t-2 border-[#ff6b12] p-5">

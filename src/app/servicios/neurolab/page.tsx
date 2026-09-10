@@ -136,6 +136,9 @@ const ESPECIALISTAS = [
     nombre: "Dra. Sara Ochoa",
     titulo: "Especialista en neuromodulación",
     foto: "/fotos/especialista-sara.webp",
+    objPos: "center 37%",
+    zoom: 1.8,
+    zoomX: 50,
     descripcion:
       "Especializada en Medicina Funcional y Neuromodulación. Enfocada en el abordaje del deterioro psicocognitivo, así como en el tratamiento del dolor crónico, la fatiga y los trastornos psicosomáticos, promoviendo la regulación del sistema nervioso.",
   },
@@ -143,6 +146,9 @@ const ESPECIALISTAS = [
     nombre: "Dra. Nadia Donadonibus M.sc",
     titulo: "Máster en Salud Mental",
     foto: "/fotos/especialista-nadia.webp",
+    objPos: "50% 23%",
+    zoom: 2.5,
+    zoomX: 55,
     descripcion:
       "Psicoterapeuta especializada en intervención familiar, con formación en rehabilitación neuropsicológica y estimulación cognitiva. Capacitada en la aplicación de nuevas tecnologías para el abordaje del deterioro cognitivo.",
   },
@@ -150,6 +156,9 @@ const ESPECIALISTAS = [
     nombre: "Psic. Danny Matute",
     titulo: "Psicólogo Clínico",
     foto: "/neurolab/dannymatute.png",
+    objPos: "center top",
+    zoom: 1,
+    zoomX: 50,
     descripcion:
       "Especialista en Psicología Clínica con formación en Terapia Cognitivo-Conductual. Enfocado en la evaluación e intervención psicopedagógica y neurosensorial, orientada al abordaje integral del deterioro cognitivo y conductual.",
   },
@@ -795,7 +804,12 @@ export default function NeuroLabPage() {
                     alt={e.nombre}
                     width={400}
                     height={500}
-                    className="h-full w-full object-cover object-top"
+                    className="h-full w-full object-cover"
+                    style={{
+                      objectPosition: e.objPos ?? "center top",
+                      transform: `scale(${e.zoom ?? 1})`,
+                      transformOrigin: `${e.zoomX ?? 50}% top`,
+                    }}
                   />
                 </div>
                 <p className="font-black italic text-brand-gray-dark">{e.nombre}</p>
