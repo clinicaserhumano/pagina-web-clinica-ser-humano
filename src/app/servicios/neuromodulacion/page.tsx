@@ -15,7 +15,7 @@ export const metadata = buildMeta({
   title: "Neuroni · Neuromodulación No Invasiva | Clínica Ser Humano",
   description: "Regula tu sistema nervioso sin psicofármacos. Neuromodulación no invasiva con respaldo clínico en Guayaquil, Ecuador.",
   path: "/servicios/neuromodulacion",
-  image: `${BASE_URL}/fotos/neuroni-hero.png`,
+  image: `${BASE_URL}/fotos/hero-neuroni4.webp`,
 });
 
 const CONDICIONES = [
@@ -81,14 +81,16 @@ const EQUIPO = [
   {
     nombre: "Dra. Sara Ochoa",
     cargo: "Directora General · Neuroni",
-    foto: "/fotos/sara1.jpeg",
-    objPos: "center 18%",
+    foto: "/fotos/especialista-sara.webp",
+    objPos: "center 34%",
+    zoom: 1.8,
   },
   {
     nombre: "Nat. Fabián Ochoa",
     cargo: "Director General",
-    foto: "/fotos/fabian1.jpeg",
-    objPos: "center 7%",
+    foto: "/fotos/especialista-fabian.webp",
+    objPos: "center 64%",
+    zoom: 1.8,
   },
 ];
 
@@ -101,7 +103,7 @@ export default function NeuroniPage() {
         name: "Neuroni · Neuromodulación No Invasiva",
         description: "Regula tu sistema nervioso sin psicofármacos. Neuromodulación no invasiva con respaldo clínico en Guayaquil, Ecuador.",
         url: "https://www.clinicaserhumano.ec/servicios/neuromodulacion",
-        image: "https://www.clinicaserhumano.ec/fotos/neuroni-hero.png",
+        image: "https://www.clinicaserhumano.ec/fotos/hero-neuroni4.webp",
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Inicio",    url: "https://www.clinicaserhumano.ec" },
@@ -117,14 +119,15 @@ export default function NeuroniPage() {
       {/* ── HERO ── */}
       <section className="relative min-h-[640px] overflow-hidden lg:min-h-[700px]">
         <Image
-          src="/fotos/neuroni-hero.png"
+          src="/fotos/hero-neuroni4.webp"
           alt="Dra. Sara Ochoa con tecnología de neuromodulación"
           fill
           priority
-          className="object-cover object-center"
+          quality={95}
+          className="object-cover object-[61%_center] lg:object-center lg:scale-125 lg:origin-[-10%_35%]"
         />
-        {/* Mobile: overlay sólido translúcido */}
-        <div className="absolute inset-0 bg-[#4f5571]/80 lg:hidden" />
+        {/* Mobile: degradado de abajo hacia arriba, deja la foto más visible arriba */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#4f5571]/95 via-[#4f5571]/70 to-[#4f5571]/25 lg:hidden" />
         {/* Desktop: degradado izquierda → derecha con colores Neuroni */}
         <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#4f5571] from-[0%] via-[#566597]/75 via-[45%] to-transparent to-[70%]" />
 
@@ -204,12 +207,12 @@ export default function NeuroniPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-3xl shadow-2xl">
                 <Image
-                  src="/fotos/neuroni-2.jpeg"
+                  src="/fotos/que-es-neuroni.webp"
                   alt="Nat. Fabián Ochoa en consultorio Neuroni"
                   width={1536}
                   height={2752}
                   className="h-[560px] w-full object-cover"
-                  style={{ objectPosition: "center -60px" }}
+                  style={{ objectPosition: "center -60px", transform: "scale(1)", transformOrigin: "center center" }}
                 />
               </div>
               <div className="absolute -bottom-5 -right-5 rounded-2xl bg-[#566597] px-6 py-4 shadow-xl">
@@ -322,7 +325,7 @@ export default function NeuroniPage() {
                     alt={m.nombre}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ objectPosition: m.objPos }}
+                    style={{ objectPosition: m.objPos, transform: `scale(${m.zoom})`, transformOrigin: "center top" }}
                   />
                 </div>
                 <div className="p-5">
@@ -387,11 +390,11 @@ export default function NeuroniPage() {
         <div className="grid lg:grid-cols-2">
           <div className="relative h-80 lg:h-auto lg:min-h-[380px]">
             <Image
-              src="/fotos/collage-consulta.jpg"
+              src="/fotos/frase-sara.webp"
               alt="Consulta Neuroni"
               fill
               className="object-cover"
-              style={{ objectPosition: "center 33%" }}
+              style={{ objectPosition: "center 33%", transform: "scale(1)", transformOrigin: "center center" }}
             />
           </div>
           <div className="flex flex-col justify-center bg-[#566597] px-10 py-16 lg:px-14">

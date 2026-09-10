@@ -15,7 +15,7 @@ const DETALLE = [
   {
     slug: "neuroni",
     tagline: "Neuromodulación no invasiva",
-    imagen: "/fotos/neuroni-hero.png",
+    imagen: "/fotos/hero-neuroni4.webp",
     objPos: "center 20%",
     wa: WHATSAPP_MESSAGES.neuroni,
   },

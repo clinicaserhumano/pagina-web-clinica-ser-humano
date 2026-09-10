@@ -1,6 +1,7 @@
 ﻿import Image from "next/image";
 import { Heart, MessageCircle, Shield, BookOpen, CheckCircle, Sparkles, Clock, ArrowRight, Award, GraduationCap } from "lucide-react";
 import Button from "@/components/ui/Button";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import JsonLd from "@/components/seo/JsonLd";
@@ -371,39 +372,16 @@ export default function PsicoterapiaPage() {
               </div>
             </div>
 
-            {/* Collage de fotos corregido */}
-            <div className="flex gap-3" style={{ height: 320 }}>
-              {/* Columna izquierda: imagen grande */}
-              <div className="relative flex-1 overflow-hidden rounded-2xl">
-                <Image
-                  src="/nadia/IMG_0015 (1).webp"
-                  alt="Dra. Nadia Donadonibus en sesión"
-                  fill
-                  className="object-cover object-center"
-                  style={{ objectPosition: "center 5%" }}
-                />
-              </div>
-              {/* Columna derecha: dos imágenes apiladas */}
-              <div className="flex w-40 flex-col gap-3">
-                <div className="relative flex-1 overflow-hidden rounded-2xl">
-                  <Image
-                    src="/nadia/IMG_0027 (1).webp"
-                    alt="Consulta de psicoterapia"
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: "center 40%" }}
-                  />
-                </div>
-                <div className="relative flex-1 overflow-hidden rounded-2xl">
-                  <Image
-                    src="/nadia/IMG_0030 (2) (1).webp"
-                    alt="Dra. Nadia Donadonibus"
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Carrusel de fotos */}
+            <ImageCarousel
+              aspectSquare
+              bgClassName="bg-[#42517d]"
+              images={[
+                { src: "/nadia/IMG_0015 (1).webp", alt: "Dra. Nadia Donadonibus en sesión", objectPosition: "center 5%" },
+                { src: "/nadia/IMG_0027 (1).webp", alt: "Consulta de psicoterapia", objectPosition: "center 40%" },
+                { src: "/nadia/IMG_0030 (2) (1).webp", alt: "Dra. Nadia Donadonibus", objectPosition: "top" },
+              ]}
+            />
 
           </div>
         </div>
