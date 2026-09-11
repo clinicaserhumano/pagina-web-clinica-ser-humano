@@ -5,6 +5,7 @@ import {
   Zap, Shield, Activity, ArrowRight, Users,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import JsonLd from "@/components/seo/JsonLd";
@@ -120,14 +121,16 @@ export default function NeuroniPage() {
       ])} />
       {/* ── HERO ── */}
       <section className="relative min-h-[640px] overflow-hidden lg:min-h-[700px]">
-        <Image
-          src="/fotos/hero-neuroni4.webp"
-          alt="Dra. Sara Ochoa con tecnología de neuromodulación"
-          fill
-          priority
-          quality={95}
-          className="object-cover object-[61%_center] lg:object-center lg:scale-125 lg:origin-[-10%_35%]"
-        />
+        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/fotos/hero-neuroni4.webp"
+            alt="Dra. Sara Ochoa con tecnología de neuromodulación"
+            fill
+            priority
+            quality={95}
+            className="object-cover object-[61%_center] lg:object-center lg:scale-125 lg:origin-[-10%_35%]"
+          />
+        </Reveal>
         {/* Mobile: degradado de abajo hacia arriba, deja la foto más visible arriba */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#4f5571]/95 via-[#4f5571]/70 to-[#4f5571]/25 lg:hidden" />
         {/* Desktop: degradado izquierda → derecha con colores Neuroni */}
@@ -135,37 +138,45 @@ export default function NeuroniPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[640px] max-w-6xl items-center px-6 py-24 lg:min-h-[700px]">
           <div className="max-w-xl">
-            <Image
-              src="/logos/neuroni2.png"
-              alt="Neuroni"
-              width={200}
-              height={70}
-              className="mb-6 h-auto w-40"
-            />
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#d0d1d1]">
-              Neuromodulación No Invasiva
-            </p>
-            <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
-              Regula tu sistema<br />nervioso.<br />
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-white/85">
-              Un enfoque clínico que trabaja directamente con la actividad cerebral
-              para restaurar el equilibrio desde adentro.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                className="!bg-[#566597] hover:!bg-[#4f5571]"
-              >
-                Agenda tu valoración
-              </Button>
-              <Button href="#proceso" variant="secondary" size="lg">
-                Cómo funciona
-              </Button>
-            </div>
+            <Reveal mode="load">
+              <Image
+                src="/logos/neuroni2.png"
+                alt="Neuroni"
+                width={200}
+                height={70}
+                className="mb-6 h-auto w-40"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#d0d1d1]">
+                Neuromodulación No Invasiva
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
+                Regula tu sistema<br />nervioso.<br />
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <p className="mt-5 text-lg leading-relaxed text-white/85">
+                Un enfoque clínico que trabaja directamente con la actividad cerebral
+                para restaurar el equilibrio desde adentro.
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.45}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                  className="!bg-[#566597] hover:!bg-[#4f5571]"
+                >
+                  Agenda tu valoración
+                </Button>
+                <Button href="#proceso" variant="secondary" size="lg">
+                  Cómo funciona
+                </Button>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -175,7 +186,7 @@ export default function NeuroniPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-14 lg:grid-cols-[1fr_420px]">
 
-            <div>
+            <Reveal>
               <span className="inline-block rounded-full bg-[#566597]/15 px-4 py-1.5 text-sm font-bold text-[#566597]">
                 Qué es Neuroni
               </span>
@@ -204,9 +215,9 @@ export default function NeuroniPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal delay={0.15} scale={0.95} className="relative">
               <div className="overflow-hidden rounded-3xl shadow-2xl">
                 <Image
                   src="/fotos/que-es-neuroni.webp"
@@ -221,7 +232,7 @@ export default function NeuroniPage() {
                 <p className="text-xs font-semibold text-white/70">Especialidad</p>
                 <p className="text-sm font-black text-white">Neuromodulación</p>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
@@ -230,21 +241,23 @@ export default function NeuroniPage() {
       {/* ── CONDICIONES ── */}
       <section className="bg-[#f5f5f6] py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-[#566597]">
-            Tratamiento efectivo para:
-          </h2>
+          <Reveal>
+            <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-[#566597]">
+              Tratamiento efectivo para:
+            </h2>
+          </Reveal>
           <div className="flex flex-wrap justify-center gap-6">
-            {CONDICIONES.map((c) => {
+            {CONDICIONES.map((c, i) => {
               const Icon = c.icon;
               return (
-                <div key={c.label} className="flex flex-col items-center gap-3">
+                <Reveal key={c.label} delay={i * 0.05} className="flex flex-col items-center gap-3">
                   <div className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-[#566597]/25 bg-[#566597]/10 transition-colors duration-300 hover:bg-[#566597] hover:border-[#566597] group">
                     <Icon size={30} className="text-[#566597] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                   </div>
                   <span className="rounded-full bg-[#566597] px-3 py-1 text-xs font-bold uppercase text-white">
                     {c.label}
                   </span>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -254,18 +267,19 @@ export default function NeuroniPage() {
       {/* ── POR QUÉ NEURONI ── */}
       <section className="bg-[#4f5571] py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-white">
               Por qué Neuroni
             </span>
             <h2 className="mt-4 text-3xl font-black text-white md:text-4xl">
               Un enfoque diferente<br />al que conoces.
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {DIFERENCIADORES.map(({ titulo, descripcion, icon: Icon }) => (
-              <div
+            {DIFERENCIADORES.map(({ titulo, descripcion, icon: Icon }, i) => (
+              <Reveal
                 key={titulo}
+                delay={i * 0.08}
                 className="group rounded-2xl bg-white/10 p-6 transition-all duration-300 hover:bg-white/20"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 transition-colors duration-300 group-hover:bg-[#566597]">
@@ -273,7 +287,7 @@ export default function NeuroniPage() {
                 </div>
                 <p className="font-bold text-white">{titulo}</p>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">{descripcion}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -282,17 +296,17 @@ export default function NeuroniPage() {
       {/* ── PROCESO ── */}
       <section id="proceso" className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#566597]/15 px-4 py-1.5 text-sm font-bold text-[#566597]">
               Proceso
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Así funciona tu tratamiento
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESO.map((p, i) => (
-              <div key={p.num} className="relative">
+              <Reveal key={p.num} delay={i * 0.08} className="relative">
                 {i < PROCESO.length - 1 && (
                   <div className="absolute right-0 top-8 hidden h-0.5 w-1/2 translate-x-full bg-[#d0d1d1] lg:block" />
                 )}
@@ -301,7 +315,7 @@ export default function NeuroniPage() {
                   <p className="mt-3 font-bold text-[#566597]">{p.titulo}</p>
                   <p className="mt-2 text-sm leading-relaxed text-[#606265]/65">{p.descripcion}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -310,17 +324,17 @@ export default function NeuroniPage() {
       {/* ── EQUIPO ── */}
       <section className="bg-[#f5f5f6] py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#566597]/15 px-4 py-1.5 text-sm font-bold text-[#566597]">
               Nuestro equipo
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Especialistas que te acompañan
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-8 sm:grid-cols-2 max-w-2xl mx-auto">
-            {EQUIPO.map((m) => (
-              <div key={m.nombre} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+            {EQUIPO.map((m, i) => (
+              <Reveal key={m.nombre} delay={i * 0.12} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="relative h-72 overflow-hidden">
                   <Image
                     src={m.foto}
@@ -334,7 +348,7 @@ export default function NeuroniPage() {
                   <p className="font-black text-[#4f5571]">{m.nombre}</p>
                   <p className="mt-1 text-sm text-[#566597]">{m.cargo}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -348,39 +362,43 @@ export default function NeuroniPage() {
 
               {/* Logo + badge */}
               <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-                <div>
+                <Reveal>
                   <span className="inline-block rounded-full bg-[#566597]/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#566597]">
                     Tecnología certificada
                   </span>
                   <h2 className="mt-4 text-2xl font-black leading-snug text-[#4f5571] md:text-3xl">
                     Respaldados por la tecnología<br />NESA XSIGNAL®
                   </h2>
-                </div>
+                </Reveal>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logos/nesa.png"
-                  alt="NESA World"
-                  className="h-auto w-52 flex-shrink-0 object-contain sm:w-64"
-                />
+                <Reveal delay={0.15} scale={0.95}>
+                  <img
+                    src="/logos/nesa.png"
+                    alt="NESA World"
+                    className="h-auto w-52 flex-shrink-0 object-contain sm:w-64"
+                  />
+                </Reveal>
               </div>
 
               {/* Stats animados */}
-              <div className="mt-10">
+              <Reveal className="mt-10">
                 <AnimatedStats />
-              </div>
+              </Reveal>
 
               {/* Descripción */}
-              <p className="mt-10 leading-relaxed text-[#606265]/70">
-                NESA® combina visión clínica, formación, soporte y expansión internacional.
-                Su crecimiento se sustenta sobre una red de hospitales, clínicas, universidades
-                y distribuidores presentes en más de 47 países. La tecnología opera en ocho
-                especialidades —rehabilitación, neurología, salud mental, dolor, odontología,
-                medicina deportiva, medicina interna y estética— y avanza hacia nuevas áreas
-                como gastroenterología, neumología, cardiología y pediatría, donde el sistema
-                nervioso autónomo juega un papel determinante. Cuando el SNA funciona bien,
-                el sueño se restaura, la inflamación disminuye y el paciente responde mejor
-                a cualquier intervención. <strong className="text-[#4f5571]">NESA® no compite con la especialidad: la potencia.</strong>
-              </p>
+              <Reveal>
+                <p className="mt-10 leading-relaxed text-[#606265]/70">
+                  NESA® combina visión clínica, formación, soporte y expansión internacional.
+                  Su crecimiento se sustenta sobre una red de hospitales, clínicas, universidades
+                  y distribuidores presentes en más de 47 países. La tecnología opera en ocho
+                  especialidades —rehabilitación, neurología, salud mental, dolor, odontología,
+                  medicina deportiva, medicina interna y estética— y avanza hacia nuevas áreas
+                  como gastroenterología, neumología, cardiología y pediatría, donde el sistema
+                  nervioso autónomo juega un papel determinante. Cuando el SNA funciona bien,
+                  el sueño se restaura, la inflamación disminuye y el paciente responde mejor
+                  a cualquier intervención. <strong className="text-[#4f5571]">NESA® no compite con la especialidad: la potencia.</strong>
+                </p>
+              </Reveal>
 
             </div>
           </div>
@@ -390,7 +408,7 @@ export default function NeuroniPage() {
       {/* ── CTA SPLIT ── */}
       <section className="overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="relative h-80 lg:h-auto lg:min-h-[380px]">
+          <Reveal scale={0.95} className="relative h-80 lg:h-auto lg:min-h-[380px]">
             <Image
               src="/fotos/frase-sara.webp"
               alt="Consulta Neuroni"
@@ -398,8 +416,8 @@ export default function NeuroniPage() {
               className="object-cover"
               style={{ objectPosition: "center 33%", transform: "scale(1)", transformOrigin: "center center" }}
             />
-          </div>
-          <div className="flex flex-col justify-center bg-[#566597] px-10 py-16 lg:px-14">
+          </Reveal>
+          <Reveal delay={0.15} className="flex flex-col justify-center bg-[#566597] px-10 py-16 lg:px-14">
             <p className="text-5xl font-black leading-none text-white/20">&ldquo;</p>
             <p className="mt-2 text-xl font-light italic leading-relaxed text-white">
               El sistema nervioso puede aprender a regularse. Solo necesita
@@ -418,7 +436,7 @@ export default function NeuroniPage() {
                 <ArrowRight size={18} className="ml-2 inline" />
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

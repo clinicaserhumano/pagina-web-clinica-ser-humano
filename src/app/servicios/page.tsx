@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 import { buildMeta } from "@/lib/seo";
 import { SUBMARCAS, getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 
@@ -53,25 +54,32 @@ export default function ServiciosPage() {
       {/* ── HERO ── */}
       <div className="bg-brand-gray-dark">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-white/60">
-            Lo que hacemos
-          </p>
-          <h1 className="mt-3 text-4xl font-black text-white md:text-5xl">
-            Nuestros servicios
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/75">
-            Cuatro programas especializados que trabajan juntos para acompañar
-            tu proceso de recuperación y bienestar desde una visión integral.
-          </p>
+          <Reveal mode="load">
+            <p className="text-sm font-semibold uppercase tracking-widest text-white/60">
+              Lo que hacemos
+            </p>
+          </Reveal>
+          <Reveal mode="load" delay={0.15}>
+            <h1 className="mt-3 text-4xl font-black text-white md:text-5xl">
+              Nuestros servicios
+            </h1>
+          </Reveal>
+          <Reveal mode="load" delay={0.3}>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/75">
+              Cuatro programas especializados que trabajan juntos para acompañar
+              tu proceso de recuperación y bienestar desde una visión integral.
+            </p>
+          </Reveal>
         </div>
       </div>
 
       {/* ── CARDS ── */}
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-8 sm:grid-cols-2">
-          {servicios.map((s) => (
-            <div
+          {servicios.map((s, i) => (
+            <Reveal
               key={s.slug}
+              delay={i * 0.1}
               className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
             >
               {/* Imagen */}
@@ -125,12 +133,12 @@ export default function ServiciosPage() {
                   </a>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* CTA inferior */}
-        <div className="mt-16 rounded-3xl bg-brand-orange px-8 py-12 text-center">
+        <Reveal className="mt-16 rounded-3xl bg-brand-orange px-8 py-12 text-center">
           <h2 className="text-2xl font-black text-white md:text-3xl">
             ¿No sabes por dónde empezar?
           </h2>
@@ -146,7 +154,7 @@ export default function ServiciosPage() {
             Hablar con nosotros
             <ArrowRight size={16} />
           </a>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

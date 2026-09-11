@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import JsonLd from "@/components/seo/JsonLd";
+import Reveal from "@/components/ui/Reveal";
 import { servicePageSchema, breadcrumbSchema, faqSchema } from "@/lib/schemas";
 import { buildMeta, BASE_URL } from "@/lib/seo";
 
@@ -203,51 +204,63 @@ export default function NeuroLabPage() {
       ])} />
       {/* ── HERO ── */}
       <section className="relative flex min-h-[620px] items-center">
-        <Image
-          src="/neurolab/hero.jpg"
-          alt="NeuroLab - Estimulación Cognitiva Sensorial"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/neurolab/hero.jpg"
+            alt="NeuroLab - Estimulación Cognitiva Sensorial"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </Reveal>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-24">
           <div className="max-w-2xl">
-            <Image
-              src="/logos/neurolab2.png"
-              alt="NeuroLab"
-              width={600}
-              height={200}
-              className="mb-5 h-auto w-52"
-            />
-            <p className="text-lg font-light italic text-brand-orange">
-              Entrena tu mente, fortalece tu memoria.
-            </p>
-            <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
-              Estimulación<br />Cognitiva Sensorial
-            </h1>
-            <div className="mt-6 flex flex-col gap-3">
-              {[
-                "Programa único en Ecuador",
-                "Avalado por más de 500 centros en Europa",
-                "El mejor regalo para tus seres queridos",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <Check size={18} className="shrink-0 text-brand-orange" strokeWidth={3} />
-                  <span className="rounded-md bg-brand-orange px-3 py-1 text-sm font-bold text-white">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href={waUrl} target="_blank" rel="noopener noreferrer" size="lg">
-                Regístrate
-              </Button>
-              <Button href="#planes" variant="secondary" size="lg">
-                Leer más
-              </Button>
-            </div>
+            <Reveal mode="load">
+              <Image
+                src="/logos/neurolab2.png"
+                alt="NeuroLab"
+                width={600}
+                height={200}
+                className="mb-5 h-auto w-52"
+              />
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <p className="text-lg font-light italic text-brand-orange">
+                Entrena tu mente, fortalece tu memoria.
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
+                Estimulación<br />Cognitiva Sensorial
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.45}>
+              <div className="mt-6 flex flex-col gap-3">
+                {[
+                  "Programa único en Ecuador",
+                  "Avalado por más de 500 centros en Europa",
+                  "El mejor regalo para tus seres queridos",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <Check size={18} className="shrink-0 text-brand-orange" strokeWidth={3} />
+                    <span className="rounded-md bg-brand-orange px-3 py-1 text-sm font-bold text-white">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal mode="load" delay={0.6}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href={waUrl} target="_blank" rel="noopener noreferrer" size="lg">
+                  Regístrate
+                </Button>
+                <Button href="#planes" variant="secondary" size="lg">
+                  Leer más
+                </Button>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -255,21 +268,23 @@ export default function NeuroLabPage() {
       {/* ── TRATAMIENTO EFECTIVO PARA ── */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
-            Tratamiento Efectivo Para:
-          </h2>
+          <Reveal>
+            <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
+              Tratamiento Efectivo Para:
+            </h2>
+          </Reveal>
           <div className="flex flex-wrap justify-center gap-6">
-            {CONDICIONES.map((c) => {
+            {CONDICIONES.map((c, i) => {
               const Icon = c.icon;
               return (
-                <div key={c.label} className="flex flex-col items-center gap-3">
+                <Reveal key={c.label} delay={i * 0.06} className="flex flex-col items-center gap-3">
                   <div className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-brand-gray-dark/20 bg-brand-gray-dark/10">
                     <Icon size={32} className="text-brand-gray-dark" strokeWidth={1.5} />
                   </div>
                   <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-bold uppercase text-white">
                     {c.label}
                   </span>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -279,23 +294,25 @@ export default function NeuroLabPage() {
       {/* ── ESTADÍSTICAS ── */}
       <section className="bg-white pb-16">
         <div className="mx-auto max-w-6xl border-t border-brand-gray-light/40 px-6 pt-12">
-          <p className="text-center text-lg font-bold uppercase tracking-widest text-brand-gray-dark">
-            Entrenamiento para el desarrollo de habilidades cerebrales
-          </p>
+          <Reveal>
+            <p className="text-center text-lg font-bold uppercase tracking-widest text-brand-gray-dark">
+              Entrenamiento para el desarrollo de habilidades cerebrales
+            </p>
+          </Reveal>
           <div className="mt-8 flex flex-col items-center gap-8 md:flex-row md:justify-center md:gap-20">
-            <div className="text-center">
+            <Reveal className="text-center">
               <p className="text-5xl font-black italic text-brand-orange md:text-6xl">Regenera</p>
               <p className="text-4xl font-black italic text-brand-orange md:text-5xl">Recupera</p>
               <p className="text-3xl font-black italic text-brand-orange md:text-4xl">Reprograma</p>
-            </div>
-            <div className="flex flex-col gap-4 text-center md:text-left">
+            </Reveal>
+            <Reveal delay={0.15} className="flex flex-col gap-4 text-center md:text-left">
               <div>
                 <p className="text-4xl font-black italic text-brand-gray-dark">+ de 11000 Usuarios</p>
               </div>
               <div>
                 <p className="text-4xl font-black italic text-brand-gray-dark">+ de 13000 Ejercicios</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -307,29 +324,31 @@ export default function NeuroLabPage() {
 
             {/* Columna izquierda: texto + cards */}
             <div>
-              <span className="inline-block rounded-full bg-brand-orange/15 px-4 py-1.5 text-sm font-bold text-brand-orange">
-                ¿Por qué NeuroLab?
-              </span>
-              <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-4xl">
-                Entrenamiento cerebral<br />basado en ciencia
-              </h2>
-              <p className="mt-4 leading-relaxed text-white/60">
-                Aprovecha la neuroplasticidad cerebral para fortalecer la memoria, la atención
-                y otras funciones mentales mediante un programa cognitivo personalizado y avalado
-                en más de 500 centros de Europa.
-              </p>
+              <Reveal>
+                <span className="inline-block rounded-full bg-brand-orange/15 px-4 py-1.5 text-sm font-bold text-brand-orange">
+                  ¿Por qué NeuroLab?
+                </span>
+                <h2 className="mt-4 text-3xl font-black leading-tight text-white md:text-4xl">
+                  Entrenamiento cerebral<br />basado en ciencia
+                </h2>
+                <p className="mt-4 leading-relaxed text-white/60">
+                  Aprovecha la neuroplasticidad cerebral para fortalecer la memoria, la atención
+                  y otras funciones mentales mediante un programa cognitivo personalizado y avalado
+                  en más de 500 centros de Europa.
+                </p>
+              </Reveal>
               <div className="mt-8 grid grid-cols-2 gap-3">
                 {[
                   { icon: Brain,  label: "Neuroplasticidad",  desc: "Activa y fortalece nuevas conexiones cerebrales" },
                   { icon: Shield, label: "Sin medicamentos",   desc: "Estimulación natural y segura para todas las edades" },
                   { icon: Users,  label: "Personalizado",      desc: "Plan cognitivo adaptado a cada persona" },
                   { icon: Zap,    label: "Resultados medibles",desc: "Evaluación inicial y final del desempeño" },
-                ].map(({ icon: Icon, label, desc }) => (
-                  <div key={label} className="rounded-xl border border-white/10 bg-white/5 p-4">
+                ].map(({ icon: Icon, label, desc }, i) => (
+                  <Reveal key={label} delay={i * 0.08} className="rounded-xl border border-white/10 bg-white/5 p-4">
                     <Icon size={22} className="text-brand-orange" strokeWidth={1.5} />
                     <p className="mt-2 text-sm font-bold text-white">{label}</p>
                     <p className="mt-1 text-xs leading-relaxed text-white/50">{desc}</p>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
               <div className="mt-8 flex gap-8 border-t border-white/10 pt-8">
@@ -337,17 +356,17 @@ export default function NeuroLabPage() {
                   { num: "+11.000", label: "Usuarios activos" },
                   { num: "+13.000", label: "Ejercicios cognitivos" },
                   { num: "1°",      label: "Programa en Ecuador" },
-                ].map((s) => (
-                  <div key={s.label}>
+                ].map((s, i) => (
+                  <Reveal key={s.label} delay={i * 0.1}>
                     <p className="text-2xl font-black text-brand-orange">{s.num}</p>
                     <p className="mt-0.5 text-xs text-white/50">{s.label}</p>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
 
             {/* Columna derecha: foto con card flotante */}
-            <div className="relative">
+            <Reveal delay={0.15} scale={0.95} className="relative">
               <div className="overflow-hidden rounded-2xl">
                 <Image
                   src="/neurolab/hero.jpg"
@@ -365,7 +384,7 @@ export default function NeuroLabPage() {
                 <p className="text-xs font-semibold text-brand-gray-dark/60">Avalado por</p>
                 <p className="text-sm font-black text-brand-gray-dark">+500 centros en Europa</p>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
@@ -379,7 +398,7 @@ export default function NeuroLabPage() {
           <div className="hidden gap-4 lg:flex" style={{ height: 520 }}>
 
             {/* Columna izquierda: retrato alto del doctor */}
-            <div className="relative w-60 flex-shrink-0 overflow-hidden rounded-2xl">
+            <Reveal className="relative w-60 flex-shrink-0 overflow-hidden rounded-2xl">
               <Image
                 src="/neurolab/sala1.jpeg"
                 fill
@@ -396,10 +415,10 @@ export default function NeuroLabPage() {
                   La estimulación cognitiva mejora el funcionamiento diario y la calidad de vida.
                 </p>
               </div>
-            </div>
+            </Reveal>
 
             {/* Columna central: imagen arriba + tarjeta texto abajo */}
-            <div className="flex flex-1 flex-col gap-4">
+            <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
               <div className="relative flex-1 overflow-hidden rounded-2xl">
                 <Image
                   src="/neurolab/neurolab1.png"
@@ -426,24 +445,24 @@ export default function NeuroLabPage() {
                   pero pueden ser un primer signo de riesgo cognitivo que merece atención.
                 </p>
               </div>
-            </div>
+            </Reveal>
 
             {/* Columna derecha: retrato alto VR */}
-            <div className="relative w-52 flex-shrink-0 overflow-hidden rounded-2xl">
+            <Reveal delay={0.2} className="relative w-52 flex-shrink-0 overflow-hidden rounded-2xl">
               <Image
                 src="/neurolab/neurolab3.png"
                 fill
                 alt="Sesión NeuroLab con realidad virtual"
                 className="object-cover object-top"
               />
-            </div>
+            </Reveal>
 
           </div>
 
           {/* Mobile: apilado simple */}
           <div className="flex flex-col gap-5 lg:hidden">
-            {ESTIMULACIONES.map((e) => (
-              <div key={e.titulo}>
+            {ESTIMULACIONES.map((e, i) => (
+              <Reveal key={e.titulo} delay={i * 0.1}>
                 <div className="h-52 overflow-hidden rounded-xl shadow-lg">
                   <Image
                     src={e.foto}
@@ -456,7 +475,7 @@ export default function NeuroLabPage() {
                 </div>
                 <h3 className="mt-3 text-sm font-black uppercase text-white">{e.titulo}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-white/80">{e.descripcion}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -465,26 +484,30 @@ export default function NeuroLabPage() {
 
       {/* ── BENEFICIOS ── */}
       <section className="relative py-20">
-        <Image
-          src="/neurolab/sala1.jpeg"
-          alt="Sala NeuroLab"
-          fill
-          className="object-cover object-center"
-        />
+        <Reveal y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/neurolab/sala1.jpeg"
+            alt="Sala NeuroLab"
+            fill
+            className="object-cover object-center"
+          />
+        </Reveal>
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative z-10 mx-auto max-w-4xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
-            Beneficios de NeuroLab
-          </h2>
+          <Reveal>
+            <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
+              Beneficios de NeuroLab
+            </h2>
+          </Reveal>
           <div className="flex flex-col gap-6">
-            {BENEFICIOS.map((b) => (
-              <div key={b.titulo} className="flex items-start gap-4">
+            {BENEFICIOS.map((b, i) => (
+              <Reveal key={b.titulo} delay={i * 0.1} className="flex items-start gap-4">
                 <CheckCircle size={24} className="mt-0.5 shrink-0 text-green-400" strokeWidth={2} />
                 <div>
                   <p className="font-bold text-white">{b.titulo}</p>
                   <p className="mt-1 text-sm text-white/75">{b.descripcion}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -493,21 +516,24 @@ export default function NeuroLabPage() {
       {/* ── PLANES ── */}
       <section id="planes" className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
-            Planes Flexibles para Cada Objetivo
-          </h2>
+          <Reveal>
+            <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
+              Planes Flexibles para Cada Objetivo
+            </h2>
+          </Reveal>
 
           {/* REMOTO */}
           <div className="mt-12">
-            <div className="mb-6 flex justify-center">
+            <Reveal className="mb-6 flex justify-center">
               <span className="rounded-full border-2 border-brand-orange bg-white px-8 py-2 text-xl font-black uppercase text-brand-orange">
                 Remoto
               </span>
-            </div>
+            </Reveal>
             <div className="grid gap-6 sm:grid-cols-3">
-              {PLANES_REMOTO.map((p) => (
-                <div
+              {PLANES_REMOTO.map((p, i) => (
+                <Reveal
                   key={p.numero + p.unidad}
+                  delay={i * 0.1}
                   className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 >
                   {/* Barra superior de color que entra deslizándose */}
@@ -546,22 +572,23 @@ export default function NeuroLabPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
 
           {/* PRESENCIAL */}
           <div className="mt-16">
-            <div className="mb-6 flex justify-center">
+            <Reveal className="mb-6 flex justify-center">
               <span className="rounded-full border-2 border-brand-orange bg-brand-orange px-8 py-2 text-xl font-black uppercase text-white">
                 Presencial
               </span>
-            </div>
+            </Reveal>
             <div className="grid gap-6 sm:grid-cols-3">
-              {PLANES_PRESENCIAL.map((p) => (
-                <div
+              {PLANES_PRESENCIAL.map((p, i) => (
+                <Reveal
                   key={p.numero + p.unidad}
+                  delay={i * 0.1}
                   className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 >
                   {/* Barra superior de color */}
@@ -603,24 +630,24 @@ export default function NeuroLabPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <Reveal className="mt-6 flex flex-wrap justify-center gap-4">
               <span className="rounded-full bg-[#3b5998] px-6 py-2 text-sm font-bold text-white">
                 Tutoría presencial
               </span>
               <span className="rounded-full bg-[#3b5998] px-6 py-2 text-sm font-bold text-white">
                 Asistencia psicopedagógica
               </span>
-            </div>
+            </Reveal>
           </div>
 
-          <div className="mt-10 flex justify-center">
+          <Reveal className="mt-10 flex justify-center">
             <Button href={waUrl} target="_blank" rel="noopener noreferrer" size="lg">
               Solicitar información
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -632,13 +659,15 @@ export default function NeuroLabPage() {
 
               {/* Columna izquierda */}
               <div className="flex flex-col justify-center px-8 py-10 lg:px-12">
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-                  Modalidad Remoto
-                </span>
-                <h2 className="mt-2 text-3xl font-black text-brand-gray-dark">
-                  Kit NeuroLab<br />Memoria
-                </h2>
-                <p className="mt-1 text-sm font-bold italic text-brand-gray-dark/50">Incluye</p>
+                <Reveal>
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                    Modalidad Remoto
+                  </span>
+                  <h2 className="mt-2 text-3xl font-black text-brand-gray-dark">
+                    Kit NeuroLab<br />Memoria
+                  </h2>
+                  <p className="mt-1 text-sm font-bold italic text-brand-gray-dark/50">Incluye</p>
+                </Reveal>
                 <ul className="mt-4 flex flex-col gap-2.5">
                   {[
                     "Software Especializado",
@@ -646,21 +675,23 @@ export default function NeuroLabPage() {
                     "Licencia de uso",
                     "Manual Físico y Digital",
                     "Certificado",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-500">
-                        <Check size={12} className="text-white" strokeWidth={3} />
-                      </span>
-                      <span className="rounded-lg bg-brand-orange px-4 py-1.5 text-sm font-bold text-white">
-                        {item}
-                      </span>
-                    </li>
+                  ].map((item, i) => (
+                    <Reveal key={item} delay={i * 0.08}>
+                      <li className="flex items-center gap-3">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-500">
+                          <Check size={12} className="text-white" strokeWidth={3} />
+                        </span>
+                        <span className="rounded-lg bg-brand-orange px-4 py-1.5 text-sm font-bold text-white">
+                          {item}
+                        </span>
+                      </li>
+                    </Reveal>
                   ))}
                 </ul>
               </div>
 
               {/* Columna derecha: tablet + manual + specs */}
-              <div className="flex flex-col items-center justify-center gap-4 bg-brand-base/50 px-8 py-10">
+              <Reveal delay={0.15} className="flex flex-col items-center justify-center gap-4 bg-brand-base/50 px-8 py-10">
                 <span className="rounded-full bg-brand-orange px-5 py-1.5 text-xs font-bold text-white">
                   Tablet Recomendada
                 </span>
@@ -682,7 +713,7 @@ export default function NeuroLabPage() {
                   height={260}
                   className="h-auto w-40 drop-shadow-lg"
                 />
-              </div>
+              </Reveal>
 
             </div>
           </div>
@@ -691,40 +722,48 @@ export default function NeuroLabPage() {
 
       {/* ── CUADERNILLOS ── */}
       <section className="relative py-20">
-        <Image
-          src="/neurolab/neurolab1.png"
-          alt="NeuroLab sala"
-          fill
-          className="object-cover object-center"
-        />
+        <Reveal y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/neurolab/neurolab1.png"
+            alt="NeuroLab sala"
+            fill
+            className="object-cover object-center"
+          />
+        </Reveal>
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
-          <h2 className="mb-8 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
-            Obtén tus Cuadernillos de Trabajo
-          </h2>
+          <Reveal>
+            <h2 className="mb-8 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
+              Obtén tus Cuadernillos de Trabajo
+            </h2>
+          </Reveal>
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <Image
-              src="/neurolab/cuadernos.png"
-              alt="Cuadernillos NeuroLab Memoria"
-              width={960}
-              height={400}
-              className="h-auto w-full drop-shadow-2xl"
-            />
-            <div className="rounded-2xl bg-brand-orange/90 px-8 py-6">
+            <Reveal scale={0.95}>
+              <Image
+                src="/neurolab/cuadernos.png"
+                alt="Cuadernillos NeuroLab Memoria"
+                width={960}
+                height={400}
+                className="h-auto w-full drop-shadow-2xl"
+              />
+            </Reveal>
+            <Reveal delay={0.15} className="rounded-2xl bg-brand-orange/90 px-8 py-6">
               <ul className="flex flex-col gap-3">
                 {[
                   "Cuadernillos con actividades dirigidas a cada área.",
                   "6 categorías: Praxias y Gnosias, Razonamiento, Cálculo, Memoria, Lenguaje y Atención.",
                   "3 grados de dificultad: Alto, Medio y Bajo.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white">
-                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-white" />
-                    <span className="text-sm font-medium">{item}</span>
-                  </li>
+                ].map((item, i) => (
+                  <Reveal key={item} delay={i * 0.1} y={12}>
+                    <li className="flex items-start gap-3 text-white">
+                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-white" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  </Reveal>
                 ))}
               </ul>
               <p className="mt-5 text-right text-2xl font-black text-white">$15,00 c/u</p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -732,13 +771,15 @@ export default function NeuroLabPage() {
       {/* ── TESTIMONIOS ── */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
-            Testimonios
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-sm text-brand-gray-dark/70">
-            En NeuroLab fortalecemos tu memoria y concentración con programas personalizados
-            que previenen el deterioro cognitivo y mejoran tu bienestar.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
+              Testimonios
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-brand-gray-dark/70">
+              En NeuroLab fortalecemos tu memoria y concentración con programas personalizados
+              que previenen el deterioro cognitivo y mejoran tu bienestar.
+            </p>
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[
               {
@@ -760,8 +801,9 @@ export default function NeuroLabPage() {
                 nombre: "Paola Sánchez, 78 años",
               },
             ].map((t, i) => (
-              <div
+              <Reveal
                 key={t.nombre}
+                delay={i * 0.1}
                 className={`flex flex-col items-center rounded-2xl border-2 p-6 text-center ${
                   i === 1 ? "border-brand-gray-dark" : "border-brand-orange"
                 }`}
@@ -780,7 +822,7 @@ export default function NeuroLabPage() {
                 </p>
                 <p className="mt-4 font-black italic text-brand-gray-dark">{t.nombre}</p>
                 <div className={`mt-2 h-0.5 w-10 ${i === 1 ? "bg-brand-gray-dark" : "bg-brand-orange"}`} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -789,13 +831,16 @@ export default function NeuroLabPage() {
       {/* ── NUESTROS ESPECIALISTAS ── */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-12 text-center text-3xl font-black uppercase tracking-wide text-brand-gray-dark">
-            Nuestros Especialistas
-          </h2>
+          <Reveal>
+            <h2 className="mb-12 text-center text-3xl font-black uppercase tracking-wide text-brand-gray-dark">
+              Nuestros Especialistas
+            </h2>
+          </Reveal>
           <div className="grid gap-8 sm:grid-cols-3">
-            {ESPECIALISTAS.map((e) => (
-              <div
+            {ESPECIALISTAS.map((e, i) => (
+              <Reveal
                 key={e.nombre}
+                delay={i * 0.1}
                 className="relative overflow-hidden rounded-2xl border border-brand-orange/30 p-6 text-center shadow-sm"
               >
                 <div className="mx-auto mb-4 h-40 w-40 overflow-hidden rounded-2xl border-2 border-brand-orange/40">
@@ -817,7 +862,7 @@ export default function NeuroLabPage() {
                 <p className="mt-3 text-xs leading-relaxed text-brand-gray-dark/70 italic">
                   {e.descripcion}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -830,7 +875,7 @@ export default function NeuroLabPage() {
             <div className="p-10 lg:p-14">
 
               {/* Logo + título */}
-              <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <Reveal className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-orange">
                     Plataforma certificada
@@ -845,36 +890,40 @@ export default function NeuroLabPage() {
                   alt="Fundación INTRAS"
                   className="h-auto w-52 flex-shrink-0 object-contain sm:w-64"
                 />
-              </div>
+              </Reveal>
 
               {/* Stats animados */}
-              <div className="mt-10">
+              <Reveal className="mt-10">
                 <AnimatedStats
                   accentColor="#ff6b12"
                   borderColor="#e5e7eb"
                   stats={INTRAS_STATS}
                 />
-              </div>
+              </Reveal>
 
               {/* Descripción */}
-              <p className="mt-10 leading-relaxed text-[#606265]/70">
-                Fundación INTRAS es una entidad sin ánimo de lucro fundada en 1994 dedicada
-                al acompañamiento de personas con problemas de salud mental. Con casi 900
-                profesionales y presencia en 8 provincias de España y una red activa en toda
-                Europa, INTRAS desarrolla la plataforma de estimulación cognitiva que impulsa
-                el programa NeuroLab. Su tecnología —ya presente en más de 500 centros europeos—
-                llega a Ecuador de la mano de Clínica Ser Humano, siendo el{" "}
-                <strong className="text-brand-gray-dark">primer centro autorizado en el país.</strong>
-              </p>
+              <Reveal>
+                <p className="mt-10 leading-relaxed text-[#606265]/70">
+                  Fundación INTRAS es una entidad sin ánimo de lucro fundada en 1994 dedicada
+                  al acompañamiento de personas con problemas de salud mental. Con casi 900
+                  profesionales y presencia en 8 provincias de España y una red activa en toda
+                  Europa, INTRAS desarrolla la plataforma de estimulación cognitiva que impulsa
+                  el programa NeuroLab. Su tecnología —ya presente en más de 500 centros europeos—
+                  llega a Ecuador de la mano de Clínica Ser Humano, siendo el{" "}
+                  <strong className="text-brand-gray-dark">primer centro autorizado en el país.</strong>
+                </p>
+              </Reveal>
 
               {/* Instituciones que nos avalan */}
               <div className="mt-10 border-t border-[#d0d1d1] pt-8">
-                <p className="mb-6 text-center text-xs font-bold uppercase tracking-widest text-[#606265]/50">
-                  Instituciones que nos avalan:
-                </p>
+                <Reveal>
+                  <p className="mb-6 text-center text-xs font-bold uppercase tracking-widest text-[#606265]/50">
+                    Instituciones que nos avalan:
+                  </p>
+                </Reveal>
                 <div className="flex flex-wrap items-center justify-center gap-8">
-                  {AVALADO_LOGOS.map((logo) => (
-                    <div key={logo.alt} className="flex items-center justify-center">
+                  {AVALADO_LOGOS.map((logo, i) => (
+                    <Reveal key={logo.alt} delay={i * 0.08} className="flex items-center justify-center">
                       <Image
                         src={logo.src}
                         alt={logo.alt}
@@ -883,7 +932,7 @@ export default function NeuroLabPage() {
                         className="object-contain opacity-75 transition-opacity hover:opacity-100"
                         style={{ height: logo.displayH, width: "auto" }}
                       />
-                    </div>
+                    </Reveal>
                   ))}
                 </div>
               </div>

@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import JsonLd from "@/components/seo/JsonLd";
+import Reveal from "@/components/ui/Reveal";
 import { servicePageSchema, breadcrumbSchema, faqSchema } from "@/lib/schemas";
 import { buildMeta, BASE_URL } from "@/lib/seo";
 
@@ -106,13 +107,15 @@ export default function ProgramaSERPage() {
       ])} />
       {/* ── HERO ── */}
       <section className="relative min-h-[580px] overflow-hidden lg:min-h-[660px]">
-        <Image
-          src="/programaser/hero.png"
-          alt="Programa SER - Recuperación integral"
-          fill
-          priority
-          className="object-cover object-[center_20%] lg:object-center"
-        />
+        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/programaser/hero.png"
+            alt="Programa SER - Recuperación integral"
+            fill
+            priority
+            className="object-cover object-[center_20%] lg:object-center"
+          />
+        </Reveal>
         {/* Móvil: degradado de abajo hacia arriba */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#c94a32]/95 via-[#e96854]/70 to-[#ff6b12]/20 lg:hidden" />
         {/* Desktop: degradado izquierda → transparente */}
@@ -120,38 +123,48 @@ export default function ProgramaSERPage() {
 
         <div className="relative z-10 mx-auto flex min-h-[580px] max-w-6xl items-center px-6 py-24 lg:min-h-[660px]">
           <div className="max-w-lg">
-            <Image
-              src="/logos/programaser3.png"
-              alt="Programa SER"
-              width={3385}
-              height={1243}
-              priority
-              className="mb-6 h-auto w-48"
-            />
-            <p className="text-sm font-semibold uppercase tracking-widest text-white/80">
-              Day Hospital · Afterwork · Full Immersion
-            </p>
-            <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
-              Cómo superar<br />las dependencias.
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-white/85">
-              El único programa de inmersión ambulatoria integral en Ecuador.
-              Sin internación, sin psicofármacos, con resultados sostenibles.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                className="!bg-white !text-brand-orange hover:!bg-white/90"
-              >
-                Separa tu cita
-              </Button>
-              <span className="flex items-center rounded-full border-2 border-white/60 px-5 py-2 text-sm font-medium text-white">
-                🇪🇨 Único en Ecuador
-              </span>
-            </div>
+            <Reveal mode="load">
+              <Image
+                src="/logos/programaser3.png"
+                alt="Programa SER"
+                width={3385}
+                height={1243}
+                priority
+                className="mb-6 h-auto w-48"
+              />
+            </Reveal>
+            <Reveal mode="load">
+              <p className="text-sm font-semibold uppercase tracking-widest text-white/80">
+                Day Hospital · Afterwork · Full Immersion
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
+                Cómo superar<br />las dependencias.
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <p className="mt-5 text-lg leading-relaxed text-white/85">
+                El único programa de inmersión ambulatoria integral en Ecuador.
+                Sin internación, sin psicofármacos, con resultados sostenibles.
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.45}>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                  className="!bg-white !text-brand-orange hover:!bg-white/90"
+                >
+                  Separa tu cita
+                </Button>
+                <span className="flex items-center rounded-full border-2 border-white/60 px-5 py-2 text-sm font-medium text-white">
+                  🇪🇨 Único en Ecuador
+                </span>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -159,20 +172,22 @@ export default function ProgramaSERPage() {
       {/* ── PROPUESTA DE VALOR ── */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-bold uppercase tracking-wide text-ser-gray">
-            Nuestra propuesta de valor
-          </h2>
+          <Reveal>
+            <h2 className="mb-10 text-center text-2xl font-bold uppercase tracking-wide text-ser-gray">
+              Nuestra propuesta de valor
+            </h2>
+          </Reveal>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {PILARES.map((p) => {
+            {PILARES.map((p, i) => {
               const Icon = p.icon;
               return (
-                <div key={p.titulo} className="flex flex-col items-center gap-3 text-center">
+                <Reveal key={p.titulo} delay={i * 0.1} className="flex flex-col items-center gap-3 text-center">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10">
                     <Icon size={30} className="text-brand-orange" strokeWidth={1.5} />
                   </div>
                   <p className="font-bold uppercase tracking-wide text-ser-gray">{p.titulo}</p>
                   <p className="text-sm text-ser-gray/70">{p.subtitulo}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -182,13 +197,15 @@ export default function ProgramaSERPage() {
       {/* ── ETAPAS ── */}
       <section className="relative overflow-hidden bg-brand-base pb-0 pt-16 lg:min-h-[820px]">
         <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <h2 className="mb-10 text-center text-3xl font-bold text-ser-gray">
-            Etapas
-          </h2>
+          <Reveal>
+            <h2 className="mb-10 text-center text-3xl font-bold text-ser-gray">
+              Etapas
+            </h2>
+          </Reveal>
           <div className="lg:pr-[460px]">
             <div className="flex flex-col gap-5 pb-10">
-              {ETAPAS.map((etapa) => (
-                <div key={etapa.label} className="flex gap-4">
+              {ETAPAS.map((etapa, i) => (
+                <Reveal key={etapa.label} delay={i * 0.1} className="flex gap-4">
                   {/* Flecha etiqueta */}
                   <div
                     className={`${etapa.color} flex min-w-[170px] max-w-[170px] items-center justify-center px-3 py-3 text-center text-sm font-bold uppercase leading-tight text-white`}
@@ -209,7 +226,7 @@ export default function ProgramaSERPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -255,7 +272,7 @@ export default function ProgramaSERPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
+            <Reveal>
               <Image
                 src="/logos/programaser.png"
                 alt="Programa SER"
@@ -272,11 +289,13 @@ export default function ProgramaSERPage() {
                 para lograr cambios reales y sostenibles.
               </p>
               <ul className="mt-5 flex flex-col gap-2">
-                {BENEFICIOS.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-sm text-ser-gray">
-                    <CheckCircle size={16} className="shrink-0 text-brand-orange" />
-                    {b}
-                  </li>
+                {BENEFICIOS.map((b, i) => (
+                  <Reveal key={b} delay={i * 0.1} y={12}>
+                    <li className="flex items-center gap-2 text-sm text-ser-gray">
+                      <CheckCircle size={16} className="shrink-0 text-brand-orange" />
+                      {b}
+                    </li>
+                  </Reveal>
                 ))}
               </ul>
               <p className="mt-4 text-sm italic text-ser-gray/70">
@@ -287,10 +306,10 @@ export default function ProgramaSERPage() {
                   Separa tu cita
                 </Button>
               </div>
-            </div>
+            </Reveal>
 
             {/* Video Vimeo Day Hospital */}
-            <div className="flex justify-center">
+            <Reveal delay={0.15} className="flex justify-center">
               <div className="w-full max-w-[300px] overflow-hidden rounded-2xl shadow-lg"
                    style={{ aspectRatio: "9/16" }}>
                 <iframe
@@ -301,7 +320,7 @@ export default function ProgramaSERPage() {
                   title="Programa SER Day Hospital"
                 />
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -310,7 +329,7 @@ export default function ProgramaSERPage() {
       <section className="bg-brand-base py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="order-2 lg:order-1 flex justify-center">
+            <Reveal className="order-2 lg:order-1 flex justify-center">
               <div className="w-full max-w-[300px] overflow-hidden rounded-2xl shadow-lg"
                    style={{ aspectRatio: "9/16" }}>
                 <iframe
@@ -321,9 +340,9 @@ export default function ProgramaSERPage() {
                   title="Programa SER Afterwork"
                 />
               </div>
-            </div>
+            </Reveal>
 
-            <div className="order-1 lg:order-2">
+            <Reveal delay={0.15} className="order-1 lg:order-2">
               <Image
                 src="/logos/programaser.png"
                 alt="Programa SER"
@@ -340,11 +359,13 @@ export default function ProgramaSERPage() {
                 desde la raíz para lograr cambios reales y sostenibles.
               </p>
               <ul className="mt-5 flex flex-col gap-2">
-                {BENEFICIOS.map((b) => (
-                  <li key={b} className="flex items-center gap-2 text-sm text-ser-gray">
-                    <CheckCircle size={16} className="shrink-0 text-brand-orange" />
-                    {b}
-                  </li>
+                {BENEFICIOS.map((b, i) => (
+                  <Reveal key={b} delay={i * 0.1} y={12}>
+                    <li className="flex items-center gap-2 text-sm text-ser-gray">
+                      <CheckCircle size={16} className="shrink-0 text-brand-orange" />
+                      {b}
+                    </li>
+                  </Reveal>
                 ))}
               </ul>
               <p className="mt-4 text-sm italic text-ser-gray/70">
@@ -355,7 +376,7 @@ export default function ProgramaSERPage() {
                   Separa tu cita
                 </Button>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -363,42 +384,50 @@ export default function ProgramaSERPage() {
       {/* ── NUESTRA TECNOLOGÍA ── */}
       <section className="bg-gradient-to-b from-brand-orange to-[#e96854] py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-sm font-bold uppercase tracking-widest text-white/80">
-            Nuestra tecnología
-          </h2>
-          <h3 className="mt-2 text-center text-3xl font-bold text-white md:text-4xl">
-            Estimulación Magnética Transcraneal
-          </h3>
-          <p className="mx-auto mt-3 max-w-lg text-center text-white/90">
-            Tecnología que ayuda al cerebro a deshabituarse.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-sm font-bold uppercase tracking-widest text-white/80">
+              Nuestra tecnología
+            </h2>
+            <h3 className="mt-2 text-center text-3xl font-bold text-white md:text-4xl">
+              Estimulación Magnética Transcraneal
+            </h3>
+            <p className="mx-auto mt-3 max-w-lg text-center text-white/90">
+              Tecnología que ayuda al cerebro a deshabituarse.
+            </p>
+          </Reveal>
 
           <div className="mt-10 grid items-end justify-center gap-6 sm:grid-cols-2 lg:max-w-2xl lg:mx-auto">
-            <Image
-              src="/varios/estimulacionmagnetica1.png"
-              alt="Estimulación magnética transcraneal - paciente femenina"
-              width={508}
-              height={421}
-              className="h-auto w-full drop-shadow-xl"
-            />
-            <Image
-              src="/varios/estimulacionmagnetica2.png"
-              alt="Estimulación magnética transcraneal - paciente masculino"
-              width={478}
-              height={464}
-              className="h-auto w-full drop-shadow-xl"
-            />
+            <Reveal scale={0.95}>
+              <Image
+                src="/varios/estimulacionmagnetica1.png"
+                alt="Estimulación magnética transcraneal - paciente femenina"
+                width={508}
+                height={421}
+                className="h-auto w-full drop-shadow-xl"
+              />
+            </Reveal>
+            <Reveal delay={0.1} scale={0.95}>
+              <Image
+                src="/varios/estimulacionmagnetica2.png"
+                alt="Estimulación magnética transcraneal - paciente masculino"
+                width={478}
+                height={464}
+                className="h-auto w-full drop-shadow-xl"
+              />
+            </Reveal>
           </div>
 
-          <p className="mx-auto mt-8 max-w-lg text-center text-white/90">
-            Reduce el deseo de consumo y recupera el control sobre tus comportamientos.
-          </p>
-          <p className="mt-2 text-center text-sm font-semibold text-white">
-            🇪🇺 Metodología Europea
-          </p>
+          <Reveal>
+            <p className="mx-auto mt-8 max-w-lg text-center text-white/90">
+              Reduce el deseo de consumo y recupera el control sobre tus comportamientos.
+            </p>
+            <p className="mt-2 text-center text-sm font-semibold text-white">
+              🇪🇺 Metodología Europea
+            </p>
+          </Reveal>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
-            <div className="rounded-xl bg-white/95 px-6 py-3">
+            <Reveal className="rounded-xl bg-white/95 px-6 py-3">
               <Image
                 src="/logos/metodogalimberti.png"
                 alt="Metodo Gallimberti"
@@ -407,8 +436,8 @@ export default function ProgramaSERPage() {
                 style={{ height: 40, width: "auto" }}
                 className="object-contain"
               />
-            </div>
-            <div className="rounded-xl bg-white/95 px-6 py-3">
+            </Reveal>
+            <Reveal delay={0.1} className="rounded-xl bg-white/95 px-6 py-3">
               <Image
                 src="/logos/metododonado.png"
                 alt="Metodología Donado"
@@ -417,7 +446,7 @@ export default function ProgramaSERPage() {
                 style={{ height: 40, width: "auto" }}
                 className="object-contain"
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -425,7 +454,7 @@ export default function ProgramaSERPage() {
       {/* ── ESPECIALISTAS ── */}
       <section className="bg-[#ebece8] py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-brand-orange/15 px-4 py-1.5 text-sm font-bold text-brand-orange">
               Nuestro equipo
             </span>
@@ -436,7 +465,7 @@ export default function ProgramaSERPage() {
               Un equipo multidisciplinario que integra mente, cuerpo y sistema nervioso
               para lograr una recuperación profunda y sostenible.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid gap-8 sm:grid-cols-3">
             {[
@@ -467,9 +496,10 @@ export default function ProgramaSERPage() {
                 zoom: 1.9,
                 zoomX: 40,
               },
-            ].map((m) => (
-              <div
+            ].map((m, i) => (
+              <Reveal
                 key={m.nombre}
+                delay={i * 0.12}
                 className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative h-72 overflow-hidden">
@@ -490,7 +520,7 @@ export default function ProgramaSERPage() {
                   <p className="mt-0.5 text-sm font-semibold text-brand-orange">{m.cargo}</p>
                   <p className="mt-2 text-xs leading-relaxed text-ser-gray/60">{m.especialidad}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

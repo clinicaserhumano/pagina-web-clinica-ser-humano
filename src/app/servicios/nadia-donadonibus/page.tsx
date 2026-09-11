@@ -2,6 +2,7 @@
 import { Heart, MessageCircle, Shield, BookOpen, CheckCircle, Sparkles, Clock, ArrowRight, Award, GraduationCap } from "lucide-react";
 import Button from "@/components/ui/Button";
 import ImageCarousel from "@/components/ui/ImageCarousel";
+import Reveal from "@/components/ui/Reveal";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import JsonLd from "@/components/seo/JsonLd";
@@ -189,13 +190,15 @@ export default function PsicoterapiaPage() {
       })} />
       {/* ── HERO ── */}
       <section className="relative min-h-[640px] overflow-hidden lg:min-h-[700px]">
-        <Image
-          src="/fotos/hero-nadia.webp"
-          alt="Dra. Nadia Donadonibus - Psicoterapeuta"
-          fill
-          priority
-          className="object-cover object-[70%_15%] lg:object-center"
-        />
+        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/fotos/hero-nadia.webp"
+            alt="Dra. Nadia Donadonibus - Psicoterapeuta"
+            fill
+            priority
+            className="object-cover object-[70%_15%] lg:object-center"
+          />
+        </Reveal>
         {/* Móvil: degradado de abajo hacia arriba, deja el rostro visible arriba */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#556497]/90 via-[#556497]/50 to-[#556497]/20 lg:hidden" />
         {/* Desktop: degradado izquierda → transparente */}
@@ -210,17 +213,23 @@ export default function PsicoterapiaPage() {
               height={140}
               className="mb-6 h-auto w-52"
             />
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#e2b1ab]">
-              Psicoterapeuta · Psicoanalista · Ms.C
-            </p>
-            <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
-              Un espacio seguro<br />para sanar.
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-white/85">
-              Más de 40 años acompañando a personas y familias en Italia y Ecuador,
-              desde la calma, la comprensión y el rigor clínico.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <Reveal mode="load">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#e2b1ab]">
+                Psicoterapeuta · Psicoanalista · Ms.C
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
+                Un espacio seguro<br />para sanar.
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <p className="mt-5 text-lg leading-relaxed text-white/85">
+                Más de 40 años acompañando a personas y familias en Italia y Ecuador,
+                desde la calma, la comprensión y el rigor clínico.
+              </p>
+            </Reveal>
+            <Reveal mode="load" delay={0.45} className="mt-8 flex flex-wrap gap-4">
               <Button
                 href={waUrl}
                 target="_blank"
@@ -233,7 +242,7 @@ export default function PsicoterapiaPage() {
               <Button href="#proceso" variant="secondary" size="lg">
                 Cómo funciona
               </Button>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -243,7 +252,7 @@ export default function PsicoterapiaPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-14 lg:grid-cols-[1fr_420px]">
 
-            <div>
+            <Reveal>
               <span className="inline-block rounded-full bg-[#e2b1ab]/30 px-4 py-1.5 text-sm font-bold text-[#556497]">
                 Sobre Nadia
               </span>
@@ -273,9 +282,9 @@ export default function PsicoterapiaPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal delay={0.15} className="relative">
               <div className="overflow-hidden rounded-3xl shadow-2xl">
                 <Image
                   src="/nadia/nadia.webp"
@@ -289,7 +298,7 @@ export default function PsicoterapiaPage() {
                 <p className="text-xs font-semibold text-white/70">Italia · Ecuador</p>
                 <p className="text-sm font-black text-white">40+ años de trayectoria</p>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
@@ -298,17 +307,17 @@ export default function PsicoterapiaPage() {
       {/* ── TRAYECTORIA ACADÉMICA ── */}
       <section className="bg-[#f7f4f6] py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#9483a4]/20 px-4 py-1.5 text-sm font-bold text-[#9483a4]">
               Trayectoria académica y profesional
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Formación y experiencia
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {TRAYECTORIA.map(({ icon: Icon, titulo, sub }) => (
-              <div key={titulo} className="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+            {TRAYECTORIA.map(({ icon: Icon, titulo, sub }, i) => (
+              <Reveal key={titulo} delay={i * 0.08} className="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#556497]/10">
                   <Icon size={18} className="text-[#556497]" strokeWidth={1.5} />
                 </div>
@@ -316,7 +325,7 @@ export default function PsicoterapiaPage() {
                   <p className="font-bold leading-snug text-[#606265]">{titulo}</p>
                   <p className="mt-0.5 text-xs text-[#9483a4]">{sub}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -325,18 +334,19 @@ export default function PsicoterapiaPage() {
       {/* ── MI ENFOQUE ── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#e2b1ab]/30 px-4 py-1.5 text-sm font-bold text-[#556497]">
               Mi enfoque
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265] md:text-4xl">
               Cómo trabajo contigo
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {ENFOQUE.map(({ icon: Icon, titulo, descripcion }) => (
-              <div
+            {ENFOQUE.map(({ icon: Icon, titulo, descripcion }, i) => (
+              <Reveal
                 key={titulo}
+                delay={i * 0.1}
                 className="group rounded-2xl bg-[#f7f4f6] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#556497]/10 transition-colors duration-300 group-hover:bg-[#556497]">
@@ -344,7 +354,7 @@ export default function PsicoterapiaPage() {
                 </div>
                 <p className="font-bold text-[#606265]">{titulo}</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#606265]/65">{descripcion}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -355,7 +365,7 @@ export default function PsicoterapiaPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid items-center gap-12 lg:grid-cols-2">
 
-            <div>
+            <Reveal>
               <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-white">
                 Áreas de trabajo
               </span>
@@ -363,25 +373,27 @@ export default function PsicoterapiaPage() {
                 ¿En qué puedo<br />acompañarte?
               </h2>
               <div className="mt-8 grid grid-cols-2 gap-2.5">
-                {AREAS.map((area) => (
-                  <div key={area} className="flex items-center gap-2.5">
+                {AREAS.map((area, i) => (
+                  <Reveal key={area} delay={i * 0.05} className="flex items-center gap-2.5">
                     <CheckCircle size={15} className="shrink-0 text-[#e2b1ab]" strokeWidth={2} />
                     <span className="text-sm text-white/85">{area}</span>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
             {/* Carrusel de fotos */}
-            <ImageCarousel
-              aspectSquare
-              bgClassName="bg-[#42517d]"
-              images={[
-                { src: "/nadia/IMG_0015 (1).webp", alt: "Dra. Nadia Donadonibus en sesión", objectPosition: "center 5%" },
-                { src: "/nadia/IMG_0027 (1).webp", alt: "Consulta de psicoterapia", objectPosition: "center 40%" },
-                { src: "/nadia/IMG_0030 (2) (1).webp", alt: "Dra. Nadia Donadonibus", objectPosition: "top" },
-              ]}
-            />
+            <Reveal delay={0.15}>
+              <ImageCarousel
+                aspectSquare
+                bgClassName="bg-[#42517d]"
+                images={[
+                  { src: "/nadia/IMG_0015 (1).webp", alt: "Dra. Nadia Donadonibus en sesión", objectPosition: "center 5%" },
+                  { src: "/nadia/IMG_0027 (1).webp", alt: "Consulta de psicoterapia", objectPosition: "center 40%" },
+                  { src: "/nadia/IMG_0030 (2) (1).webp", alt: "Dra. Nadia Donadonibus", objectPosition: "top" },
+                ]}
+              />
+            </Reveal>
 
           </div>
         </div>
@@ -390,20 +402,20 @@ export default function PsicoterapiaPage() {
       {/* ── ESPECIALIDADES ── */}
       <section className="bg-[#f7f4f6] py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#9483a4]/20 px-4 py-1.5 text-sm font-bold text-[#9483a4]">
               Especialización
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Técnicas y herramientas terapéuticas
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {ESPECIALIDADES.map((e) => (
-              <div key={e.titulo} className="rounded-2xl border border-[#e2b1ab]/40 bg-white p-5">
+            {ESPECIALIDADES.map((e, i) => (
+              <Reveal key={e.titulo} delay={i * 0.08} className="rounded-2xl border border-[#e2b1ab]/40 bg-white p-5">
                 <p className="font-bold text-[#556497]">{e.titulo}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#606265]/70">{e.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -412,18 +424,19 @@ export default function PsicoterapiaPage() {
       {/* ── MODALIDADES ── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#e2b1ab]/30 px-4 py-1.5 text-sm font-bold text-[#556497]">
               Modalidades
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Elige tu tipo de sesión
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-3">
-            {MODALIDADES.map((m) => (
-              <div
+            {MODALIDADES.map((m, i) => (
+              <Reveal
                 key={m.titulo}
+                delay={i * 0.12}
                 className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <div className={`h-2 w-full ${m.bg}`} />
@@ -444,7 +457,7 @@ export default function PsicoterapiaPage() {
                     Agendar
                   </Button>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -453,17 +466,17 @@ export default function PsicoterapiaPage() {
       {/* ── PROCESO ── */}
       <section id="proceso" className="bg-[#f7f4f6] py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#9483a4]/20 px-4 py-1.5 text-sm font-bold text-[#9483a4]">
               Proceso terapéutico
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#606265]">
               Así funciona nuestro trabajo juntos
             </h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESO.map((p, i) => (
-              <div key={p.num} className="relative">
+              <Reveal key={p.num} delay={i * 0.1} className="relative">
                 {i < PROCESO.length - 1 && (
                   <div className="absolute right-0 top-8 hidden h-0.5 w-1/2 translate-x-full bg-[#e2b1ab]/40 lg:block" />
                 )}
@@ -472,7 +485,7 @@ export default function PsicoterapiaPage() {
                   <p className="mt-3 font-bold text-[#556497]">{p.titulo}</p>
                   <p className="mt-2 text-sm leading-relaxed text-[#606265]/65">{p.descripcion}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -481,7 +494,7 @@ export default function PsicoterapiaPage() {
       {/* ── FOTO + CITA ── */}
       <section className="relative overflow-hidden py-0">
         <div className="grid lg:grid-cols-2">
-          <div className="relative h-80 lg:min-h-[420px]">
+          <Reveal scale={0.95} className="relative h-80 lg:min-h-[420px]">
             <Image
               src="/nadia/frase-nadia.webp"
               alt="Dra. Nadia Donadonibus"
@@ -489,8 +502,8 @@ export default function PsicoterapiaPage() {
               className="object-cover"
               style={{ objectPosition: "center 8%" }}
             />
-          </div>
-          <div className="flex flex-col justify-center bg-[#9483a4] px-10 py-16 lg:px-14">
+          </Reveal>
+          <Reveal delay={0.15} className="flex flex-col justify-center bg-[#9483a4] px-10 py-16 lg:px-14">
             <p className="text-5xl font-black leading-none text-white/20">&ldquo;</p>
             <p className="mt-2 text-xl font-light italic leading-relaxed text-white">
               Cada persona merece un espacio donde pueda ser escuchada sin ser juzgada,
@@ -509,7 +522,7 @@ export default function PsicoterapiaPage() {
                 <ArrowRight size={18} className="ml-2 inline" />
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

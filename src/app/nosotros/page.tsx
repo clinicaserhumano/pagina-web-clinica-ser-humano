@@ -2,6 +2,7 @@
 import { CheckCircle } from "lucide-react";
 import ContactSection from "@/components/sections/ContactSection";
 import JsonLd from "@/components/seo/JsonLd";
+import Reveal from "@/components/ui/Reveal";
 import { servicePageSchema } from "@/lib/schemas";
 import { buildMeta, BASE_URL } from "@/lib/seo";
 
@@ -61,26 +62,34 @@ export default function NosotrosPage() {
       {/* ── HERO ── */}
       {/* Mobile: imagen con overlay */}
       <section className="relative min-h-[520px] overflow-hidden lg:hidden">
-        <Image
-          src="/fotos/hero-somos-nosotros.webp"
-          alt="Equipo Clínica Ser Humano"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          <Image
+            src="/fotos/hero-somos-nosotros.webp"
+            alt="Equipo Clínica Ser Humano"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </Reveal>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex min-h-[520px] items-center px-6 py-24">
           <div className="max-w-lg">
-            <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
-              Quiénes somos
-            </span>
-            <h1 className="mt-4 text-4xl font-black leading-tight text-white">
-              Logramos tu bienestar<br />de forma integral.
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-white/85">
-              Donde la atención compasiva de la salud física y mental
-              se encuentra con la ciencia.
-            </p>
+            <Reveal mode="load">
+              <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
+                Quiénes somos
+              </span>
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <h1 className="mt-4 text-4xl font-black leading-tight text-white">
+                Logramos tu bienestar<br />de forma integral.
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <p className="mt-5 text-lg leading-relaxed text-white/85">
+                Donde la atención compasiva de la salud física y mental
+                se encuentra con la ciencia.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -89,26 +98,34 @@ export default function NosotrosPage() {
       <section className="hidden lg:grid lg:grid-cols-2 lg:min-h-[600px]">
         <div className="flex items-center justify-end bg-gradient-to-br from-[#ff8c3a] via-[#ff6b12] to-[#e85d00] px-14 py-24">
           <div className="max-w-xs">
-            <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
-              Quiénes somos
-            </span>
-            <h1 className="mt-4 text-5xl font-black leading-tight text-white">
-              Logramos tu<br />bienestar de<br />forma integral.
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-white/85">
-              Donde la atención compasiva de la salud física y mental
-              se encuentra con la ciencia.
-            </p>
+            <Reveal mode="load">
+              <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
+                Quiénes somos
+              </span>
+            </Reveal>
+            <Reveal mode="load" delay={0.15}>
+              <h1 className="mt-4 text-5xl font-black leading-tight text-white">
+                Logramos tu<br />bienestar de<br />forma integral.
+              </h1>
+            </Reveal>
+            <Reveal mode="load" delay={0.3}>
+              <p className="mt-5 text-lg leading-relaxed text-white/85">
+                Donde la atención compasiva de la salud física y mental
+                se encuentra con la ciencia.
+              </p>
+            </Reveal>
           </div>
         </div>
-        <div className="relative">
-          <Image
-            src="/fotos/hero-somos-nosotros.webp"
-            alt="Equipo Clínica Ser Humano"
-            fill
-            priority
-            className="object-cover object-center"
-          />
+        <div className="relative overflow-hidden">
+          <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+            <Image
+              src="/fotos/hero-somos-nosotros.webp"
+              alt="Equipo Clínica Ser Humano"
+              fill
+              priority
+              className="object-cover object-center"
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -117,7 +134,7 @@ export default function NosotrosPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
 
-            <div>
+            <Reveal>
               <span className="inline-block rounded-full bg-[#ff6b12]/15 px-4 py-1.5 text-sm font-bold text-[#ff6b12]">
                 Clínica Ser Humano
               </span>
@@ -135,16 +152,18 @@ export default function NosotrosPage() {
               </p>
 
               <ul className="mt-8 space-y-4">
-                {PILARES.map((p) => (
-                  <li key={p} className="flex items-start gap-3">
-                    <CheckCircle size={20} className="mt-0.5 shrink-0 text-[#ff6b12]" strokeWidth={2} />
-                    <span className="text-sm leading-relaxed text-[#616569]/75">{p}</span>
-                  </li>
+                {PILARES.map((p, i) => (
+                  <Reveal key={p} delay={0.1 + i * 0.1} y={12}>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle size={20} className="mt-0.5 shrink-0 text-[#ff6b12]" strokeWidth={2} />
+                      <span className="text-sm leading-relaxed text-[#616569]/75">{p}</span>
+                    </li>
+                  </Reveal>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+            <Reveal delay={0.15} scale={0.95} className="relative overflow-hidden rounded-3xl shadow-2xl">
               <Image
                 src="/fotos/nosotros-salaestar.png"
                 alt="Sala de estar Clínica Ser Humano"
@@ -157,7 +176,7 @@ export default function NosotrosPage() {
                 <p className="text-sm font-bold text-white">Enfoque humanista</p>
                 <p className="text-xs text-white/80">Medicina funcional · Neurotecnología · Acompañamiento continuo</p>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
@@ -165,7 +184,7 @@ export default function NosotrosPage() {
 
       {/* ── ENFOQUE ── */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal className="mx-auto max-w-4xl px-6 text-center">
           <p className="text-lg leading-relaxed text-[#616569]/80">
             Nuestro enfoque es humanista, basado en la{" "}
             <strong className="text-[#616569]">medicina funcional e integral</strong>,
@@ -177,25 +196,26 @@ export default function NosotrosPage() {
             armónica y duradera del cuerpo y mente: nuestro enfoque holístico abarca
             todo lo que necesitas para sanar.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* ── EQUIPO ── */}
       <section className="bg-[#ebece8] py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
+          <Reveal className="mb-12 text-center">
             <span className="inline-block rounded-full bg-[#ff6b12]/15 px-4 py-1.5 text-sm font-bold text-[#ff6b12]">
               Nuestro equipo
             </span>
             <h2 className="mt-4 text-3xl font-black text-[#616569]">
               El equipo
             </h2>
-          </div>
+          </Reveal>
 
           <div className="grid gap-8 sm:grid-cols-3">
-            {EQUIPO.map((m) => (
-              <div
+            {EQUIPO.map((m, i) => (
+              <Reveal
                 key={m.nombre}
+                delay={i * 0.12}
                 className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative h-72 overflow-hidden">
@@ -212,7 +232,7 @@ export default function NosotrosPage() {
                   <p className="mt-0.5 text-sm font-semibold text-[#ff6b12]">{m.cargo}</p>
                   <p className="mt-1 text-xs text-[#616569]/60">{m.especialidad}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
