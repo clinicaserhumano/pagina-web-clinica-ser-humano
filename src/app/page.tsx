@@ -235,7 +235,7 @@ export default function Home() {
   return (
     <>
       {/* SECCIÓN 1 — HERO */}
-      <section className="relative flex min-h-[620px] items-center overflow-hidden md:min-h-[680px]">
+      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
         <video
           src="/videos/hero-clinica.mp4"
           autoPlay
@@ -253,9 +253,9 @@ export default function Home() {
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mx-auto max-w-2xl"
+            className="mx-auto max-w-3xl"
           >
-            <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl">
+            <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl">
               Recuperar equilibrio también es{" "}
               <span className="relative inline-block text-brand-orange">
                 salud
@@ -279,11 +279,11 @@ export default function Home() {
               </span>
               <span className="text-brand-orange">.</span>
             </h1>
-            <p className="mt-4 text-lg text-white/85">
-              Descubre{" "}
-              <a href="#programas" className="text-brand-orange hover:underline">
-                nuestros tratamientos
-              </a>
+            <p className="mt-5 text-xl text-white/85">
+              <a href="#experiencia" className="text-brand-orange hover:underline">
+                Explora más
+              </a>{" "}
+              sobre nosotros
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="#programas" size="lg">
@@ -298,7 +298,7 @@ export default function Home() {
       </section>
 
       {/* SECCIÓN 2 — 35 AÑOS DE EXPERIENCIA */}
-      <section className="bg-white py-20">
+      <section id="experiencia" className="scroll-mt-[72px] bg-white py-20">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div {...fadeUp} className="mb-12 text-center">
             <p className="inline-flex flex-wrap items-baseline justify-center gap-x-3">

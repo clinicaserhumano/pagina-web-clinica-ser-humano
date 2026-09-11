@@ -80,7 +80,7 @@ export default function RootLayout({
   const isAdmin = headers().get("x-is-admin") === "1";
 
   return (
-    <html lang="es">
+    <html lang="es" className="scroll-smooth">
       <body className={`${outfit.variable} font-sans antialiased bg-brand-base text-brand-gray-dark`}>
         {!isAdmin && <JsonLd data={organizationSchema} />}
         {!isAdmin && <JsonLd data={websiteSchema} />}
