@@ -8,7 +8,7 @@ export const organizationSchema = {
   alternateName: "Instituto Clínico Ser Humano",
   url: BASE,
   logo: `${BASE}/logos/serhumano.png`,
-  image: `${BASE}/fotos/nosotros-hero.png`,
+  image: `${BASE}/fotos/hero-somos-nosotros.webp`,
   description:
     "Acompañamos procesos de recuperación y bienestar desde una visión humana, integral y clínicamente precisa en Guayaquil, Ecuador.",
   telephone: "+593969520111",

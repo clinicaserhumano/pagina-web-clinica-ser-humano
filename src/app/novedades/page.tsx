@@ -21,16 +21,26 @@ type Post = {
 };
 
 async function getPosts(): Promise<Post[]> {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  const { data } = await supabase
-    .from("entradas_blog")
-    .select("id, titulo, slug, autor, categoria, imagen_url")
-    .eq("publicado", true)
-    .order("creado_en", { ascending: false });
-  return data ?? [];
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 1500);
+  try {
+    const supabase = createClient(
+      process.env.SUPABASE_URL!,
+      process.env.SUPABASE_SECRET_KEY!
+    );
+    const { data, error } = await supabase
+      .from("entradas_blog")
+      .select("id, titulo, slug, autor, categoria, imagen_url")
+      .eq("publicado", true)
+      .order("creado_en", { ascending: false })
+      .abortSignal(controller.signal);
+    if (error) return [];
+    return data ?? [];
+  } catch {
+    return [];
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 export default async function NovedadesPage() {

@@ -57,7 +57,7 @@ export default function NosotrosPage() {
         name: "Nosotros · Clínica Ser Humano",
         description: "Institución con más de 30 años de experiencia en salud integral. Equipo multidisciplinario en Guayaquil, Ecuador.",
         url: "https://www.clinicaserhumano.ec/nosotros",
-        image: "https://www.clinicaserhumano.ec/fotos/nosotros-hero.png",
+        image: "https://www.clinicaserhumano.ec/fotos/hero-somos-nosotros.webp",
       })} />
       {/* ── HERO ── */}
       {/* Mobile: imagen con overlay */}

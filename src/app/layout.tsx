@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     siteName: "Clínica Ser Humano",
     locale: "es_EC",
     type: "website",
-    images: [{ url: "/fotos/nosotros-hero.png", width: 1200, height: 630, alt: "Equipo Clínica Ser Humano" }],
+    images: [{ url: "/fotos/hero-somos-nosotros.webp", width: 1200, height: 630, alt: "Equipo Clínica Ser Humano" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Clínica Ser Humano",
     description: "Acompañamos procesos de recuperación y bienestar desde una visión humana, integral y clínicamente precisa en Guayaquil, Ecuador.",
-    images: ["/fotos/nosotros-hero.png"],
+    images: ["/fotos/hero-somos-nosotros.webp"],
   },
   alternates: { canonical: "https://www.clinicaserhumano.ec" },
   icons: {

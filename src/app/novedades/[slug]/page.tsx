@@ -28,24 +28,48 @@ function sb() {
   return createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SECRET_KEY!);
 }
 
+function withTimeout(ms: number) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), ms);
+  return { signal: controller.signal, cancel: () => clearTimeout(timeout) };
+}
+
 async function getPost(slug: string): Promise<Post | null> {
-  const { data } = await sb()
-    .from("entradas_blog")
-    .select("*")
-    .eq("slug", slug)
-    .eq("publicado", true)
-    .single();
-  return data ?? null;
+  const { signal, cancel } = withTimeout(1500);
+  try {
+    const { data, error } = await sb()
+      .from("entradas_blog")
+      .select("*")
+      .eq("slug", slug)
+      .eq("publicado", true)
+      .abortSignal(signal)
+      .single();
+    if (error) return null;
+    return data ?? null;
+  } catch {
+    return null;
+  } finally {
+    cancel();
+  }
 }
 
 async function getComments(slug: string): Promise<Comment[]> {
-  const { data } = await sb()
-    .from("comments")
-    .select("id, nombre, comentario, creado_en")
-    .eq("slug", slug)
-    .eq("aprobado", true)
-    .order("creado_en", { ascending: true });
-  return data ?? [];
+  const { signal, cancel } = withTimeout(1500);
+  try {
+    const { data, error } = await sb()
+      .from("comments")
+      .select("id, nombre, comentario, creado_en")
+      .eq("slug", slug)
+      .eq("aprobado", true)
+      .order("creado_en", { ascending: true })
+      .abortSignal(signal);
+    if (error) return [];
+    return data ?? [];
+  } catch {
+    return [];
+  } finally {
+    cancel();
+  }
 }
 
 export async function generateMetadata({ params }: Props) {

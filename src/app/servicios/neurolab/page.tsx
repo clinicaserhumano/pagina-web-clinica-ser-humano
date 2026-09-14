@@ -203,26 +203,28 @@ export default function NeuroLabPage() {
         { q: "¿Cuánto dura el programa NeuroLab?", a: "La duración varía según los objetivos y el perfil de cada persona. Tras una evaluación inicial se diseña un plan personalizado con la frecuencia e intensidad adecuadas." },
       ])} />
       {/* ── HERO ── */}
-      <section className="relative flex min-h-[620px] items-center">
-        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
-          <Image
-            src="/neurolab/hero.jpg"
-            alt="NeuroLab - Estimulación Cognitiva Sensorial"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </Reveal>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-24">
-          <div className="max-w-2xl">
+      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
+        <video
+          src="/videos/hero-neurolab.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+          disablePictureInPicture
+          controlsList="nodownload noplaybackrate nofullscreen"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90" />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 text-center md:py-28">
+          <div className="mx-auto max-w-2xl">
             <Reveal mode="load">
               <Image
                 src="/logos/neurolab2.png"
                 alt="NeuroLab"
                 width={600}
                 height={200}
-                className="mb-5 h-auto w-52"
+                className="mx-auto mb-5 h-auto w-72 md:w-80"
               />
             </Reveal>
             <Reveal mode="load" delay={0.15}>
@@ -236,23 +238,7 @@ export default function NeuroLabPage() {
               </h1>
             </Reveal>
             <Reveal mode="load" delay={0.45}>
-              <div className="mt-6 flex flex-col gap-3">
-                {[
-                  "Programa único en Ecuador",
-                  "Avalado por más de 500 centros en Europa",
-                  "El mejor regalo para tus seres queridos",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <Check size={18} className="shrink-0 text-brand-orange" strokeWidth={3} />
-                    <span className="rounded-md bg-brand-orange px-3 py-1 text-sm font-bold text-white">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal mode="load" delay={0.6}>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Button href={waUrl} target="_blank" rel="noopener noreferrer" size="lg">
                   Regístrate
                 </Button>
@@ -261,6 +247,26 @@ export default function NeuroLabPage() {
                 </Button>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DESTACADOS ── */}
+      <section className="bg-brand-orange py-10">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              "Programa único en Ecuador",
+              "Avalado por más de 500 centros en Europa",
+              "El mejor regalo para tus seres queridos",
+            ].map((item, i) => (
+              <Reveal key={item} delay={i * 0.1}>
+                <div className="flex h-full items-center gap-3 rounded-2xl bg-white/10 p-5">
+                  <Check size={22} className="shrink-0 text-white" strokeWidth={3} />
+                  <span className="font-bold text-white">{item}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
