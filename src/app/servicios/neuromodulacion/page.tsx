@@ -120,31 +120,28 @@ export default function NeuroniPage() {
         { q: "¿La neuromodulación tiene efectos secundarios?", a: "Al ser no invasiva y no utilizar psicofármacos, presenta un perfil de seguridad muy alto. Los protocolos están basados en evidencia clínica internacional y son adaptados individualmente." },
       ])} />
       {/* ── HERO ── */}
-      <section className="relative min-h-[640px] overflow-hidden lg:min-h-[700px]">
-        <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
-          <Image
-            src="/fotos/hero-neuroni4.webp"
-            alt="Dra. Sara Ochoa con tecnología de neuromodulación"
-            fill
-            priority
-            quality={95}
-            className="object-cover object-[61%_center] lg:object-center lg:scale-125 lg:origin-[-10%_35%]"
-          />
-        </Reveal>
-        {/* Mobile: degradado de abajo hacia arriba, deja la foto más visible arriba */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#4f5571]/95 via-[#4f5571]/70 to-[#4f5571]/25 lg:hidden" />
-        {/* Desktop: degradado izquierda → derecha con colores Neuroni */}
-        <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#4f5571] from-[0%] via-[#566597]/75 via-[45%] to-transparent to-[70%]" />
-
-        <div className="relative z-10 mx-auto flex min-h-[640px] max-w-6xl items-center px-6 py-24 lg:min-h-[700px]">
-          <div className="max-w-xl">
+      <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
+        <video
+          src="/videos/hero-neuroni2.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+          disablePictureInPicture
+          controlsList="nodownload noplaybackrate nofullscreen"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#4f5571]/50 via-[#4f5571]/60 to-[#4f5571]/90" />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 text-center md:py-28">
+          <div className="mx-auto max-w-2xl">
             <Reveal mode="load">
               <Image
                 src="/logos/neuroni2.png"
                 alt="Neuroni"
                 width={200}
                 height={70}
-                className="mb-6 h-auto w-40"
+                className="mx-auto mb-6 h-auto w-64 md:w-72"
               />
               <p className="text-sm font-semibold uppercase tracking-widest text-[#d0d1d1]">
                 Neuromodulación No Invasiva
@@ -152,17 +149,11 @@ export default function NeuroniPage() {
             </Reveal>
             <Reveal mode="load" delay={0.15}>
               <h1 className="mt-3 text-4xl font-black leading-tight text-white md:text-5xl">
-                Regula tu sistema<br />nervioso.<br />
+                Regula tu sistema<br />nervioso.
               </h1>
             </Reveal>
             <Reveal mode="load" delay={0.3}>
-              <p className="mt-5 text-lg leading-relaxed text-white/85">
-                Un enfoque clínico que trabaja directamente con la actividad cerebral
-                para restaurar el equilibrio desde adentro.
-              </p>
-            </Reveal>
-            <Reveal mode="load" delay={0.45}>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Button
                   href={waUrl}
                   target="_blank"
@@ -318,6 +309,29 @@ export default function NeuroniPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── LA DOCTORA ── */}
+      <section className="overflow-hidden">
+        <div className="grid lg:grid-cols-2">
+          <Reveal scale={0.95} className="relative h-80 lg:h-auto lg:min-h-[420px]">
+            <Image
+              src="/fotos/hero-neuroni4.webp"
+              alt="Dra. Sara Ochoa - Neuroni"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 20%" }}
+            />
+          </Reveal>
+          <Reveal delay={0.15} className="flex flex-col justify-center bg-[#566597] px-10 py-16 lg:px-14">
+            <p className="text-5xl font-black leading-none text-white/20">&ldquo;</p>
+            <p className="mt-2 text-xl font-light italic leading-relaxed text-white">
+              No tratamos el síntoma: regulamos la causa. Tu sistema nervioso
+              es donde empieza el cambio real.
+            </p>
+            <p className="mt-6 font-black text-white">— Dra. Sara Ochoa</p>
+          </Reveal>
         </div>
       </section>
 
