@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import BackToTop from "@/components/layout/BackToTop";
 import CookieBanner from "@/components/layout/CookieBanner";
 import HighLevelWidget from "@/components/layout/HighLevelWidget";
 import MetaPixel from "@/components/layout/MetaPixel";
@@ -88,6 +89,7 @@ export default function RootLayout({
         <main className={isAdmin ? "" : "pt-[72px]"}>{children}</main>
         {!isAdmin && <Footer />}
         {!isAdmin && <WhatsAppButton />}
+        {!isAdmin && <BackToTop />}
         {!isAdmin && <CookieBanner />}
         {!isAdmin && <HighLevelWidget />}
         {!isAdmin && <MetaPixel />}

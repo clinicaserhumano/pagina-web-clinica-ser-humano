@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import AnimatedStats, { type Stat } from "@/components/ui/AnimatedStats";
-import { Brain, Check, CheckCircle, Shield, Users, Zap, Wind, Clock, BookOpen, Network, Heart, Target, Flame } from "lucide-react";
+import { Brain, Check, CheckCircle, Quote, Shield, Star, Users, Zap } from "lucide-react";
 import Button from "@/components/ui/Button";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
@@ -17,14 +17,14 @@ export const metadata = buildMeta({
 });
 
 const CONDICIONES = [
-  { label: "Memoria",                    icon: Brain     },
-  { label: "Estrés",                     icon: Wind      },
-  { label: "Demencia Senil",             icon: Clock     },
-  { label: "Refuerzo Pedagógico",        icon: BookOpen  },
-  { label: "Espectro Autista",           icon: Network   },
-  { label: "Desregularización Emocional", icon: Heart   },
-  { label: "Conducta Impulsiva",         icon: Flame     },
-  { label: "TDAH",                       icon: Target    },
+  { label: "Memoria",                    icon: "/neurolab/icons/memoria.png" },
+  { label: "Estrés",                     icon: "/neurolab/icons/estres.png" },
+  { label: "Demencia Senil",             icon: "/neurolab/icons/demencia-senil.png" },
+  { label: "Refuerzo Pedagógico",        icon: "/neurolab/icons/refuerzo-pedagogico.png" },
+  { label: "Espectro Autista",           icon: "/neurolab/icons/espectro-autista.png" },
+  { label: "Desregularización Emocional", icon: "/neurolab/icons/desregulacion-emocional.png" },
+  { label: "Conducta Impulsiva",         icon: "/neurolab/icons/conducta-impulsiva.png" },
+  { label: "TDAH",                       icon: "/neurolab/icons/tdah.png" },
 ];
 
 const BENEFICIOS = [
@@ -272,7 +272,10 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── TRATAMIENTO EFECTIVO PARA ── */}
-      <section className="bg-white py-16">
+      <section
+        className="bg-white py-16"
+        style={{ backgroundImage: "radial-gradient(circle, #6162651a 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      >
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
             <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
@@ -280,19 +283,24 @@ export default function NeuroLabPage() {
             </h2>
           </Reveal>
           <div className="flex flex-wrap justify-center gap-6">
-            {CONDICIONES.map((c, i) => {
-              const Icon = c.icon;
-              return (
-                <Reveal key={c.label} delay={i * 0.06} className="flex flex-col items-center gap-3">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-brand-gray-dark/20 bg-brand-gray-dark/10">
-                    <Icon size={32} className="text-brand-gray-dark" strokeWidth={1.5} />
-                  </div>
-                  <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-bold uppercase text-white">
-                    {c.label}
-                  </span>
-                </Reveal>
-              );
-            })}
+            {CONDICIONES.map((c, i) => (
+              <Reveal
+                key={c.label}
+                delay={i * 0.06}
+                className="group flex cursor-default flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <Image
+                  src={c.icon}
+                  alt={c.label}
+                  width={836}
+                  height={945}
+                  className="h-20 w-auto drop-shadow-md transition-transform duration-300 group-hover:scale-110"
+                />
+                <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-bold uppercase text-white transition-colors duration-300 group-hover:bg-[#e25c08]">
+                  {c.label}
+                </span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -311,13 +319,15 @@ export default function NeuroLabPage() {
               <p className="text-4xl font-black italic text-brand-orange md:text-5xl">Recupera</p>
               <p className="text-3xl font-black italic text-brand-orange md:text-4xl">Reprograma</p>
             </Reveal>
-            <Reveal delay={0.15} className="flex flex-col gap-4 text-center md:text-left">
-              <div>
-                <p className="text-4xl font-black italic text-brand-gray-dark">+ de 11000 Usuarios</p>
-              </div>
-              <div>
-                <p className="text-4xl font-black italic text-brand-gray-dark">+ de 13000 Ejercicios</p>
-              </div>
+            <Reveal delay={0.15} className="w-full max-w-xs">
+              <AnimatedStats
+                stats={[
+                  { target: 11000, prefix: "+", suffix: "", label: "Usuarios activos" },
+                  { target: 13000, prefix: "+", suffix: "", label: "Ejercicios cognitivos" },
+                ]}
+                accentColor="#ff6b12"
+                borderColor="transparent"
+              />
             </Reveal>
           </div>
         </div>
@@ -350,8 +360,12 @@ export default function NeuroLabPage() {
                   { icon: Users,  label: "Personalizado",      desc: "Plan cognitivo adaptado a cada persona" },
                   { icon: Zap,    label: "Resultados medibles",desc: "Evaluación inicial y final del desempeño" },
                 ].map(({ icon: Icon, label, desc }, i) => (
-                  <Reveal key={label} delay={i * 0.08} className="rounded-xl border border-white/10 bg-white/5 p-4">
-                    <Icon size={22} className="text-brand-orange" strokeWidth={1.5} />
+                  <Reveal
+                    key={label}
+                    delay={i * 0.08}
+                    className="group rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/40 hover:bg-white/10"
+                  >
+                    <Icon size={22} className="text-brand-orange transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
                     <p className="mt-2 text-sm font-bold text-white">{label}</p>
                     <p className="mt-1 text-xs leading-relaxed text-white/50">{desc}</p>
                   </Reveal>
@@ -489,16 +503,9 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── BENEFICIOS ── */}
-      <section className="relative py-20">
-        <Reveal y={0} scale={1.08} className="absolute inset-0">
-          <Image
-            src="/neurolab/sala1.jpeg"
-            alt="Sala NeuroLab"
-            fill
-            className="object-cover object-center"
-          />
-        </Reveal>
-        <div className="absolute inset-0 bg-black/70" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#4a4d52] via-[#34363b] to-[#202226] py-20">
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-orange/10 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-brand-orange/10 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-4xl px-6">
           <Reveal>
             <h2 className="mb-10 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
@@ -520,7 +527,11 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── PLANES ── */}
-      <section id="planes" className="bg-white py-16">
+      <section
+        id="planes"
+        className="bg-white py-16"
+        style={{ backgroundImage: "radial-gradient(circle, #6162651a 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      >
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
@@ -540,8 +551,15 @@ export default function NeuroLabPage() {
                 <Reveal
                   key={p.numero + p.unidad}
                   delay={i * 0.1}
-                  className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                  className={`group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                    i === 1 ? "ring-2 ring-[#2e9b3e]" : ""
+                  }`}
                 >
+                  {i === 1 && (
+                    <div className="absolute right-0 top-0 z-10 rounded-bl-xl bg-[#2e9b3e] px-3 py-1 text-[10px] font-black uppercase tracking-wide text-white">
+                      Más popular
+                    </div>
+                  )}
                   {/* Barra superior de color que entra deslizándose */}
                   <div
                     className="absolute left-0 right-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
@@ -595,8 +613,15 @@ export default function NeuroLabPage() {
                 <Reveal
                   key={p.numero + p.unidad}
                   delay={i * 0.1}
-                  className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                  className={`group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                    i === 1 ? "ring-2 ring-[#1a9cda]" : ""
+                  }`}
                 >
+                  {i === 1 && (
+                    <div className="absolute right-0 top-0 z-10 rounded-bl-xl bg-[#1a9cda] px-3 py-1 text-[10px] font-black uppercase tracking-wide text-white">
+                      Más popular
+                    </div>
+                  )}
                   {/* Barra superior de color */}
                   <div
                     className="absolute left-0 right-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
@@ -727,16 +752,9 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── CUADERNILLOS ── */}
-      <section className="relative py-20">
-        <Reveal y={0} scale={1.08} className="absolute inset-0">
-          <Image
-            src="/neurolab/neurolab1.png"
-            alt="NeuroLab sala"
-            fill
-            className="object-cover object-center"
-          />
-        </Reveal>
-        <div className="absolute inset-0 bg-black/65" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#4a4d52] via-[#34363b] to-[#202226] py-20">
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-orange/10 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-brand-orange/10 blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
             <h2 className="mb-8 text-center text-2xl font-black uppercase tracking-wide text-brand-orange">
@@ -775,7 +793,10 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── TESTIMONIOS ── */}
-      <section className="bg-white py-16">
+      <section
+        className="bg-white py-16"
+        style={{ backgroundImage: "radial-gradient(circle, #6162651a 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      >
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-black uppercase text-brand-gray-dark">
@@ -810,11 +831,18 @@ export default function NeuroLabPage() {
               <Reveal
                 key={t.nombre}
                 delay={i * 0.1}
-                className={`flex flex-col items-center rounded-2xl border-2 p-6 text-center ${
+                className={`group relative flex flex-col items-center overflow-hidden rounded-2xl border-2 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                   i === 1 ? "border-brand-gray-dark" : "border-brand-orange"
                 }`}
               >
-                <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-brand-orange/40">
+                <Quote
+                  size={72}
+                  className={`absolute -right-3 -top-3 -z-0 rotate-12 opacity-[0.06] ${
+                    i === 1 ? "text-brand-gray-dark" : "text-brand-orange"
+                  }`}
+                  fill="currentColor"
+                />
+                <div className="relative z-10 h-24 w-24 overflow-hidden rounded-full border-2 border-brand-orange/40">
                   <Image
                     src={t.foto}
                     alt={t.nombre}
@@ -823,11 +851,16 @@ export default function NeuroLabPage() {
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
-                <p className="mt-5 text-sm italic leading-relaxed text-brand-gray-dark/80">
+                <div className="relative z-10 mt-4 flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <Star key={s} size={14} className="fill-brand-orange text-brand-orange" />
+                  ))}
+                </div>
+                <p className="relative z-10 mt-4 text-sm italic leading-relaxed text-brand-gray-dark/80">
                   {t.texto}
                 </p>
-                <p className="mt-4 font-black italic text-brand-gray-dark">{t.nombre}</p>
-                <div className={`mt-2 h-0.5 w-10 ${i === 1 ? "bg-brand-gray-dark" : "bg-brand-orange"}`} />
+                <p className="relative z-10 mt-4 font-black italic text-brand-gray-dark">{t.nombre}</p>
+                <div className={`relative z-10 mt-2 h-0.5 w-10 ${i === 1 ? "bg-brand-gray-dark" : "bg-brand-orange"}`} />
               </Reveal>
             ))}
           </div>
@@ -835,7 +868,10 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── NUESTROS ESPECIALISTAS ── */}
-      <section className="bg-white py-16">
+      <section
+        className="bg-white py-16"
+        style={{ backgroundImage: "radial-gradient(circle, #6162651a 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      >
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
             <h2 className="mb-12 text-center text-3xl font-black uppercase tracking-wide text-brand-gray-dark">
@@ -875,7 +911,10 @@ export default function NeuroLabPage() {
       </section>
 
       {/* ── AVALADO POR FUNDACIÓN INTRAS ── */}
-      <section className="bg-white py-20">
+      <section
+        className="bg-white py-20"
+        style={{ backgroundImage: "radial-gradient(circle, #6162651a 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      >
         <div className="mx-auto max-w-5xl px-6">
           <div className="overflow-hidden rounded-3xl border border-[#d0d1d1]/60 bg-[#f5f5f6]">
             <div className="p-10 lg:p-14">
