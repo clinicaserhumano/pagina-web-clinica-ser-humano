@@ -165,7 +165,7 @@ export default function NosotrosPage() {
 
             <Reveal delay={0.15} scale={0.95} className="relative overflow-hidden rounded-3xl shadow-2xl">
               <Image
-                src="/fotos/nosotros-salaestar.png"
+                src="/fotos/nosotros-salaestar.webp"
                 alt="Sala de estar Clínica Ser Humano"
                 width={900}
                 height={600}

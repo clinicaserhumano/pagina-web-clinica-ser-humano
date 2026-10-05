@@ -18,31 +18,31 @@ const TESTIMONIOS = [
     texto: "Llegué con dolores de cabeza crónicos que nadie había podido explicar en años. Después de las sesiones de neuromodulación empecé a sentir una diferencia real, no solo en el dolor sino en mi energía y concentración. Por primera vez me explicaron qué estaba pasando en mi sistema nervioso.",
     nombre: "Marcelo R.",
     servicio: "Neuromodulación · Neuroni",
-    foto: "/testimonios/marcelo.png",
+    foto: "/testimonios/marcelo.webp",
   },
   {
     texto: "La Dra. Nadia tiene una forma de escuchar que no había encontrado en ningún otro profesional. Mi relación de pareja estaba en un punto crítico y gracias al proceso terapéutico logramos entendernos de una manera que creíamos imposible. No solo salvamos la relación, crecimos.",
     nombre: "Andrés y Gabriela M.",
     servicio: "Psicoterapia de parejas",
-    foto: "/testimonios/andresygabriela.png",
+    foto: "/testimonios/andresygabriela.webp",
   },
   {
     texto: "Estuve en el Programa SER y fue lo mejor que pude hacer. Lo que más me sorprendió fue que no me trataron como un caso sino como una persona. El equipo estuvo presente en cada etapa y los horarios after office me permitieron continuar con mi trabajo sin tener que parar mi vida.",
     nombre: "Roberto C.",
     servicio: "Programa SER Libre",
-    foto: "/testimonios/roberto.png",
+    foto: "/testimonios/roberto.webp",
   },
   {
     texto: "Mi madre tiene 72 años y notábamos que su memoria estaba fallando cada vez más. En NeuroLab le hicieron una evaluación completa y nos dieron un plan claro. Después de meses de seguimiento la mejoría es evidente. El equipo nos explicó todo en términos que pudimos entender.",
     nombre: "Familia Espinoza",
     servicio: "NeuroLab · Evaluación cognitiva",
-    foto: "/testimonios/espinoza.png",
+    foto: "/testimonios/espinoza.webp",
   },
   {
     texto: "Vine por ansiedad severa que me impedía trabajar con normalidad. Me sorprendió el enfoque integral: no solo me dieron herramientas psicológicas, sino que revisaron mi parte física también. En tres meses recuperé una calidad de vida que hacía años no tenía.",
     nombre: "Sofía T.",
     servicio: "Salud integral · Ser Humano",
-    foto: "/testimonios/sofia.png",
+    foto: "/testimonios/sofia.webp",
   },
 ];
 
@@ -341,7 +341,7 @@ export default function Home() {
               className="grid h-[480px] grid-cols-3 grid-rows-2 gap-2 overflow-hidden rounded-2xl"
             >
               <div className="relative col-span-2 row-span-1 overflow-hidden">
-                <Image fill className="object-cover" src="/fotos/nosotros-salaestar.png"
+                <Image fill className="object-cover" src="/fotos/nosotros-salaestar.webp"
                   alt="Sala de estar Clínica Ser Humano" sizes="(max-width:768px) 100vw, 50vw" />
               </div>
               <div className="relative col-span-1 row-span-2 overflow-hidden">

@@ -12,7 +12,7 @@ export const metadata = buildMeta({
   title: "Programa SER Libre | Conductas Adictivas · Clínica Ser Humano",
   description: "Day Hospital y Afterwork para superar conductas adictivas sin encierro, sin psicofármacos. Único programa de Full Immersion en Ecuador.",
   path: "/servicios/programa-ser",
-  image: `${BASE_URL}/programaser/hero.png`,
+  image: `${BASE_URL}/programaser/hero.webp`,
 });
 
 const ETAPAS = [
@@ -92,7 +92,7 @@ export default function ProgramaSERPage() {
         name: "Programa SER Libre · Conductas Adictivas",
         description: "Day Hospital y Afterwork para superar conductas adictivas sin encierro ni psicofármacos. Único programa de Full Immersion en Ecuador.",
         url: "https://www.clinicaserhumano.ec/servicios/programa-ser",
-        image: "https://www.clinicaserhumano.ec/programaser/hero.png",
+        image: "https://www.clinicaserhumano.ec/programaser/hero.webp",
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Inicio",    url: "https://www.clinicaserhumano.ec" },
@@ -109,7 +109,7 @@ export default function ProgramaSERPage() {
       <section className="relative min-h-[580px] overflow-hidden lg:min-h-[660px]">
         <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
           <Image
-            src="/programaser/hero.png"
+            src="/programaser/hero.webp"
             alt="Programa SER - Recuperación integral"
             fill
             priority

@@ -37,7 +37,7 @@ const DETALLE = [
   {
     slug: "programa-ser",
     tagline: "Acompañamiento en conductas adictivas",
-    imagen: "/programaser/hero.png",
+    imagen: "/programaser/hero.webp",
     objPos: "center center",
     wa: WHATSAPP_MESSAGES.programaser,
   },

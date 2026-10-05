@@ -57,14 +57,14 @@ const ESTIMULACIONES = [
     titulo: "Estimulación Cognitiva para Afectaciones Cognitivas",
     descripcion:
       "Las alteraciones cognitivas pueden deberse a daño cerebral, envejecimiento o trastornos neurológicos, afectando la memoria, atención y planificación.",
-    foto: "/neurolab/neurolab1.png",
+    foto: "/neurolab/neurolab1.webp",
     pos: "object-center",
   },
   {
     titulo: "Estimulación Cognitiva en Personas con Autopercepción de Dificultades de Memoria",
     descripcion:
       "Las pérdidas subjetivas de memoria son dificultades percibidas que no siempre reflejan un deterioro real, pero pueden ser un primer signo de riesgo.",
-    foto: "/neurolab/neurolab3.png",
+    foto: "/neurolab/neurolab3.webp",
     pos: "object-top",
   },
 ];
@@ -156,7 +156,7 @@ const ESPECIALISTAS = [
   {
     nombre: "Psic. Danny Matute",
     titulo: "Psicólogo Clínico",
-    foto: "/neurolab/dannymatute.png",
+    foto: "/neurolab/dannymatute.webp",
     objPos: "center top",
     zoom: 1,
     zoomX: 50,
@@ -441,7 +441,7 @@ export default function NeuroLabPage() {
             <Reveal delay={0.1} className="flex flex-1 flex-col gap-4">
               <div className="relative flex-1 overflow-hidden rounded-2xl">
                 <Image
-                  src="/neurolab/neurolab1.png"
+                  src="/neurolab/neurolab1.webp"
                   fill
                   alt="Sala NeuroLab con pacientes"
                   className="object-cover object-center"
@@ -470,7 +470,7 @@ export default function NeuroLabPage() {
             {/* Columna derecha: retrato alto VR */}
             <Reveal delay={0.2} className="relative w-52 flex-shrink-0 overflow-hidden rounded-2xl">
               <Image
-                src="/neurolab/neurolab3.png"
+                src="/neurolab/neurolab3.webp"
                 fill
                 alt="Sesión NeuroLab con realidad virtual"
                 className="object-cover object-top"
@@ -816,7 +816,7 @@ export default function NeuroLabPage() {
                 nombre: "Marcos Torres, 62 años",
               },
               {
-                foto: "/neurolab/testimonio2.png",
+                foto: "/neurolab/testimonio2.webp",
                 texto:
                   '"El estrés me estaba afectando mucho. En NeuroLab encontré un espacio donde fortalecí mi concentración y logré equilibrar mi mente y emociones."',
                 nombre: "Jorge Ramírez, 28 años",
