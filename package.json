@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cpanel": "cross-env BUILD_TARGET=cpanel next build && node scripts/prepare-cpanel-build.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -30,6 +31,7 @@
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",

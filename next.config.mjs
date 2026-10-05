@@ -1,6 +1,15 @@
+// BUILD_TARGET=cpanel activa el modo standalone (servidor Node propio,
+// sin la optimizacion de imagenes de Vercel). En Vercel esta variable
+// nunca se define, asi que el build de produccion ahi no cambia.
+const isCpanelBuild = process.env.BUILD_TARGET === "cpanel";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  ...(isCpanelBuild ? { output: "standalone" } : {}),
+  images: {
+    unoptimized: isCpanelBuild,
+  },
   async headers() {
     return [
       {
