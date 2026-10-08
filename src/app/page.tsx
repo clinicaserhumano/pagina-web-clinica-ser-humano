@@ -253,12 +253,12 @@ export default function Home() {
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mx-auto max-w-3xl"
+            className="mx-auto max-w-3xl md:max-w-none"
           >
-            <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl">
-              Recuperar equilibrio también es{" "}
+            <h1 className="text-5xl font-bold leading-tight text-white md:whitespace-nowrap md:text-6xl lg:text-7xl">
+              Tu historia nos{" "}
               <span className="relative inline-block text-brand-orange">
-                salud
+                importa.
                 <motion.svg
                   viewBox="0 0 200 20"
                   preserveAspectRatio="none"
@@ -277,13 +277,9 @@ export default function Home() {
                   />
                 </motion.svg>
               </span>
-              <span className="text-brand-orange">.</span>
             </h1>
-            <p className="mt-5 text-xl text-white/85">
-              <a href="#experiencia" className="text-brand-orange hover:underline">
-                Explora más
-              </a>{" "}
-              sobre nosotros
+            <p className="mt-5 text-2xl text-white/85 md:text-3xl">
+              La cuidamos con profesionalismo y pasión.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="#programas" size="lg">
