@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import AnimatedStats, { type Stat } from "@/components/ui/AnimatedStats";
-import { Brain, Check, CheckCircle, Quote, Shield, Star, Users, Zap } from "lucide-react";
+import { ArrowRight, Brain, Check, CheckCircle, Quote, Shield, Star, Users, Zap } from "lucide-react";
 import Button from "@/components/ui/Button";
 import ContactSection from "@/components/sections/ContactSection";
 import { getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
@@ -79,6 +79,7 @@ const PLANES_REMOTO = [
     accentColor: "#ff6b12",
     tipo: "Sesiones de Estimulación Neurocognitiva",
     items: ["5 Horas Semanales", "20 Horas Mensuales", "Evaluación de Desempeño Inicial y Final"],
+    mensaje: "Hola, quiero contratar el plan remoto de 4 meses.",
   },
   {
     label: "Plan",
@@ -88,6 +89,7 @@ const PLANES_REMOTO = [
     accentColor: "#2e9b3e",
     tipo: "Sesiones de Estimulación Neurocognitiva",
     items: ["1 Hora Diaria", "5 Horas Semanales", "20 Horas Mensuales", "Evaluación de Desempeño Inicial y Final"],
+    mensaje: "Hola, quiero contratar el plan remoto de 6 meses.",
   },
   {
     label: "Plan",
@@ -97,6 +99,7 @@ const PLANES_REMOTO = [
     accentColor: "#1a2c72",
     tipo: "Sesiones de Estimulación Neurocognitiva",
     items: ["1 Sesión por Día", "5 Horas Semanales", "20 Horas Mensuales", "Evaluación de Desempeño Inicial y Final"],
+    mensaje: "Hola, quiero contratar el plan remoto de 1 año.",
   },
 ];
 
@@ -109,6 +112,7 @@ const PLANES_PRESENCIAL = [
     accentColor: "#1a9cda",
     tipo: "Sesión de Evaluación Neurocognitiva",
     items: ["1 Sesión", "Cuestionarios", "Evaluación de Desempeño Inicial", "Tiempo: 45 min."],
+    mensaje: "Hola, quiero contratar la primera consulta.",
   },
   {
     label: "Plan",
@@ -119,6 +123,7 @@ const PLANES_PRESENCIAL = [
     accentColor: "#1a9cda",
     tipo: "Sesiones de Estimulación Neurocognitiva y Neursensorial",
     items: ["3 Veces a la Semana", "12 Sesiones al Mes", "Evaluación de Desempeño Inicial y Final"],
+    mensaje: "Hola, quiero contratar el plan presencial de 1 mes.",
   },
   {
     label: "Plan",
@@ -129,6 +134,7 @@ const PLANES_PRESENCIAL = [
     accentColor: "#1a2c72",
     tipo: "Sesiones de Estimulación Neurocognitiva y Neursensorial",
     items: ["3 Veces a la Semana", "12 Sesiones al Mes", "Evaluación de Desempeño Inicial y Final"],
+    mensaje: "Hola, quiero contratar el plan presencial de 3 meses.",
   },
 ];
 
@@ -551,10 +557,17 @@ export default function NeuroLabPage() {
                 <Reveal
                   key={p.numero + p.unidad}
                   delay={i * 0.1}
-                  className={`group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                  className={`group relative cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
                     i === 1 ? "ring-2 ring-[#2e9b3e]" : ""
                   }`}
                 >
+                  <a
+                    href={getWhatsappUrl(p.mensaje)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Contratar ${p.label} ${p.numero} ${p.unidad} por WhatsApp`}
+                    className="absolute inset-0 z-20"
+                  />
                   {i === 1 && (
                     <div className="absolute right-0 top-0 z-10 rounded-bl-xl bg-[#2e9b3e] px-3 py-1 text-[10px] font-black uppercase tracking-wide text-white">
                       Más popular
@@ -595,6 +608,13 @@ export default function NeuroLabPage() {
                         </li>
                       ))}
                     </ul>
+                    <p
+                      className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs font-black uppercase tracking-wide transition-colors"
+                      style={{ color: p.accentColor }}
+                    >
+                      Contratar por WhatsApp
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -613,10 +633,17 @@ export default function NeuroLabPage() {
                 <Reveal
                   key={p.numero + p.unidad}
                   delay={i * 0.1}
-                  className={`group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                  className={`group relative cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
                     i === 1 ? "ring-2 ring-[#1a9cda]" : ""
                   }`}
                 >
+                  <a
+                    href={getWhatsappUrl(p.mensaje)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Contratar ${p.label} ${p.numero} ${p.unidad} por WhatsApp`}
+                    className="absolute inset-0 z-20"
+                  />
                   {i === 1 && (
                     <div className="absolute right-0 top-0 z-10 rounded-bl-xl bg-[#1a9cda] px-3 py-1 text-[10px] font-black uppercase tracking-wide text-white">
                       Más popular
@@ -660,6 +687,13 @@ export default function NeuroLabPage() {
                         </li>
                       ))}
                     </ul>
+                    <p
+                      className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs font-black uppercase tracking-wide transition-colors"
+                      style={{ color: p.accentColor }}
+                    >
+                      Contratar por WhatsApp
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </p>
                   </div>
                 </Reveal>
               ))}
