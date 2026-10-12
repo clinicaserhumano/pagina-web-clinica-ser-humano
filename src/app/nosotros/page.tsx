@@ -59,43 +59,45 @@ export default function NosotrosPage() {
         url: "https://www.clinicaserhumano.ec/nosotros",
         image: "https://www.clinicaserhumano.ec/fotos/hero-somos-nosotros.webp",
       })} />
-      {/* ── HERO ── */}
-      {/* Mobile: imagen con overlay */}
+      {/* ── HERO mobile: video completo + tarjeta naranja debajo ── */}
       <section className="relative min-h-[520px] overflow-hidden lg:hidden">
         <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
-          <Image
-            src="/fotos/hero-somos-nosotros.webp"
-            alt="Equipo Clínica Ser Humano"
-            fill
-            priority
-            className="object-cover object-center"
+          <video
+            src="/videos/quienes-somos.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls={false}
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate nofullscreen"
+            className="h-full w-full object-cover object-center"
           />
         </Reveal>
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 flex min-h-[520px] items-center px-6 py-24">
-          <div className="max-w-lg">
-            <Reveal mode="load">
-              <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
-                Quiénes somos
-              </span>
-            </Reveal>
-            <Reveal mode="load" delay={0.15}>
-              <h1 className="mt-4 text-4xl font-black leading-tight text-white">
-                Logramos tu bienestar<br />de forma integral.
-              </h1>
-            </Reveal>
-            <Reveal mode="load" delay={0.3}>
-              <p className="mt-5 text-lg leading-relaxed text-white/85">
-                Donde la atención compasiva de la salud física y mental
-                se encuentra con la ciencia.
-              </p>
-            </Reveal>
-          </div>
+      </section>
+      <section className="relative z-10 -mt-12 rounded-t-[2.5rem] bg-gradient-to-br from-[#ff8c3a] via-[#ff6b12] to-[#e85d00] py-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.25)] lg:hidden">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <Reveal mode="load">
+            <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-white">
+              Quiénes somos
+            </span>
+          </Reveal>
+          <Reveal mode="load" delay={0.15}>
+            <h1 className="mt-4 text-4xl font-black leading-tight text-white">
+              Logramos tu bienestar de forma integral.
+            </h1>
+          </Reveal>
+          <Reveal mode="load" delay={0.3}>
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              Donde la atención compasiva de la salud física y mental
+              se encuentra con la ciencia.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* Desktop: split naranja | imagen */}
-      <section className="hidden lg:grid lg:grid-cols-2 lg:min-h-[600px]">
+      {/* ── Desktop: cuadro naranja (más angosto) | video ── */}
+      <section className="hidden lg:grid lg:grid-cols-[2fr_3fr] lg:min-h-[600px]">
         <div className="flex items-center justify-end bg-gradient-to-br from-[#ff8c3a] via-[#ff6b12] to-[#e85d00] px-14 py-24">
           <div className="max-w-xs">
             <Reveal mode="load">
@@ -104,7 +106,7 @@ export default function NosotrosPage() {
               </span>
             </Reveal>
             <Reveal mode="load" delay={0.15}>
-              <h1 className="mt-4 text-5xl font-black leading-tight text-white">
+              <h1 className="mt-4 text-4xl font-black leading-tight text-white">
                 Logramos tu<br />bienestar de<br />forma integral.
               </h1>
             </Reveal>
@@ -118,12 +120,16 @@ export default function NosotrosPage() {
         </div>
         <div className="relative overflow-hidden">
           <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
-            <Image
-              src="/fotos/hero-somos-nosotros.webp"
-              alt="Equipo Clínica Ser Humano"
-              fill
-              priority
-              className="object-cover object-center"
+            <video
+              src="/videos/quienes-somos.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate nofullscreen"
+              className="h-full w-full object-cover object-center"
             />
           </Reveal>
         </div>
