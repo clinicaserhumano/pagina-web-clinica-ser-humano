@@ -256,7 +256,7 @@ export default function Home() {
             className="mx-auto max-w-3xl md:max-w-none"
           >
             <h1 className="text-5xl font-bold leading-tight text-white md:whitespace-nowrap md:text-6xl lg:text-7xl">
-              Tu historia nos{" "}
+              Tu salud nos{" "}
               <span className="relative inline-block text-brand-orange">
                 importa.
                 <motion.svg
