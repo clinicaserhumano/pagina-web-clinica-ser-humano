@@ -327,8 +327,13 @@ export default function Navbar() {
                 🥚 Easter egg desbloqueado
               </div>
 
-              <div className="mx-auto mt-4 mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-4 border-brand-orange/20 bg-brand-orange/10">
-                <span className="text-3xl font-black text-brand-orange">JU</span>
+              <div className="relative mx-auto mt-4 mb-4 h-24 w-24 overflow-hidden rounded-full border-4 border-brand-orange/20 bg-brand-orange/10">
+                <Image
+                  src="/team/jorge-urgiles.webp"
+                  alt="Jorge Urgilés Ruiz"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               <h2 className="text-lg font-black text-brand-gray-dark">
@@ -341,17 +346,27 @@ export default function Navbar() {
                 Diseñado y desarrollado con dedicación.
               </p>
 
-              <a
-                href="https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#0A66C2] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.45 20v-6.4c0-3.43-1.83-5.03-4.27-5.03a3.7 3.7 0 0 0-3.33 1.83h-.05V8.5H9.59c.05 1.02 0 11.5 0 11.5h3.21v-6.43c0-.34.02-.68.13-.92.28-.68.91-1.39 1.97-1.39 1.39 0 1.94 1.06 1.94 2.6V20h3.61Z"/>
-                </svg>
-                Ver perfil en LinkedIn
-              </a>
+              <div className="mt-5 flex flex-col items-center gap-2.5">
+                <a
+                  href="https://www.linkedin.com/in/jorge-andres-urgiles-ruiz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#0A66C2] px-5 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.45 20v-6.4c0-3.43-1.83-5.03-4.27-5.03a3.7 3.7 0 0 0-3.33 1.83h-.05V8.5H9.59c.05 1.02 0 11.5 0 11.5h3.21v-6.43c0-.34.02-.68.13-.92.28-.68.91-1.39 1.97-1.39 1.39 0 1.94 1.06 1.94 2.6V20h3.61Z"/>
+                  </svg>
+                  Ver perfil en LinkedIn
+                </a>
+                <a
+                  href="https://jorge-urgiles-ruiz.vercel.app/?direct=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-brand-orange px-5 py-2.5 text-sm font-bold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white"
+                >
+                  Ver landing page
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         )}
