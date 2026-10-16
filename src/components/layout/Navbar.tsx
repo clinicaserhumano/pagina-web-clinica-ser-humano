@@ -51,7 +51,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
           <Image
-            src="/logos/clinica.png"
+            src="/logos/clinica.webp"
             alt="Clínica Ser Humano"
             width={150}
             height={55}

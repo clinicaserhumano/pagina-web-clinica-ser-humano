@@ -23,7 +23,7 @@ const DETALLE = [
   {
     slug: "neurolab",
     tagline: "Estimulación cognitiva sensorial",
-    imagen: "/neurolab/hero.jpg",
+    imagen: "/neurolab/hero.webp",
     objPos: "center center",
     wa: WHATSAPP_MESSAGES.neurolab,
   },

@@ -235,7 +235,7 @@ export default function ProgramaSERPage() {
         {/* Faro — tamaño controlado por altura, no por ancho */}
         <div className="pointer-events-none absolute bottom-16 right-6 z-10 hidden lg:block xl:right-12">
           <Image
-            src="/varios/faro.png"
+            src="/varios/faro.webp"
             alt="Faro - guía hacia la recuperación"
             width={456}
             height={683}
@@ -274,7 +274,7 @@ export default function ProgramaSERPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <Reveal>
               <Image
-                src="/logos/programaser.png"
+                src="/logos/programaser.webp"
                 alt="Programa SER"
                 width={1514}
                 height={558}
@@ -344,7 +344,7 @@ export default function ProgramaSERPage() {
 
             <Reveal delay={0.15} className="order-1 lg:order-2">
               <Image
-                src="/logos/programaser.png"
+                src="/logos/programaser.webp"
                 alt="Programa SER"
                 width={1514}
                 height={558}
@@ -399,7 +399,7 @@ export default function ProgramaSERPage() {
           <div className="mt-10 grid items-end justify-center gap-6 sm:grid-cols-2 lg:max-w-2xl lg:mx-auto">
             <Reveal scale={0.95}>
               <Image
-                src="/varios/estimulacionmagnetica1.png"
+                src="/varios/estimulacionmagnetica1.webp"
                 alt="Estimulación magnética transcraneal - paciente femenina"
                 width={508}
                 height={421}
@@ -408,7 +408,7 @@ export default function ProgramaSERPage() {
             </Reveal>
             <Reveal delay={0.1} scale={0.95}>
               <Image
-                src="/varios/estimulacionmagnetica2.png"
+                src="/varios/estimulacionmagnetica2.webp"
                 alt="Estimulación magnética transcraneal - paciente masculino"
                 width={478}
                 height={464}

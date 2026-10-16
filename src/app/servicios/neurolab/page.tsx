@@ -13,18 +13,18 @@ export const metadata = buildMeta({
   title: "NeuroLab · Estimulación Cognitiva Sensorial | Clínica Ser Humano",
   description: "Programa único de estimulación neurocognitiva sensorial en Ecuador. Entrena tu mente, fortalece tu memoria. Modalidades presencial y remoto.",
   path: "/servicios/neurolab",
-  image: `${BASE_URL}/neurolab/hero.jpg`,
+  image: `${BASE_URL}/neurolab/hero.webp`,
 });
 
 const CONDICIONES = [
-  { label: "Memoria",                    icon: "/neurolab/icons/memoria.png" },
-  { label: "Estrés",                     icon: "/neurolab/icons/estres.png" },
-  { label: "Demencia Senil",             icon: "/neurolab/icons/demencia-senil.png" },
-  { label: "Refuerzo Pedagógico",        icon: "/neurolab/icons/refuerzo-pedagogico.png" },
-  { label: "Espectro Autista",           icon: "/neurolab/icons/espectro-autista.png" },
-  { label: "Desregularización Emocional", icon: "/neurolab/icons/desregulacion-emocional.png" },
-  { label: "Conducta Impulsiva",         icon: "/neurolab/icons/conducta-impulsiva.png" },
-  { label: "TDAH",                       icon: "/neurolab/icons/tdah.png" },
+  { label: "Memoria",                    icon: "/neurolab/icons/memoria.webp" },
+  { label: "Estrés",                     icon: "/neurolab/icons/estres.webp" },
+  { label: "Demencia Senil",             icon: "/neurolab/icons/demencia-senil.webp" },
+  { label: "Refuerzo Pedagógico",        icon: "/neurolab/icons/refuerzo-pedagogico.webp" },
+  { label: "Espectro Autista",           icon: "/neurolab/icons/espectro-autista.webp" },
+  { label: "Desregularización Emocional", icon: "/neurolab/icons/desregulacion-emocional.webp" },
+  { label: "Conducta Impulsiva",         icon: "/neurolab/icons/conducta-impulsiva.webp" },
+  { label: "TDAH",                       icon: "/neurolab/icons/tdah.webp" },
 ];
 
 const BENEFICIOS = [
@@ -50,7 +50,7 @@ const ESTIMULACIONES = [
     titulo: "Estimulación Cognitiva para Personas con Enfermedad Mental",
     descripcion:
       "Las dificultades cognitivas pueden afectar la autonomía y el bienestar. La estimulación cognitiva mejora el funcionamiento diario y la calidad de vida.",
-    foto: "/neurolab/sala1.jpeg",
+    foto: "/neurolab/sala1.webp",
     pos: "object-top",
   },
   {
@@ -179,11 +179,11 @@ const INTRAS_STATS: Stat[] = [
 ];
 
 const AVALADO_LOGOS = [
-  { src: "/logos/alzaimer.png", alt: "Alzheimer Europe", displayH: 56 },
-  { src: "/logos/ayuntamientodeburgos.png", alt: "Ayuntamiento de Burgos", displayH: 64 },
-  { src: "/logos/juntacastillaleon.png", alt: "Junta de Castilla y León", displayH: 64 },
-  { src: "/logos/sacyl.png", alt: "Sacyl", displayH: 52 },
-  { src: "/logos/unioneuropea.png", alt: "Unión Europea", displayH: 64 },
+  { src: "/logos/alzaimer.webp", alt: "Alzheimer Europe", displayH: 56 },
+  { src: "/logos/ayuntamientodeburgos.webp", alt: "Ayuntamiento de Burgos", displayH: 64 },
+  { src: "/logos/juntacastillaleon.webp", alt: "Junta de Castilla y León", displayH: 64 },
+  { src: "/logos/sacyl.webp", alt: "Sacyl", displayH: 52 },
+  { src: "/logos/unioneuropea.webp", alt: "Unión Europea", displayH: 64 },
 ];
 
 export default function NeuroLabPage() {
@@ -195,7 +195,7 @@ export default function NeuroLabPage() {
         name: "NeuroLab · Estimulación Cognitiva Sensorial",
         description: "Programa único de estimulación neurocognitiva sensorial en Ecuador. Fortalece tu memoria, atención y bienestar cognitivo.",
         url: "https://www.clinicaserhumano.ec/servicios/neurolab",
-        image: "https://www.clinicaserhumano.ec/neurolab/hero.jpg",
+        image: "https://www.clinicaserhumano.ec/neurolab/hero.webp",
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Inicio",    url: "https://www.clinicaserhumano.ec" },
@@ -226,7 +226,7 @@ export default function NeuroLabPage() {
           <div className="mx-auto max-w-2xl">
             <Reveal mode="load">
               <Image
-                src="/logos/neurolab2.png"
+                src="/logos/neurolab2.webp"
                 alt="NeuroLab"
                 width={600}
                 height={200}
@@ -395,7 +395,7 @@ export default function NeuroLabPage() {
             <Reveal delay={0.15} scale={0.95} className="relative">
               <div className="overflow-hidden rounded-2xl">
                 <Image
-                  src="/neurolab/hero.jpg"
+                  src="/neurolab/hero.webp"
                   alt="Sala NeuroLab"
                   width={800}
                   height={600}
@@ -426,7 +426,7 @@ export default function NeuroLabPage() {
             {/* Columna izquierda: retrato alto del doctor */}
             <Reveal className="relative w-60 flex-shrink-0 overflow-hidden rounded-2xl">
               <Image
-                src="/neurolab/sala1.jpeg"
+                src="/neurolab/sala1.webp"
                 fill
                 alt="Estimulación cognitiva - especialista"
                 className="object-cover"
@@ -761,7 +761,7 @@ export default function NeuroLabPage() {
                   Tablet Recomendada
                 </span>
                 <Image
-                  src="/neurolab/laptop.png"
+                  src="/neurolab/laptop.webp"
                   alt="Tablet NeuroLab Memoria"
                   width={480}
                   height={280}
@@ -772,7 +772,7 @@ export default function NeuroLabPage() {
                   <span className="font-bold text-brand-gray-dark">Compatibilidad:</span> iOS 13.0+, Android
                 </p>
                 <Image
-                  src="/neurolab/manual.png"
+                  src="/neurolab/manual.webp"
                   alt="Manual de Usuario NeuroLab Memoria"
                   width={320}
                   height={260}
@@ -798,7 +798,7 @@ export default function NeuroLabPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <Reveal scale={0.95}>
               <Image
-                src="/neurolab/cuadernos.png"
+                src="/neurolab/cuadernos.webp"
                 alt="Cuadernillos NeuroLab Memoria"
                 width={960}
                 height={400}
@@ -844,7 +844,7 @@ export default function NeuroLabPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {[
               {
-                foto: "/neurolab/testimonio1.jpeg",
+                foto: "/neurolab/testimonio1.webp",
                 texto:
                   '"Desde que empecé en NeuroLab siento mi mente mucho más clara. Antes olvidaba cosas simples y ahora me concentro mejor en mi trabajo y en mi vida diaria."',
                 nombre: "Marcos Torres, 62 años",
@@ -856,7 +856,7 @@ export default function NeuroLabPage() {
                 nombre: "Jorge Ramírez, 28 años",
               },
               {
-                foto: "/neurolab/testimonio3.jpeg",
+                foto: "/neurolab/testimonio3.webp",
                 texto:
                   '"Me preocupaba perder memoria con la edad, pero el programa me ayudó a ejercitar mi mente. Hoy puedo leer, aprender y recordar con más confianza."',
                 nombre: "Paola Sánchez, 78 años",
@@ -965,7 +965,7 @@ export default function NeuroLabPage() {
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logos/fundacionintras.png"
+                  src="/logos/fundacionintras.webp"
                   alt="Fundación INTRAS"
                   className="h-auto w-52 flex-shrink-0 object-contain sm:w-64"
                 />

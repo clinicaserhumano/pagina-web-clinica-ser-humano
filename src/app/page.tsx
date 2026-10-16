@@ -341,7 +341,7 @@ export default function Home() {
                   alt="Sala de estar Clínica Ser Humano" sizes="(max-width:768px) 100vw, 50vw" />
               </div>
               <div className="relative col-span-1 row-span-2 overflow-hidden">
-                <Image fill className="object-cover object-top" src="/fotos/collage-vr-fabian.jpg"
+                <Image fill className="object-cover object-top" src="/fotos/collage-vr-fabian.webp"
                   alt="Nat. Fabián Ochoa con tecnología VR" sizes="(max-width:768px) 100vw, 25vw" />
               </div>
               <div className="relative col-span-1 row-span-1 overflow-hidden">

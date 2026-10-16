@@ -41,7 +41,7 @@ export const RESP_SOCIAL_PROYECTOS = [
     nombre: "Proyecto Renacer",
     tagline: "Rescate y reinserción social",
     descripcion: "Programa de la Fundación Ser Humano para la prevención y recuperación de personas en situación de desequilibrio existencial, con tratamiento psicoeducacional y neurológico.",
-    imagen: "/social/20191222_110757.jpg",
+    imagen: "/social/20191222_110757.webp",
     href: "/responsabilidad-social/proyecto-renacer",
   },
 ];
@@ -50,32 +50,32 @@ export const SUBMARCAS = [
   {
     slug: "neuroni",
     nombre: "Neuroni",
-    logo: "/logos/neuroni.png",
-    logoBlanco: "/logos/neuroni2.png",
+    logo: "/logos/neuroni.webp",
+    logoBlanco: "/logos/neuroni2.webp",
     descripcion: "Regulación del sistema nervioso a través de neuromodulación no invasiva, sin psicofármacos.",
     href: "/servicios/neuromodulacion",
   },
   {
     slug: "neurolab",
     nombre: "NeuroLab",
-    logo: "/logos/neurolab.png",
-    logoBlanco: "/logos/neurolab2.png",
+    logo: "/logos/neurolab.webp",
+    logoBlanco: "/logos/neurolab2.webp",
     descripcion: "Estimulación cognitiva sensorial para memoria, atención y bienestar cognitivo.",
     href: "/servicios/neurolab",
   },
   {
     slug: "nadia-donadonibus",
     nombre: "Nadia Donadonibus",
-    logo: "/logos/dranadia.png",
-    logoBlanco: "/logos/dranadia2.png",
+    logo: "/logos/dranadia.webp",
+    logoBlanco: "/logos/dranadia2.webp",
     descripcion: "Psicoterapia y acompañamiento emocional desde la calma y la comprensión.",
     href: "/servicios/nadia-donadonibus",
   },
   {
     slug: "programa-ser",
     nombre: "Programa SER",
-    logo: "/logos/programaser.png",
-    logoBlanco: "/logos/programaser2.png",
+    logo: "/logos/programaser.webp",
+    logoBlanco: "/logos/programaser2.webp",
     descripcion: "Acompañamiento integral en conductas adictivas y recuperación funcional.",
     href: "/servicios/programa-ser",
   },
@@ -91,7 +91,7 @@ export const VIDEO_SLIDES: string[][] = [
 export const UNIVERSIDADES = [
   {
     nombre: "Universidad Casa Grande",
-    logo: "/logos/universidadcasagrande.png",
+    logo: "/logos/universidadcasagrande.webp",
     width: 1551,
     height: 657,
     displayH: 42,  // wide 2.36:1 → renders ~99×42px
@@ -105,7 +105,7 @@ export const UNIVERSIDADES = [
   },
   {
     nombre: "Universidad Del Río",
-    logo: "/logos/universidaddelrio.png",
+    logo: "/logos/universidaddelrio.webp",
     width: 447,
     height: 447,
     displayH: 68,  // square 1:1 → 68×68px
@@ -119,14 +119,14 @@ export const UNIVERSIDADES = [
   },
   {
     nombre: "Universidad Espíritu Santo",
-    logo: "/logos/universidadespiritusanto.png",
+    logo: "/logos/universidadespiritusanto.webp",
     width: 1800,
     height: 1200,
     displayH: 56,  // 1.5:1 → renders ~84×56px
   },
   {
     nombre: "Universidad Internacional de La Rioja (UNIR)",
-    logo: "/logos/universidadunir.png",
+    logo: "/logos/universidadunir.webp",
     width: 900,
     height: 255,
     displayH: 40,  // wide 3.53:1 → renders ~141×40px

@@ -137,7 +137,7 @@ export default function NeuroniPage() {
           <div className="mx-auto max-w-2xl">
             <Reveal mode="load">
               <Image
-                src="/logos/neuroni2.png"
+                src="/logos/neuroni2.webp"
                 alt="Neuroni"
                 width={200}
                 height={70}
@@ -387,7 +387,7 @@ export default function NeuroniPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <Reveal delay={0.15} scale={0.95}>
                   <img
-                    src="/logos/nesa.png"
+                    src="/logos/nesa.webp"
                     alt="NESA World"
                     className="h-auto w-52 flex-shrink-0 object-contain sm:w-64"
                   />

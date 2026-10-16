@@ -207,7 +207,7 @@ export default function PsicoterapiaPage() {
         <div className="relative z-10 mx-auto flex min-h-[640px] max-w-6xl items-center px-6 py-24 lg:min-h-[700px]">
           <div className="max-w-lg">
             <Image
-              src="/logos/dranadia2.png"
+              src="/logos/dranadia2.webp"
               alt="Nadia Donadonibus"
               width={400}
               height={140}

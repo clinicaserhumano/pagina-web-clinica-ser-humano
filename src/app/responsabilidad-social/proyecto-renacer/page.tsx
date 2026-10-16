@@ -23,16 +23,16 @@ const ESTADISTICAS = [
 ];
 
 const FOTOS = [
-  "/social/20191222_113326.jpg",
-  "/social/20191222_121102.jpg",
-  "/social/20191026_100428.jpg",
-  "/social/20191026_100511.jpg",
+  "/social/20191222_113326.webp",
+  "/social/20191222_121102.webp",
+  "/social/20191026_100428.webp",
+  "/social/20191026_100511.webp",
   "/social/20191013_112805.jpg",
-  "/social/20190920_153501.jpg",
-  "/social/20190920_153457.jpg",
-  "/social/20191222_110757.jpg",
-  "/social/IMG-20191222-WA0003-01.jpeg",
-  "/social/IMG-20191222-WA0012-01.jpeg",
+  "/social/20190920_153501.webp",
+  "/social/20190920_153457.webp",
+  "/social/20191222_110757.webp",
+  "/social/IMG-20191222-WA0003-01.webp",
+  "/social/IMG-20191222-WA0012-01.webp",
 ];
 
 const PROGRAMAS = [
@@ -82,7 +82,7 @@ export default function ProyectoRenacerPage() {
       <section className="relative flex min-h-[520px] items-end overflow-hidden" style={{ backgroundColor: "#2E2A72" }}>
         <div className="absolute inset-0">
           <Image
-            src="/social/20191222_113326.jpg"
+            src="/social/20191222_113326.webp"
             alt="Proyecto Renacer"
             fill
             className="object-cover object-center opacity-30"
@@ -94,7 +94,7 @@ export default function ProyectoRenacerPage() {
           {/* Logo */}
           <div className="mb-6">
             <Image
-              src="/logos/proyecto-renacer.png"
+              src="/logos/proyecto-renacer.webp"
               alt="Proyecto Renacer"
               width={220}
               height={70}
@@ -177,7 +177,7 @@ export default function ProyectoRenacerPage() {
             </div>
             <div className="relative h-80 overflow-hidden rounded-3xl md:h-96">
               <Image
-                src="/social/20191026_100428.jpg"
+                src="/social/20191026_100428.webp"
                 alt="Equipo Proyecto Renacer"
                 fill
                 className="object-cover object-center"
@@ -185,7 +185,7 @@ export default function ProyectoRenacerPage() {
               {/* Logo overlay */}
               <div className="absolute bottom-4 left-4 rounded-xl bg-white/90 p-3 backdrop-blur-sm">
                 <Image
-                  src="/logos/proyecto-renacer.png"
+                  src="/logos/proyecto-renacer.webp"
                   alt="Proyecto Renacer"
                   width={140}
                   height={45}
@@ -292,7 +292,7 @@ export default function ProyectoRenacerPage() {
       <section className="py-20" style={{ backgroundColor: "#2E2A72" }}>
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Image
-            src="/logos/proyecto-renacer.png"
+            src="/logos/proyecto-renacer.webp"
             alt="Proyecto Renacer"
             width={180}
             height={58}

@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <Image
-              src="/logos/clinica2.png"
+              src="/logos/clinica2.webp"
               alt="Clínica Ser Humano"
               width={170}
               height={63}
