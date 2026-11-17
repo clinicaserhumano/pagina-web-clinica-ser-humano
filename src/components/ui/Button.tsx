@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { type ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "light" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps {
@@ -21,6 +21,7 @@ interface ButtonProps {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: "bg-brand-orange text-white hover:bg-[#e25c08]",
   secondary: "border-2 border-brand-orange text-brand-orange hover:bg-brand-human/20",
+  light: "border-2 border-white bg-white text-brand-orange hover:bg-brand-base hover:border-brand-base",
   ghost: "text-brand-orange hover:text-[#e25c08]",
 };
 

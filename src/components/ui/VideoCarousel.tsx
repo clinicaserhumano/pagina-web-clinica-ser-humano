@@ -61,7 +61,8 @@ export default function VideoCarousel() {
         </AnimatePresence>
       </div>
 
-      {/* Controles */}
+      {/* Controles (solo si hay más de un grupo de videos) */}
+      {TOTAL > 1 && (
       <div className="mt-6 flex items-center justify-center gap-6">
         <button
           onClick={prev}
@@ -95,6 +96,7 @@ export default function VideoCarousel() {
           <ChevronRight size={20} />
         </button>
       </div>
+      )}
     </div>
   );
 }

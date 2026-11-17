@@ -363,7 +363,7 @@ export default function Home() {
       <section id="programas" className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <motion.h2 {...fadeUp} className="text-center text-3xl font-bold text-brand-gray-dark md:text-4xl">
-            Nuestros programas
+            Nuestros servicios
           </motion.h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -546,7 +546,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-10 md:gap-x-16 md:gap-y-12">
             {UNIVERSIDADES.map((u, i) => (
               <motion.div
                 key={u.nombre}
@@ -561,8 +561,8 @@ export default function Home() {
                   alt={u.nombre}
                   width={u.width}
                   height={u.height}
-                  style={{ height: u.displayH, width: "auto" }}
-                  className="object-contain"
+                  style={{ "--logo-h": `${u.displayH}px` } as React.CSSProperties}
+                  className="h-[calc(var(--logo-h)*0.75)] w-auto max-w-[80vw] object-contain md:h-[var(--logo-h)]"
                 />
               </motion.div>
             ))}

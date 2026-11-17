@@ -239,7 +239,7 @@ export default function PsicoterapiaPage() {
               >
                 Te espero en mi consulta
               </Button>
-              <Button href="#proceso" variant="secondary" size="lg">
+              <Button href="#proceso" variant="light" size="lg">
                 Cómo funciona
               </Button>
             </Reveal>

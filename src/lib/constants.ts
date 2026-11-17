@@ -75,63 +75,35 @@ export const SUBMARCAS = [
     slug: "programa-ser",
     nombre: "Programa SER",
     logo: "/logos/programaser.webp",
-    logoBlanco: "/logos/programaser2.webp",
+    logoBlanco: "/logos/programaser-blanco.webp",
     descripcion: "Acompañamiento integral en conductas adictivas y recuperación funcional.",
     href: "/servicios/programa-ser",
   },
 ];
 
 export const VIDEO_SLIDES: string[][] = [
-  ["DL97-pb3ieM", "5W9LckuGGkE", "EgY0rd7mfvs"],
-  ["JYil59j1Rh8", "KJ39RMnbsWw", "g-a43y-GKy8"],
-  ["Z6hhPjRoU9s", "GecMDq9yFsQ", "oo3Q101XhKU"],
-  ["SeCFKfE52TA", "MiDG2DELIkw", "8Eeh5PkbQPE"],
+  // Ansiedad y depresión · Nervio vago · Medicina regenerativa
+  ["Z6hhPjRoU9s", "5W9LckuGGkE", "EgY0rd7mfvs"],
 ];
 
+// Logos recortados al contenido (sin márgenes vacíos). El tamaño se calcula
+// por ÁREA visual igual, no por altura igual: así un logo cuadrado y uno muy
+// ancho se perciben del mismo "peso". LOGO_MAX_H limita los logos cuadrados.
+const LOGO_AREA = 13000; // px² en desktop (en mobile se escala con CSS)
+const LOGO_MAX_H = 96;
+const logoH = (w: number, h: number) =>
+  Math.round(Math.min(LOGO_MAX_H, Math.sqrt(LOGO_AREA / (w / h))));
+
 export const UNIVERSIDADES = [
-  {
-    nombre: "Universidad Casa Grande",
-    logo: "/logos/universidadcasagrande.webp",
-    width: 1551,
-    height: 657,
-    displayH: 42,  // wide 2.36:1 → renders ~99×42px
-  },
-  {
-    nombre: "Universidad de La Habana",
-    logo: "/logos/universidaddelahabana.png",
-    width: 320,
-    height: 320,
-    displayH: 72,  // square 1:1 → 72×72px (taller to compensate)
-  },
-  {
-    nombre: "Universidad Del Río",
-    logo: "/logos/universidaddelrio.webp",
-    width: 447,
-    height: 447,
-    displayH: 68,  // square 1:1 → 68×68px
-  },
-  {
-    nombre: "Universidad Ecotec",
-    logo: "/logos/universidadecotec.png",
-    width: 569,
-    height: 214,
-    displayH: 40,  // wide 2.66:1 → renders ~106×40px
-  },
-  {
-    nombre: "Universidad Espíritu Santo",
-    logo: "/logos/universidadespiritusanto.webp",
-    width: 1800,
-    height: 1200,
-    displayH: 56,  // 1.5:1 → renders ~84×56px
-  },
-  {
-    nombre: "Universidad Internacional de La Rioja (UNIR)",
-    logo: "/logos/universidadunir.webp",
-    width: 900,
-    height: 255,
-    displayH: 40,  // wide 3.53:1 → renders ~141×40px
-  },
-];
+  { nombre: "Universidad Casa Grande", logo: "/logos/universidadcasagrande.webp", width: 800, height: 253 },
+  { nombre: "Universidad de La Habana", logo: "/logos/universidaddelahabana.webp", width: 200, height: 200 },
+  { nombre: "Universidad Del Río", logo: "/logos/universidaddelrio.webp", width: 356, height: 141 },
+  { nombre: "Universidad Ecotec", logo: "/logos/universidadecotec.webp", width: 507, height: 169 },
+  { nombre: "Universidad Espíritu Santo", logo: "/logos/universidadespiritusanto.webp", width: 800, height: 298 },
+  { nombre: "Universidad Internacional de La Rioja (UNIR)", logo: "/logos/universidadunir.webp", width: 800, height: 199 },
+  { nombre: "Universidad Laica Vicente Rocafuerte de Guayaquil", logo: "/logos/universidadulvr.webp", width: 556, height: 118 },
+  { nombre: "Universidad Hemisferios", logo: "/logos/universidadhemisferios.webp", width: 800, height: 574 },
+].map((u) => ({ ...u, displayH: logoH(u.width, u.height) }));
 
 export const EQUIPO = [
   {

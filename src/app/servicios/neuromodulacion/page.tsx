@@ -163,7 +163,7 @@ export default function NeuroniPage() {
                 >
                   Agenda tu valoración
                 </Button>
-                <Button href="#proceso" variant="secondary" size="lg">
+                <Button href="#proceso" variant="light" size="lg">
                   Cómo funciona
                 </Button>
               </div>
