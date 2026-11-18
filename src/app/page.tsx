@@ -3,15 +3,17 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Activity, AlertTriangle, Brain, ChevronLeft, ChevronRight, Clock, CloudRain,
-  Eye, Heart, Moon, Search, Shield, Star, UserCircle, Users, Wifi, Zap,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, UserCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import VideoCarousel from "@/components/ui/VideoCarousel";
 import ContactSection from "@/components/sections/ContactSection";
 import InstagramFeed from "@/components/sections/InstagramFeed";
-import { EQUIPO, SUBMARCAS, UNIVERSIDADES, getWhatsappUrl } from "@/lib/constants";
+import ServiciosTarjetas from "@/components/sections/ServiciosTarjetas";
+import BienestarIntegral from "@/components/sections/BienestarIntegral";
+import {
+  EQUIPO, UNIVERSIDADES, getWhatsappUrl,
+} from "@/lib/constants";
+
 
 const TESTIMONIOS = [
   {
@@ -46,38 +48,6 @@ const TESTIMONIOS = [
   },
 ];
 
-const PILARES = [
-  {
-    icon: Brain,
-    titulo: "Salud mental",
-    descripcion: "Acompañamiento psicológico y psiquiátrico desde la comprensión, sin juzgar.",
-  },
-  {
-    icon: Shield,
-    titulo: "Conductas adictivas",
-    descripcion: "Procesos de recuperación integral, con acompañamiento cercano y sostenido.",
-  },
-  {
-    icon: Activity,
-    titulo: "Medicina funcional",
-    descripcion: "Bienestar físico desde una mirada clínica precisa y comprensible.",
-  },
-  {
-    icon: Zap,
-    titulo: "Regulación del sistema nervioso",
-    descripcion: "Recuperar calma y estabilidad a través de neuromodulación no invasiva.",
-  },
-  {
-    icon: Eye,
-    titulo: "Bienestar cognitivo",
-    descripcion: "Estimulación de memoria y atención para una vida cotidiana más plena.",
-  },
-  {
-    icon: Heart,
-    titulo: "Sistema de cuidado integral",
-    descripcion: "Un equipo que acompaña cada proceso de recuperación de forma continua.",
-  },
-];
 
 function TestimoniosCarrusel() {
   const PER_PAGE = 3;
@@ -359,115 +329,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIÓN 3 — SERVICIOS */}
+      {/* SECCIÓN 3 — VISIÓN INTEGRAL: Cuerpo · Mente · Emociones */}
+      <BienestarIntegral />
+
+      {/* SECCIÓN 4 — SERVICIOS */}
       <section id="programas" className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <motion.h2 {...fadeUp} className="text-center text-3xl font-bold text-brand-gray-dark md:text-4xl">
-            Nuestros servicios
-          </motion.h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {SUBMARCAS.map((marca, i) => (
-              <motion.div
-                key={marca.slug}
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="flex flex-col items-start gap-4 rounded-2xl border border-brand-gray-light/50 p-6 shadow-sm transition-shadow hover:shadow-lg"
-              >
-                <Image
-                  src={marca.logo}
-                  alt={marca.nombre}
-                  width={140}
-                  height={52}
-                  className="h-10 w-auto shrink-0"
-                />
-                <h3 className="text-xl font-medium text-brand-gray-dark">{marca.nombre}</h3>
-                <p className="text-sm text-brand-gray-dark/75">{marca.descripcion}</p>
-                <Button href={marca.href} variant="ghost" size="sm" className="self-start !px-0">
-                  Conocer más →
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECCIÓN 4 — SOMOS ESPECIALISTAS EN */}
-      <section className="bg-brand-gray-dark py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <motion.div {...fadeUp} className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
-              Somos especialistas en:
+          <motion.div {...fadeUp} className="text-center">
+            <h2 className="text-3xl font-bold text-brand-gray-dark md:text-4xl">
+              Nuestros servicios
             </h2>
-            <p className="mt-3 text-sm text-white/60">
-              Condiciones que acompañamos con experiencia clínica y calidez humana.
+            <p className="mt-3 text-sm text-brand-gray-dark/70">
+              Programas especializados que trabajan juntos por tu bienestar.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {[
-              { icon: Brain,         label: "Ansiedad" },
-              { icon: Moon,          label: "Insomnio" },
-              { icon: Zap,           label: "Estrés" },
-              { icon: AlertTriangle, label: "Pánico" },
-              { icon: CloudRain,     label: "Depresión" },
-              { icon: Clock,         label: "Demencia / Senil" },
-              { icon: Search,        label: "Pérdida de la memoria" },
-              { icon: Shield,        label: "Dependencias" },
-              { icon: Activity,      label: "Dolor crónico" },
-              { icon: Wifi,          label: "Regulación nerviosa" },
-              { icon: Users,         label: "Conflictos de pareja y familia" },
-              { icon: Eye,           label: "Bienestar cognitivo" },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.label}
-                  initial={{ y: 16 }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.35, delay: i * 0.04 }}
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition-colors hover:bg-white/10"
-                >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange/20">
-                    <Icon size={18} className="text-brand-orange" strokeWidth={1.5} />
-                  </div>
-                  <p className="text-sm font-medium leading-tight text-white">{item.label}</p>
-                </motion.div>
-              );
-            })}
+          <div className="mt-12">
+            <ServiciosTarjetas />
           </div>
-        </div>
-      </section>
 
-      {/* SECCIÓN 5 — ECOSISTEMA CLÍNICO */}
-      <section className="bg-brand-base">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <motion.h2 {...fadeUp} className="text-center text-3xl font-bold text-brand-gray-dark md:text-4xl">
-            Una visión integral del bienestar
-          </motion.h2>
-
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PILARES.map((pilar, i) => {
-              const Icon = pilar.icon;
-              return (
-                <motion.div
-                  key={pilar.titulo}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.06 }}
-                  className="flex flex-col gap-3 rounded-2xl bg-white p-6"
-                >
-                  <Icon className="text-brand-orange" size={32} strokeWidth={1.5} />
-                  <h3 className="text-lg font-medium text-brand-gray-dark">{pilar.titulo}</h3>
-                  <p className="text-sm text-brand-gray-dark/75">{pilar.descripcion}</p>
-                </motion.div>
-              );
-            })}
+          <div className="mt-10 text-center">
+            <Button href="/servicios" variant="secondary" size="md">
+              Ver todos los servicios →
+            </Button>
           </div>
         </div>
       </section>

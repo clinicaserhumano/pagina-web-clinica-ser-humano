@@ -6,6 +6,7 @@ export const WHATSAPP_MESSAGES = {
   neurolab: "Hola, me interesa el programa NeuroLab.",
   programaser: "Hola, quisiera información sobre el Programa SER.",
   nadia: "Hola Dra. Nadia, quisiera agendar una consulta de psicoterapia.",
+  medicina: "Hola, quisiera información sobre medicina funcional y regenerativa (sueroterapia, ozono, PRP).",
 } as const;
 
 export const PHONE_NUMBER = "+593 969 520 111";
@@ -80,6 +81,99 @@ export const SUBMARCAS = [
     href: "/servicios/programa-ser",
   },
 ];
+
+// Sección "Nuestros servicios" de la home: todos los servicios agrupados por área.
+// `marca` apunta al slug de SUBMARCAS (muestra su logo); sin marca, el CTA va a WhatsApp.
+export type Servicio = { nombre: string; descripcion: string };
+
+export const SERVICIOS_AREAS = [
+  {
+    id: "neuromodulacion",
+    area: "Neuromodulación",
+    marca: "neuroni",
+    descripcion: "Regulación del sistema nervioso sin psicofármacos.",
+    href: "/servicios/neuromodulacion",
+    servicios: [
+      { nombre: "Neuromodulación no invasiva", descripcion: "Técnica que regula la actividad del sistema nervioso mediante estímulos externos, sin agujas, sin cirugía y sin psicofármacos. Actúa sobre los circuitos neurales para restaurar su equilibrio." },
+      { nombre: "Estimulación eléctrica transcraneal", descripcion: "Corrientes eléctricas muy suaves aplicadas sobre el cuero cabelludo para modular la actividad de zonas específicas del cerebro. Es indolora y forma parte de nuestros protocolos de neuromodulación." },
+      { nombre: "Estimulación magnética transcraneal", descripcion: "Uso de campos magnéticos para estimular, de forma no invasiva, regiones concretas del cerebro y favorecer la regulación del ánimo y la conducta." },
+      { nombre: "Estimulación del nervio vago", descripcion: "Estimulación suave del nervio vago, clave en la respuesta de calma del organismo, para reducir la ansiedad y favorecer la regulación del sistema nervioso." },
+      { nombre: "Ansiedad, depresión y estrés", descripcion: "Protocolos personalizados de neuromodulación para recuperar calma y estabilidad emocional, sin depender de medicamentos." },
+      { nombre: "Insomnio y migraña", descripcion: "Regulación del sistema nervioso para mejorar la calidad del sueño y reducir la frecuencia e intensidad de los dolores de cabeza." },
+      { nombre: "TDAH y conducta impulsiva", descripcion: "Acompañamiento para mejorar la atención, el autocontrol y la regulación de impulsos, con un protocolo adaptado a cada perfil neurológico." },
+    ],
+  },
+  {
+    id: "psicoterapia",
+    area: "Psicoterapia",
+    marca: "nadia-donadonibus",
+    descripcion: "Acompañamiento emocional desde la calma y la comprensión.",
+    href: "/servicios/nadia-donadonibus",
+    servicios: [
+      { nombre: "Psicodiagnóstico", descripcion: "Evaluación psicológica para niños, adolescentes y adultos que permite comprender lo que ocurre y definir el plan terapéutico más adecuado." },
+      { nombre: "Psicoterapia individual", descripcion: "Sesiones personales enfocadas en tu proceso de crecimiento y bienestar emocional, de forma presencial en Guayaquil u online." },
+      { nombre: "Terapia de pareja", descripcion: "Acompañamiento a parejas en crisis o que desean fortalecer su vínculo, mejorando la comunicación y la comprensión mutua." },
+      { nombre: "Psicoterapia familiar, niños y adolescentes", descripcion: "Trabajo con el sistema familiar para mejorar la comunicación y resolver conflictos, con atención especial a niños y adolescentes." },
+      { nombre: "EMDR y EFT", descripcion: "EMDR (desensibilización y reprocesamiento por movimientos oculares) y EFT (técnica de liberación emocional) ayudan a procesar experiencias difíciles y reducir su carga emocional." },
+      { nombre: "Hipnosis clínica", descripcion: "Uso terapéutico de un estado de concentración profunda para trabajar emociones, hábitos y síntomas, siempre de forma consciente y acompañada." },
+      { nombre: "Psicoterapia autógena", descripcion: "Técnicas de autorregulación corporal y mental, y de Neutralización Autógena, según la escuela CISSPAT de Italia." },
+      { nombre: "Terapia DEI", descripcion: "Desensibilización Emocional del Invisible: un abordaje para trabajar cargas emocionales que no siempre se reconocen a simple vista." },
+      { nombre: "Logoterapia", descripcion: "Enfoque humanista existencial que acompaña a la persona a encontrar sentido y propósito en su vida, incluso en los momentos difíciles." },
+    ],
+  },
+  {
+    id: "cognitivo",
+    area: "Bienestar cognitivo",
+    marca: "neurolab",
+    descripcion: "Estimulación para memoria, atención y autonomía.",
+    href: "/servicios/neurolab",
+    servicios: [
+      { nombre: "Evaluación cognitiva", descripcion: "Valoración inicial de la memoria, la atención y otras funciones cognitivas para diseñar un plan personalizado." },
+      { nombre: "Estimulación cognitiva sensorial", descripcion: "Programa que combina estimulación multisensorial y ejercicios neurocognitivos para fortalecer la memoria, la atención y el bienestar mental. Presencial o remoto." },
+      { nombre: "Memoria y demencia senil", descripcion: "Ejercicios para mantener la agilidad mental en adultos mayores y acompañar el deterioro cognitivo leve, mejorando la autonomía y la calidad de vida." },
+      { nombre: "Refuerzo pedagógico", descripcion: "Apoyo a niños y jóvenes con dificultades de aprendizaje, fortaleciendo la atención, la memoria y los hábitos de estudio." },
+      { nombre: "TDAH y espectro autista", descripcion: "Estimulación cognitiva adaptada para mejorar la atención, la regulación emocional y la autonomía en el día a día." },
+      { nombre: "Estimulación cognitiva en salud mental", descripcion: "Programa para personas con una condición de salud mental que fortalece el funcionamiento diario, la motivación y la capacidad de decisión." },
+    ],
+  },
+  {
+    id: "adicciones",
+    area: "Conductas adictivas",
+    marca: "programa-ser",
+    descripcion: "Recuperación integral, ambulatoria y reservada.",
+    href: "/servicios/programa-ser",
+    servicios: [
+      { nombre: "Evaluación y diagnóstico", descripcion: "Primera etapa del programa: conocemos la historia de la persona y su entorno para definir un plan de recuperación a su medida." },
+      { nombre: "Detox físico y mental", descripcion: "Medicina funcional y ortomolecular aplicada a la desintoxicación y a la restauración integral del organismo." },
+      { nombre: "Terapia individual y grupal", descripcion: "Abordaje que combina educación emocional, terapia grupal e individual para la recuperación de conductas adictivas." },
+      { nombre: "Gimnasia psicofísica", descripcion: "Ejercicio guiado que integra cuerpo y mente para liberar tensión, mejorar el autocontrol y acompañar la recuperación." },
+      { nombre: "Plan nutricional", descripcion: "Alimentación adaptada a cada persona para apoyar la recuperación física y el equilibrio del sistema nervioso." },
+      { nombre: "Prevención de recaídas", descripcion: "Seguimiento y mantenimiento tras el tratamiento, con integración de la personalidad y neuromodulación para sostener los avances." },
+    ],
+  },
+  {
+    id: "medicina",
+    area: "Medicina funcional y regenerativa",
+    marca: null,
+    descripcion: "El cuerpo y la mente, tratados como un todo.",
+    href: null,
+    servicios: [
+      { nombre: "Medicina funcional e integrativa", descripcion: "Busca el origen de los síntomas y atiende a la persona como un todo, integrando su salud física, mental y emocional." },
+      { nombre: "Medicina ortomolecular", descripcion: "Uso de vitaminas, minerales y nutrientes en las dosis que el organismo necesita para recuperar su equilibrio." },
+      { nombre: "Medicina regenerativa: PRP y ácido hialurónico", descripcion: "Plasma rico en plaquetas y ácido hialurónico para favorecer la recuperación de las articulaciones y aliviar el dolor." },
+      { nombre: "Sueroterapia", descripcion: "Sueros con nutrientes que apoyan la relajación, la energía, la vitalidad, el ánimo y la digestión." },
+      { nombre: "Ozono hiperbárico", descripcion: "Terapia con ozono médico, parte de nuestra medicina regenerativa, orientada a reducir la inflamación y la sensación de agotamiento." },
+      { nombre: "Tratamiento del dolor crónico", descripcion: "Abordaje integral del dolor persistente que combina medicina funcional y regulación del sistema nervioso." },
+    ],
+  },
+] as const satisfies readonly {
+  id: string;
+  area: string;
+  marca: string | null;
+  descripcion: string;
+  href: string | null;
+  servicios: readonly Servicio[];
+}[];
 
 export const VIDEO_SLIDES: string[][] = [
   // Ansiedad y depresión · Nervio vago · Medicina regenerativa
