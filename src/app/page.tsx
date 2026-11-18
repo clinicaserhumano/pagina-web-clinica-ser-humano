@@ -207,7 +207,7 @@ export default function Home() {
       {/* SECCIÓN 1 — HERO */}
       <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
         <video
-          src="/videos/hero-clinica.mp4"
+          src="/videos/hero-clinica-1008.mp4"
           autoPlay
           loop
           muted
