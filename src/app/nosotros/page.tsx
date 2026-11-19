@@ -63,7 +63,7 @@ export default function NosotrosPage() {
       <section className="relative min-h-[520px] overflow-hidden lg:hidden">
         <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
           <video
-            src="/videos/quienes-somos.mp4"
+            src="/videos/quienes-somos-1012.mp4"
             autoPlay
             loop
             muted
@@ -121,7 +121,7 @@ export default function NosotrosPage() {
         <div className="relative overflow-hidden">
           <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
             <video
-              src="/videos/quienes-somos.mp4"
+              src="/videos/quienes-somos-1012.mp4"
               autoPlay
               loop
               muted
@@ -186,6 +186,23 @@ export default function NosotrosPage() {
 
           </div>
         </div>
+      </section>
+
+      {/* ── MISIÓN ── */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#ff8c3a] via-[#ff6b12] to-[#e85d00] py-20">
+        <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-28 -right-20 h-80 w-80 rounded-full border-[40px] border-white/10" />
+        <Reveal className="relative mx-auto max-w-4xl px-6 text-center">
+          <span className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold text-white">
+            Nuestra misión
+          </span>
+          <blockquote className="mt-8 text-xl font-bold leading-relaxed text-white md:text-2xl md:leading-relaxed">
+            &ldquo;Contribuir a la prevención y atención de los seres humanos en
+            situación de desequilibrio existencial a través de programas de
+            salud integral — cuerpo, psique y espíritu — que les permitan
+            reinsertarse en la familia y la sociedad.&rdquo;
+          </blockquote>
+        </Reveal>
       </section>
 
       {/* ── ENFOQUE ── */}
