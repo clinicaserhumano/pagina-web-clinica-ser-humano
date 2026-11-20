@@ -10,6 +10,7 @@ import CookieBanner from "@/components/layout/CookieBanner";
 import HighLevelWidget from "@/components/layout/HighLevelWidget";
 import MetaPixel from "@/components/layout/MetaPixel";
 import ConversionTracker from "@/components/layout/ConversionTracker";
+import NavigationProgress from "@/components/layout/NavigationProgress";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schemas";
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent";
@@ -87,6 +88,7 @@ export default function RootLayout({
         {/* Consent Mode v2: debe ejecutarse antes que GTM (todo "denied" hasta que acepten) */}
         <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }} />
         <PublicOnly>
+          <NavigationProgress />
           <JsonLd data={organizationSchema} />
           <JsonLd data={websiteSchema} />
           <Navbar />
