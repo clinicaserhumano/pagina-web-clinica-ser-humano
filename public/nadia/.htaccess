@@ -1,0 +1,3 @@
+# Caché de 7 días para estos archivos cuando LiteSpeed los sirve directamente (cPanel).
+# Si se reemplaza un archivo, usar un nombre nuevo para que se vea al instante.
+Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
