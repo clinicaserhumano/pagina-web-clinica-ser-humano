@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { VIDEO_SLIDES } from "@/lib/constants";
+import YouTubeLite from "@/components/ui/YouTubeLite";
 
 const TOTAL = VIDEO_SLIDES.length;
 
@@ -47,13 +48,7 @@ export default function VideoCarousel() {
                     Video pendiente
                   </div>
                 ) : (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
-                    title="Video Ser Humano"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="h-full w-full"
-                  />
+                  <YouTubeLite id={id} />
                 )}
               </div>
             ))}

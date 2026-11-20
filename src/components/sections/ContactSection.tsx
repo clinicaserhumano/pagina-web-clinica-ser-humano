@@ -144,6 +144,7 @@ export default function ContactSection() {
                   </label>
                   <div className={`flex overflow-hidden rounded-xl border ${errors.telefono ? "border-red-400 bg-red-50" : "border-brand-gray-light/60 bg-brand-base"} focus-within:border-brand-orange focus-within:ring-1 focus-within:ring-brand-orange`}>
                     <select
+                      aria-label="Código de país"
                       value={codigo}
                       onChange={(e) => setCodigo(e.target.value)}
                       className="w-28 shrink-0 bg-transparent py-3 pl-3 pr-1 text-xs text-brand-gray-dark focus:outline-none sm:w-auto sm:text-sm"
@@ -185,7 +186,7 @@ export default function ContactSection() {
                   {errors.mensaje ? (
                     <p className="mt-1 text-xs text-red-500">{errors.mensaje}</p>
                   ) : (
-                    <p className="mt-1.5 text-xs text-brand-gray-dark/45">
+                    <p className="mt-1.5 text-xs text-brand-gray-dark/70">
                       Describe brevemente tu consulta. No es necesario incluir diagnósticos ni información médica detallada en este momento.
                     </p>
                   )}
@@ -253,7 +254,7 @@ export default function ContactSection() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={18} className="shrink-0 text-brand-orange" />
-                <a href={`tel:+${PHONE_NUMBER.replace(/\s/g, "")}`} className="text-sm text-brand-gray-dark hover:text-brand-orange" onClick={() => pushEvent("phone_click", { location: "contact_section" })}>
+                <a href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`} className="text-sm text-brand-gray-dark hover:text-brand-orange">
                   {PHONE_NUMBER}
                 </a>
               </div>

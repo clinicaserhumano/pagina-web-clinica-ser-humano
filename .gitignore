@@ -43,3 +43,7 @@ docs/
 
 # Claude Code session data
 .claude/
+
+# compilación de prueba local (NEXT_DIST_DIR)
+/.next-check/
+/.next-deploy/

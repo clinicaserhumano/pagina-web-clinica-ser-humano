@@ -12,7 +12,7 @@ export const metadata = buildMeta({
   title: "Programa SER Libre | Conductas Adictivas · Clínica Ser Humano",
   description: "Day Hospital y Afterwork para superar conductas adictivas sin encierro, sin psicofármacos. Único programa de Full Immersion en Ecuador.",
   path: "/servicios/programa-ser",
-  image: `${BASE_URL}/programaser/hero.webp`,
+  image: `${BASE_URL}/og/programaser.jpg`,
 });
 
 const ETAPAS = [

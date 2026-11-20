@@ -10,7 +10,7 @@ export const metadata = buildMeta({
   title: "Nosotros | Clínica Ser Humano",
   description: "Somos una institución con más de 30 años de experiencia en salud integral. Conoce nuestro equipo y enfoque humanista.",
   path: "/nosotros",
-  image: `${BASE_URL}/fotos/hero-somos-nosotros.webp`,
+  image: `${BASE_URL}/og/clinica.jpg`,
 });
 
 const EQUIPO = [
@@ -62,8 +62,9 @@ export default function NosotrosPage() {
       {/* ── HERO mobile: video completo + tarjeta naranja debajo ── */}
       <section className="relative min-h-[520px] overflow-hidden lg:hidden">
         <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+          {/* Solo se descarga en pantallas < lg (el bloque de escritorio tiene su propio video) */}
           <video
-            src="/videos/quienes-somos-1012.mp4"
+            poster="/videos/quienes-somos-1012-poster.webp"
             autoPlay
             loop
             muted
@@ -72,7 +73,9 @@ export default function NosotrosPage() {
             disablePictureInPicture
             controlsList="nodownload noplaybackrate nofullscreen"
             className="h-full w-full object-cover object-center"
-          />
+          >
+            <source src="/videos/quienes-somos-1012-movil.mp4" media="(max-width: 1023px)" type="video/mp4" />
+          </video>
         </Reveal>
       </section>
       <section className="relative z-10 -mt-12 rounded-t-[2.5rem] bg-gradient-to-br from-[#ff8c3a] via-[#ff6b12] to-[#e85d00] py-16 shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.25)] lg:hidden">
@@ -106,9 +109,10 @@ export default function NosotrosPage() {
               </span>
             </Reveal>
             <Reveal mode="load" delay={0.15}>
-              <h1 className="mt-4 text-4xl font-black leading-tight text-white">
+              {/* Duplicado visual del H1 móvil: como <p> para que la página tenga un solo H1 */}
+              <p className="mt-4 text-4xl font-black leading-tight text-white">
                 Logramos tu<br />bienestar de<br />forma integral.
-              </h1>
+              </p>
             </Reveal>
             <Reveal mode="load" delay={0.3}>
               <p className="mt-5 text-lg leading-relaxed text-white/85">
@@ -120,8 +124,9 @@ export default function NosotrosPage() {
         </div>
         <div className="relative overflow-hidden">
           <Reveal mode="load" y={0} scale={1.08} className="absolute inset-0">
+            {/* Solo se descarga en pantallas lg+ */}
             <video
-              src="/videos/quienes-somos-1012.mp4"
+              poster="/videos/quienes-somos-1012-poster.webp"
               autoPlay
               loop
               muted
@@ -130,7 +135,9 @@ export default function NosotrosPage() {
               disablePictureInPicture
               controlsList="nodownload noplaybackrate nofullscreen"
               className="h-full w-full object-cover object-center"
-            />
+            >
+              <source src="/videos/quienes-somos-1012.mp4" media="(min-width: 1024px)" type="video/mp4" />
+            </video>
           </Reveal>
         </div>
       </section>

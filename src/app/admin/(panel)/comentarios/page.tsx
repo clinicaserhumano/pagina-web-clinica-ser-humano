@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { execute, query } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
@@ -12,26 +12,16 @@ type Comment = {
 };
 
 async function getComments(aprobado: boolean): Promise<Comment[]> {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
+  return query<Comment>(
+    "SELECT id, nombre, comentario, slug, aprobado, creado_en FROM comments WHERE aprobado = ? ORDER BY creado_en DESC",
+    [aprobado]
   );
-  const { data } = await supabase
-    .from("comments")
-    .select("id, nombre, comentario, slug, aprobado, creado_en")
-    .eq("aprobado", aprobado)
-    .order("creado_en", { ascending: false });
-  return data ?? [];
 }
 
 async function approveComment(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("comments").update({ aprobado: true }).eq("id", id);
+  await execute("UPDATE comments SET aprobado = 1 WHERE id = ?", [id]);
   revalidatePath("/admin/comentarios");
   revalidatePath("/admin");
 }
@@ -39,11 +29,7 @@ async function approveComment(formData: FormData) {
 async function deleteComment(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("comments").delete().eq("id", id);
+  await execute("DELETE FROM comments WHERE id = ?", [id]);
   revalidatePath("/admin/comentarios");
   revalidatePath("/admin");
 }

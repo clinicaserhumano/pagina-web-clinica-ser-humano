@@ -13,7 +13,7 @@ export const metadata = buildMeta({
   title: "Dra. Nadia Donadonibus · Psicoterapeuta | Clínica Ser Humano",
   description: "Psicoterapeuta y psicoanalista con más de 40 años de experiencia en Italia y Ecuador. Psicoterapia individual, familiar y de pareja en Guayaquil.",
   path: "/servicios/nadia-donadonibus",
-  image: `${BASE_URL}/fotos/hero-nadia.webp`,
+  image: `${BASE_URL}/og/nadia.jpg`,
 });
 
 const ENFOQUE = [

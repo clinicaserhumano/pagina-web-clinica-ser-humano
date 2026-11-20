@@ -196,8 +196,11 @@ export const UNIVERSIDADES = [
   { nombre: "Universidad Espíritu Santo", logo: "/logos/universidadespiritusanto.webp", width: 800, height: 298 },
   { nombre: "Universidad Internacional de La Rioja (UNIR)", logo: "/logos/universidadunir.webp", width: 800, height: 199 },
   { nombre: "Universidad Laica Vicente Rocafuerte de Guayaquil", logo: "/logos/universidadulvr.webp", width: 556, height: 118 },
-  { nombre: "Universidad Hemisferios", logo: "/logos/universidadhemisferios.webp", width: 800, height: 574 },
-].map((u) => ({ ...u, displayH: logoH(u.width, u.height) }));
+  { nombre: "Universidad Hemisferios", logo: "/logos/universidadhemisferios.webp", width: 800, height: 574, escala: 0.83 },
+].map(({ escala = 1, ...u }: { nombre: string; logo: string; width: number; height: number; escala?: number }) => ({
+  ...u,
+  displayH: Math.round(logoH(u.width, u.height) * escala),
+}));
 
 export const EQUIPO = [
   {
@@ -228,3 +231,19 @@ export const EQUIPO = [
     descripcion: "Acompaña procesos de bienestar emocional desde la psicoterapia y la escucha activa.",
   },
 ];
+
+/* ── Autores del blog (/novedades) ─────────────────────────────────────────
+   Se eligen en el panel al crear/editar un artículo; su foto aparece junto al nombre. */
+export const AUTORES_BLOG = [
+  { nombre: "Dra. Sara Ochoa", cargo: "Dirección General", foto: "/team/avatar-sara.webp" },
+  { nombre: "Nat. Fabián Ochoa", cargo: "Director General", foto: "/team/avatar-fabian.webp" },
+  { nombre: "Dra. Nadia Donadonibus", cargo: "Psicoterapeuta", foto: "/team/avatar-nadia.webp" },
+  { nombre: "Clínica Ser Humano", cargo: "Equipo Ser Humano", foto: "/apple-icon-180x180.png" },
+] as const;
+
+export type AutorBlog = (typeof AUTORES_BLOG)[number];
+
+/** Devuelve el autor por su nombre (o el genérico "Clínica Ser Humano") */
+export function getAutorBlog(nombre: string | null | undefined): AutorBlog {
+  return AUTORES_BLOG.find((a) => a.nombre === nombre) ?? AUTORES_BLOG[AUTORES_BLOG.length - 1];
+}

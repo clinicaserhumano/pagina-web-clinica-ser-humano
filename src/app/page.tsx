@@ -145,11 +145,14 @@ function TestimoniosCarrusel() {
               <ChevronRight size={18} />
             </button>
           </div>
-          <div className="mt-6 flex justify-center gap-2">
+          <div className="mt-4 flex justify-center">
             {TESTIMONIOS.map((_, i) => (
+              // Área táctil de 24px; el punto visible sigue siendo pequeño
               <button key={i} onClick={() => { setDir(i > single ? 1 : -1); setSingle(i); }}
-                className={`h-2 rounded-full transition-all duration-300 ${i === single ? "w-6 bg-[#ff6b12]" : "w-2 bg-[#616569]/25"}`}
-                aria-label={`Testimonio ${i + 1}`} />
+                className="flex h-6 min-w-6 items-center justify-center px-1"
+                aria-label={`Testimonio ${i + 1}`}>
+                <span className={`block h-2 rounded-full transition-all duration-300 ${i === single ? "w-6 bg-[#ff6b12]" : "w-2 bg-[#616569]/25"}`} />
+              </button>
             ))}
           </div>
         </div>
@@ -206,8 +209,9 @@ export default function Home() {
     <>
       {/* SECCIÓN 1 — HERO */}
       <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
+        {/* poster: se ve al instante mientras carga el video · móvil recibe la versión 720p */}
         <video
-          src="/videos/hero-clinica-1008.mp4"
+          poster="/videos/hero-clinica-1008-poster.webp"
           autoPlay
           loop
           muted
@@ -216,7 +220,10 @@ export default function Home() {
           disablePictureInPicture
           controlsList="nodownload noplaybackrate nofullscreen"
           className="absolute inset-0 h-full w-full object-cover object-center lg:object-[center_35%]"
-        />
+        >
+          <source src="/videos/hero-clinica-1008-movil.mp4" media="(max-width: 767px)" type="video/mp4" />
+          <source src="/videos/hero-clinica-1008.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/90" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 text-center md:py-28">
           <motion.div
@@ -225,7 +232,11 @@ export default function Home() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto max-w-3xl md:max-w-none"
           >
-            <h1 className="text-5xl font-bold leading-tight text-white md:whitespace-nowrap md:text-6xl lg:text-7xl">
+            {/* H1 con palabras clave para Google; el título grande se mantiene igual */}
+            <h1 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 md:text-sm">
+              Clínica de salud mental y bienestar integral en Guayaquil
+            </h1>
+            <p className="text-5xl font-bold leading-tight text-white md:whitespace-nowrap md:text-6xl lg:text-7xl">
               Tu salud nos{" "}
               <span className="relative inline-block text-brand-orange">
                 importa.
@@ -247,7 +258,7 @@ export default function Home() {
                   />
                 </motion.svg>
               </span>
-            </h1>
+            </p>
             <p className="mt-5 text-2xl text-white/85 md:text-3xl">
               La cuidamos con profesionalismo y pasión.
             </p>

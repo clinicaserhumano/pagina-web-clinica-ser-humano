@@ -2,24 +2,28 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getConsent, setConsent } from "@/lib/consent";
 
-const CONSENT_KEY = "sh_cookie_consent";
+/** Evento para volver a abrir el banner (enlace "Configurar cookies" del footer) */
+export const OPEN_COOKIES_EVENT = "sh-open-cookies";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem(CONSENT_KEY);
-    if (!consent) setVisible(true);
+    if (!getConsent()) setVisible(true);
+    const abrir = () => setVisible(true);
+    window.addEventListener(OPEN_COOKIES_EVENT, abrir);
+    return () => window.removeEventListener(OPEN_COOKIES_EVENT, abrir);
   }, []);
 
   const accept = () => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
+    setConsent("accepted");
     setVisible(false);
   };
 
   const reject = () => {
-    localStorage.setItem(CONSENT_KEY, "rejected");
+    setConsent("rejected");
     setVisible(false);
   };
 
@@ -29,12 +33,13 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label="Aviso de cookies"
-      style={{ backgroundColor: "#3e3d3b" }}
+      // zIndex máximo: el chat de HighLevel se superponía y tapaba los botones
+      style={{ backgroundColor: "#3e3d3b", zIndex: 2147483647 }}
       className="fixed bottom-0 left-0 right-0 z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.35)] px-4 py-5 sm:px-6"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
         <p className="flex-1 text-sm leading-relaxed text-white/85">
-          Usamos cookies analíticas (Google Analytics) para entender cómo se usa el sitio y mejorarlo.
+          Usamos cookies analíticas y de publicidad (Google y Meta) para entender cómo se usa el sitio y mejorar nuestros anuncios. Solo se activan si las aceptas.
           Las cookies necesarias siempre están activas.{" "}
           <Link
             href="/politica-de-privacidad#cookies"

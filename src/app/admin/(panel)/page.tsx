@@ -1,39 +1,23 @@
-import { createClient } from "@supabase/supabase-js";
+import { query, queryOne } from "@/lib/db";
 import Link from "next/link";
 
+// El panel siempre lee datos actuales de la base de datos (nunca una copia de la compilación)
+export const dynamic = "force-dynamic";
+
 async function getStats() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
+  const row = await queryOne<{ pendientes: number; aprobados: number }>(
+    "SELECT COALESCE(SUM(aprobado = 0), 0) AS pendientes, COALESCE(SUM(aprobado = 1), 0) AS aprobados FROM comments"
   );
-  const [pending, approved] = await Promise.all([
-    supabase
-      .from("comments")
-      .select("*", { count: "exact", head: true })
-      .eq("aprobado", false),
-    supabase
-      .from("comments")
-      .select("*", { count: "exact", head: true })
-      .eq("aprobado", true),
-  ]);
   return {
-    pendingComments: pending.count ?? 0,
-    approvedComments: approved.count ?? 0,
+    pendingComments: Number(row?.pendientes ?? 0),
+    approvedComments: Number(row?.aprobados ?? 0),
   };
 }
 
 async function getRecentComments() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
+  return query<{ id: number; nombre: string; comentario: string; slug: string; aprobado: boolean; creado_en: string }>(
+    "SELECT id, nombre, comentario, slug, aprobado, creado_en FROM comments WHERE aprobado = 0 ORDER BY creado_en DESC LIMIT 5"
   );
-  const { data } = await supabase
-    .from("comments")
-    .select("id, nombre, comentario, slug, aprobado, creado_en")
-    .eq("aprobado", false)
-    .order("creado_en", { ascending: false })
-    .limit(5);
-  return data ?? [];
 }
 
 function StatCard({

@@ -1,24 +1,19 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SECRET_KEY!
-);
+import { execute, query } from "@/lib/db";
 
 export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get("slug");
   if (!slug) return NextResponse.json([], { status: 200 });
 
-  const { data, error } = await supabase
-    .from("comments")
-    .select("id, nombre, comentario, creado_en")
-    .eq("slug", slug)
-    .eq("aprobado", true)
-    .order("creado_en", { ascending: true });
-
-  if (error) return NextResponse.json([], { status: 200 });
-  return NextResponse.json(data);
+  try {
+    const data = await query(
+      "SELECT id, nombre, comentario, creado_en FROM comments WHERE slug = ? AND aprobado = 1 ORDER BY creado_en ASC",
+      [slug],
+    );
+    return NextResponse.json(data);
+  } catch {
+    return NextResponse.json([], { status: 200 });
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -29,13 +24,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Campos incompletos." }, { status: 400 });
   }
 
-  const { error } = await supabase.from("comments").insert({
-    slug,
-    nombre: nombre.trim(),
-    comentario: comentario.trim(),
-    aprobado: false,
-  });
-
-  if (error) return NextResponse.json({ error: "Error al guardar." }, { status: 500 });
-  return NextResponse.json({ ok: true }, { status: 201 });
+  try {
+    await execute("INSERT INTO comments (slug, nombre, comentario, aprobado) VALUES (?, ?, ?, 0)", [
+      slug,
+      nombre.trim(),
+      comentario.trim(),
+    ]);
+    return NextResponse.json({ ok: true }, { status: 201 });
+  } catch {
+    return NextResponse.json({ error: "Error al guardar." }, { status: 500 });
+  }
 }

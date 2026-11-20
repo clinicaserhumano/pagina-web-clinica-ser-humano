@@ -1,16 +1,16 @@
-import { createClient } from "@supabase/supabase-js";
+import { queryOne } from "@/lib/db";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 
+// El panel siempre lee datos actuales de la base de datos (nunca una copia de la compilación)
+export const dynamic = "force-dynamic";
+
 async function getPendingComments() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  const { count } = await supabase
-    .from("comments")
-    .select("*", { count: "exact", head: true })
-    .eq("aprobado", false);
-  return count ?? 0;
+  try {
+    const row = await queryOne<{ total: number }>("SELECT COUNT(*) AS total FROM comments WHERE aprobado = 0");
+    return Number(row?.total ?? 0);
+  } catch {
+    return 0;
+  }
 }
 
 export default async function AdminPanelLayout({

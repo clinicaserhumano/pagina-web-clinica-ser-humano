@@ -72,7 +72,7 @@ export default function ServiciosTarjetas() {
                 href={marca.href}
                 className="inline-flex items-center gap-1.5 rounded-full bg-brand-orange px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#e25c08]"
               >
-                Más información
+                Más información<span className="sr-only"> sobre {marca.nombre}</span>
                 <ArrowRight size={15} />
               </Link>
               {area && (

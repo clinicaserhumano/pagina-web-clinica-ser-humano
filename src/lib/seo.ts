@@ -1,6 +1,6 @@
 export const BASE_URL = "https://www.clinicaserhumano.ec";
 export const SITE_NAME = "Clínica Ser Humano";
-export const DEFAULT_OG_IMAGE = `${BASE_URL}/fotos/hero-somos-nosotros.webp`;
+export const DEFAULT_OG_IMAGE = `${BASE_URL}/og/clinica.jpg`;
 
 export function buildMeta({
   title,
@@ -15,7 +15,9 @@ export function buildMeta({
 }) {
   const url = `${BASE_URL}${path}`;
   return {
-    title,
+    // "absolute": los títulos ya incluyen la marca; evita que la plantilla del
+    // layout la repita ("Servicios | Clínica Ser Humano | Clínica Ser Humano")
+    title: { absolute: title },
     description,
     alternates: { canonical: url },
     openGraph: {

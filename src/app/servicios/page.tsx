@@ -9,7 +9,7 @@ import { SUBMARCAS, getWhatsappUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 export const metadata = buildMeta({
   title: "Servicios | Clínica Ser Humano",
   description:
-    "Conoce los programas especializados de Clínica Ser Humano: Neuroni, NeuroLab, Psicoterapia con Nadia Donadonibus y Programa SER. Atención integral en Guayaquil.",
+    "Neuromodulación, psicoterapia, estimulación cognitiva, conductas adictivas y medicina funcional. Todos los servicios de Clínica Ser Humano en Guayaquil.",
   path: "/servicios",
 });
 

@@ -1,6 +1,5 @@
 ﻿import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
-import { headers } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -10,9 +9,11 @@ import BackToTop from "@/components/layout/BackToTop";
 import CookieBanner from "@/components/layout/CookieBanner";
 import HighLevelWidget from "@/components/layout/HighLevelWidget";
 import MetaPixel from "@/components/layout/MetaPixel";
+import ConversionTracker from "@/components/layout/ConversionTracker";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schemas";
-import { META_PIXEL_ID } from "@/lib/meta";
+import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent";
+import { MainContent, PublicOnly } from "@/components/layout/PublicOnly";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -35,13 +36,13 @@ export const metadata: Metadata = {
     siteName: "Clínica Ser Humano",
     locale: "es_EC",
     type: "website",
-    images: [{ url: "/fotos/hero-somos-nosotros.webp", width: 1200, height: 630, alt: "Equipo Clínica Ser Humano" }],
+    images: [{ url: "/og/clinica.jpg", width: 1200, height: 630, alt: "Equipo Clínica Ser Humano" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Clínica Ser Humano",
     description: "Acompañamos procesos de recuperación y bienestar desde una visión humana, integral y clínicamente precisa en Guayaquil, Ecuador.",
-    images: ["/fotos/hero-somos-nosotros.webp"],
+    images: ["/og/clinica.jpg"],
   },
   alternates: { canonical: "https://www.clinicaserhumano.ec" },
   icons: {
@@ -78,28 +79,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isAdmin = headers().get("x-is-admin") === "1";
-
+  // Sin headers()/cookies() aquí: así las páginas públicas se generan una sola vez
+  // (estáticas). Lo que no debe verse en /admin lo decide <PublicOnly> por la ruta.
   return (
     <html lang="es" className="scroll-smooth">
       <body className={`${outfit.variable} font-sans antialiased bg-brand-base text-brand-gray-dark`}>
-        {!isAdmin && <JsonLd data={organizationSchema} />}
-        {!isAdmin && <JsonLd data={websiteSchema} />}
-        {!isAdmin && <Navbar />}
-        <main className={isAdmin ? "" : "pt-[72px]"}>{children}</main>
-        {!isAdmin && <Footer />}
-        {!isAdmin && <WhatsAppButton />}
-        {!isAdmin && <BackToTop />}
-        {!isAdmin && <CookieBanner />}
-        {!isAdmin && <HighLevelWidget />}
-        {!isAdmin && <MetaPixel />}
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`,
-          }}
-        />
+        {/* Consent Mode v2: debe ejecutarse antes que GTM (todo "denied" hasta que acepten) */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }} />
+        <PublicOnly>
+          <JsonLd data={organizationSchema} />
+          <JsonLd data={websiteSchema} />
+          <Navbar />
+        </PublicOnly>
+        <MainContent>{children}</MainContent>
+        <PublicOnly>
+          <Footer />
+          <WhatsAppButton />
+          <BackToTop />
+          <CookieBanner />
+          <HighLevelWidget />
+          <MetaPixel />
+          <ConversionTracker />
+        </PublicOnly>
         <Script
           id="gtm"
           strategy="afterInteractive"

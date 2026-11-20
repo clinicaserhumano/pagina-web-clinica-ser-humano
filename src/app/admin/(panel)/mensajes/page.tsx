@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { execute, query } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
@@ -13,26 +13,16 @@ type Mensaje = {
 };
 
 async function getMensajes(leido: boolean): Promise<Mensaje[]> {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
+  return query<Mensaje>(
+    "SELECT id, nombre, telefono, email, mensaje, leido, creado_en FROM mensajes_contacto WHERE leido = ? ORDER BY creado_en DESC",
+    [leido]
   );
-  const { data } = await supabase
-    .from("mensajes_contacto")
-    .select("*")
-    .eq("leido", leido)
-    .order("creado_en", { ascending: false });
-  return data ?? [];
 }
 
 async function marcarLeido(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("mensajes_contacto").update({ leido: true }).eq("id", id);
+  await execute("UPDATE mensajes_contacto SET leido = 1 WHERE id = ?", [id]);
   revalidatePath("/admin/mensajes");
   revalidatePath("/admin");
 }
@@ -40,11 +30,7 @@ async function marcarLeido(formData: FormData) {
 async function eliminarMensaje(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("mensajes_contacto").delete().eq("id", id);
+  await execute("DELETE FROM mensajes_contacto WHERE id = ?", [id]);
   revalidatePath("/admin/mensajes");
 }
 

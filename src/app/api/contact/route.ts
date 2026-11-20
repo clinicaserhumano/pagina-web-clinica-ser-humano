@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { createClient } from "@supabase/supabase-js";
+import { execute } from "@/lib/db";
 
 // Transporter singleton — se crea una sola vez y reutiliza la conexión
 const transporter = nodemailer.createTransport({
@@ -106,14 +106,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Campos incompletos" }, { status: 400 });
   }
 
-  // Guarda en Supabase y envía email en paralelo (ambos en segundo plano)
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  supabase.from("mensajes_contacto").insert({ nombre, telefono, mensaje }).then(
-    ({ error }) => { if (error) console.error("[contact] Supabase:", error.message); }
-  );
+  // Guarda en la base de datos y envía el email en paralelo (ambos en segundo plano)
+  execute("INSERT INTO mensajes_contacto (nombre, telefono, mensaje) VALUES (?, ?, ?)", [
+    String(nombre).slice(0, 150),
+    String(telefono).slice(0, 50),
+    String(mensaje),
+  ]).catch((err) => console.error("[contact] Error guardando en la base de datos:", err.message));
 
   transporter.sendMail({
     from: `"Ser Humano Web" <${process.env.SMTP_USER}>`,

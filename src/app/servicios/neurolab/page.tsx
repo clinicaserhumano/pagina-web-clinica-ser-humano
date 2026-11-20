@@ -13,7 +13,7 @@ export const metadata = buildMeta({
   title: "NeuroLab · Estimulación Cognitiva Sensorial | Clínica Ser Humano",
   description: "Programa único de estimulación neurocognitiva sensorial en Ecuador. Entrena tu mente, fortalece tu memoria. Modalidades presencial y remoto.",
   path: "/servicios/neurolab",
-  image: `${BASE_URL}/neurolab/hero.webp`,
+  image: `${BASE_URL}/og/neurolab.jpg`,
 });
 
 const CONDICIONES = [
@@ -212,6 +212,7 @@ export default function NeuroLabPage() {
       <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
         <video
           src="/videos/hero-neurolab.mp4"
+          poster="/videos/hero-neurolab-poster.webp"
           autoPlay
           loop
           muted
@@ -373,7 +374,7 @@ export default function NeuroLabPage() {
                   >
                     <Icon size={22} className="text-brand-orange transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
                     <p className="mt-2 text-sm font-bold text-white">{label}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-white/50">{desc}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-white/75">{desc}</p>
                   </Reveal>
                 ))}
               </div>
@@ -385,7 +386,7 @@ export default function NeuroLabPage() {
                 ].map((s, i) => (
                   <Reveal key={s.label} delay={i * 0.1}>
                     <p className="text-2xl font-black text-brand-orange">{s.num}</p>
-                    <p className="mt-0.5 text-xs text-white/50">{s.label}</p>
+                    <p className="mt-0.5 text-xs text-white/75">{s.label}</p>
                   </Reveal>
                 ))}
               </div>

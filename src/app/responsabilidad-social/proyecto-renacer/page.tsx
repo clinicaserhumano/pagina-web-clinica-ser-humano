@@ -6,7 +6,7 @@ import { buildMeta } from "@/lib/seo";
 export const metadata = buildMeta({
   title: "Proyecto Renacer | Responsabilidad Social | Clínica Ser Humano",
   description:
-    "Fundación Ser Humano — programa de prevención y recuperación para personas en situación de desequilibrio existencial, con tratamiento psicoeducacional y neurológico en Guayaquil.",
+    "Proyecto Renacer de la Fundación Ser Humano: prevención y recuperación de adicciones con tratamiento psicoeducacional y neurológico en Guayaquil.",
   path: "/responsabilidad-social/proyecto-renacer",
 });
 
@@ -324,7 +324,7 @@ export default function ProyectoRenacerPage() {
               info@proyectorenacerec.org
             </a>
             <a
-              href="tel:+5930997217831"
+              href="tel:+593997217831"
               className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
             >
               <Phone size={15} />

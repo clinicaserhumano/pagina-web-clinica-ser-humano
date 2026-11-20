@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.110.2",
     "@tiptap/extension-image": "^3.27.3",
     "@tiptap/extension-link": "^3.27.3",
     "@tiptap/extension-placeholder": "^3.27.3",
@@ -21,6 +20,7 @@
     "@tiptap/starter-kit": "^3.27.3",
     "framer-motion": "^12.42.0",
     "lucide-react": "^1.22.0",
+    "mysql2": "3.24.6",
     "next": "14.2.35",
     "nodemailer": "^9.0.3",
     "react": "^18",

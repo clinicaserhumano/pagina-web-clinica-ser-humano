@@ -3,6 +3,7 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import RichEditor from "@/components/admin/RichEditor";
+import AutorSelector from "@/components/admin/AutorSelector";
 
 const CATEGORIAS = ["Neurociencia", "Salud Mental", "Bienestar", "Programa SER", "Noticias"];
 
@@ -176,12 +177,7 @@ export default function NuevoArticuloPage() {
           {/* Autor */}
           <div className="mb-5">
             <label className="mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-gray-400">Autor</label>
-            <input
-              value={autor}
-              onChange={(e) => setAutor(e.target.value)}
-              placeholder="Nombre del autor"
-              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-[12px] text-gray-700 outline-none focus:border-[#ff6b12] focus:ring-2 focus:ring-[#ff6b12]/10"
-            />
+            <AutorSelector value={autor} onChange={setAutor} />
           </div>
 
           {/* Categoría */}

@@ -1,6 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+import { execute, query } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
+
+// El panel siempre lee datos actuales de la base de datos (nunca una copia de la compilación)
+export const dynamic = "force-dynamic";
 
 type Entrada = {
   id: number;
@@ -13,25 +16,15 @@ type Entrada = {
 };
 
 async function getEntradas(): Promise<Entrada[]> {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
+  return query<Entrada>(
+    "SELECT id, titulo, slug, categoria, autor, publicado, creado_en FROM entradas_blog ORDER BY creado_en DESC"
   );
-  const { data } = await supabase
-    .from("entradas_blog")
-    .select("id, titulo, slug, categoria, autor, publicado, creado_en")
-    .order("creado_en", { ascending: false });
-  return data ?? [];
 }
 
 async function eliminarEntrada(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("entradas_blog").delete().eq("id", id);
+  await execute("DELETE FROM entradas_blog WHERE id = ?", [id]);
   revalidatePath("/admin/blog");
 }
 
@@ -39,11 +32,7 @@ async function togglePublicado(formData: FormData) {
   "use server";
   const id = Number(formData.get("id"));
   const actual = formData.get("publicado") === "true";
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!
-  );
-  await supabase.from("entradas_blog").update({ publicado: !actual }).eq("id", id);
+  await execute("UPDATE entradas_blog SET publicado = ?, actualizado_en = UTC_TIMESTAMP() WHERE id = ?", [!actual, id]);
   revalidatePath("/admin/blog");
   revalidatePath("/novedades");
 }

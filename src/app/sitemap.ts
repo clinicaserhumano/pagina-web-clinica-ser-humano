@@ -1,7 +1,10 @@
 import { MetadataRoute } from "next";
-import { createClient } from "@supabase/supabase-js";
+import { query } from "@/lib/db";
 
 const BASE = "https://www.clinicaserhumano.ec";
+
+// Se regenera cada hora para incluir los artículos nuevos del blog
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -21,14 +24,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
-    const supabase = createClient(
-      process.env.SUPABASE_URL!,
-      process.env.SUPABASE_SECRET_KEY!
+    const data = await query<{ slug: string; creado_en: string }>(
+      "SELECT slug, creado_en FROM entradas_blog WHERE publicado = 1"
     );
-    const { data } = await supabase
-      .from("entradas_blog")
-      .select("slug, creado_en")
-      .eq("publicado", true);
 
     if (data) {
       blogRoutes = data.map((post) => ({
@@ -39,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }));
     }
   } catch {
-    // Si Supabase falla, el sitemap se genera sin artículos
+    // Si la base de datos falla, el sitemap se genera sin artículos
   }
 
   return [...staticRoutes, ...blogRoutes];

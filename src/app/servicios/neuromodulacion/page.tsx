@@ -16,7 +16,7 @@ export const metadata = buildMeta({
   title: "Neuroni · Neuromodulación No Invasiva | Clínica Ser Humano",
   description: "Regula tu sistema nervioso sin psicofármacos. Neuromodulación no invasiva con respaldo clínico en Guayaquil, Ecuador.",
   path: "/servicios/neuromodulacion",
-  image: `${BASE_URL}/fotos/hero-neuroni4.webp`,
+  image: `${BASE_URL}/og/neuroni.jpg`,
 });
 
 const CONDICIONES = [
@@ -123,6 +123,7 @@ export default function NeuroniPage() {
       <section className="relative flex min-h-[calc(100vh-72px)] items-center overflow-hidden">
         <video
           src="/videos/hero-neuroni2.mp4"
+          poster="/videos/hero-neuroni2-poster.webp"
           autoPlay
           loop
           muted

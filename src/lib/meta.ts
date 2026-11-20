@@ -1,3 +1,5 @@
+import { hasConsent } from "@/lib/consent";
+
 declare global {
   interface Window {
     fbq: (...args: unknown[]) => void;
@@ -15,7 +17,7 @@ export function fbqEvent(
   params?: Record<string, unknown>,
   eventId?: string,
 ) {
-  if (typeof window === "undefined" || !window.fbq) return;
+  if (typeof window === "undefined" || !window.fbq || !hasConsent()) return;
   window.fbq("track", eventName, params ?? {}, eventId ? { eventID: eventId } : undefined);
 }
 
@@ -24,6 +26,8 @@ export async function capiEvent(payload: {
   event_id: string;
   event_source_url?: string;
 }) {
+  // Sin consentimiento no se envía nada a Meta
+  if (typeof window === "undefined" || !hasConsent()) return;
   try {
     await fetch("/api/meta-event", {
       method: "POST",

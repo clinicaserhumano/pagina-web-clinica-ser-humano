@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, SOCIAL_LINKS, SUBMARCAS } from "@/lib/constants";
+import CookieSettingsLink from "@/components/layout/CookieSettingsLink";
 
 function SocialIcon({ path }: { path: string }) {
   return (
@@ -42,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wide text-white/50">
+            <h3 className="text-sm font-medium uppercase tracking-wide text-white/75">
               Navegación
             </h3>
             <ul className="mt-4 flex flex-col gap-3">
@@ -57,7 +58,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wide text-white/50">
+            <h3 className="text-sm font-medium uppercase tracking-wide text-white/75">
               Síguenos
             </h3>
             <div className="mt-4 flex gap-4">
@@ -81,7 +82,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/15 pt-10">
-          <h3 className="text-sm font-medium uppercase tracking-wide text-white/50">
+          <h3 className="text-sm font-medium uppercase tracking-wide text-white/75">
             Nuestro ecosistema
           </h3>
           <div className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6">
@@ -107,6 +108,8 @@ export default function Footer() {
             <Link href="/terminos-y-condiciones" className="hover:text-white/90 underline underline-offset-2">
               Términos y Condiciones
             </Link>
+            <span aria-hidden="true">·</span>
+            <CookieSettingsLink className="hover:text-white/90 underline underline-offset-2" />
           </div>
           © 2026 Fundación Ser Humano SERUNO. Todos los derechos reservados.
         </div>

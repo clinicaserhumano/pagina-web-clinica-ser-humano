@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { User } from "lucide-react";
-import { createClient } from "@supabase/supabase-js";
+import { query } from "@/lib/db";
 import { buildMeta } from "@/lib/seo";
+import AutorBadge from "@/components/blog/AutorBadge";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = buildMeta({
   title: "Novedades | Clínica Ser Humano",
-  description: "Artículos y novedades sobre salud mental, neurociencia y bienestar integral.",
+  description: "Artículos sobre salud mental, neuromodulación, neurociencia y bienestar integral, escritos por el equipo de Clínica Ser Humano en Guayaquil.",
   path: "/novedades",
 });
 
@@ -21,25 +21,13 @@ type Post = {
 };
 
 async function getPosts(): Promise<Post[]> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 1500);
   try {
-    const supabase = createClient(
-      process.env.SUPABASE_URL!,
-      process.env.SUPABASE_SECRET_KEY!
+    return await query<Post>(
+      "SELECT id, titulo, slug, autor, categoria, imagen_url FROM entradas_blog WHERE publicado = 1 ORDER BY creado_en DESC"
     );
-    const { data, error } = await supabase
-      .from("entradas_blog")
-      .select("id, titulo, slug, autor, categoria, imagen_url")
-      .eq("publicado", true)
-      .order("creado_en", { ascending: false })
-      .abortSignal(controller.signal);
-    if (error) return [];
-    return data ?? [];
-  } catch {
+  } catch (e) {
+    console.error("[novedades] Error leyendo artículos:", (e as Error).message);
     return [];
-  } finally {
-    clearTimeout(timeout);
   }
 }
 
@@ -109,10 +97,7 @@ function PostCard({ post }: { post: Post }) {
           {post.categoria ?? "Novedades"}
         </span>
         <h2 className="text-lg font-black leading-snug text-white">{post.titulo}</h2>
-        <div className="mt-3 flex items-center gap-2 text-xs text-white/70">
-          <User size={12} />
-          <span>{post.autor ?? "Clínica Ser Humano"}</span>
-        </div>
+        <AutorBadge autor={post.autor} size="sm" className="mt-3 text-xs text-white/85" />
       </div>
     </div>
   );

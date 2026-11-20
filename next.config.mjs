@@ -6,12 +6,31 @@ const isCpanelBuild = process.env.BUILD_TARGET === "cpanel";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  // Permite compilar en otra carpeta sin pisar la del servidor de desarrollo
+  ...(process.env.NEXT_DIST_DIR ? { distDir: process.env.NEXT_DIST_DIR } : {}),
   ...(isCpanelBuild ? { output: "standalone" } : {}),
   images: {
     unoptimized: isCpanelBuild,
   },
-  async headers() {
+  // clinicaserhumano.ec (sin www) → https://www.clinicaserhumano.ec (301, un solo dominio para Google)
+  async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "clinicaserhumano.ec" }],
+        destination: "https://www.clinicaserhumano.ec/:path*",
+        permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    // Caché de 7 días para imágenes y videos de /public (antes no tenían Cache-Control).
+    // Si se reemplaza un archivo, usar un nombre nuevo para que se vea al instante.
+    const cacheMedia = { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" };
+    return [
+      ...["fotos", "logos", "og", "videos", "nadia", "neurolab", "programaser", "social", "team", "testimonios", "varios", "blog"].map(
+        (dir) => ({ source: `/${dir}/:path*`, headers: [cacheMedia] }),
+      ),
       {
         source: "/(.*)",
         headers: [

@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag, User } from "lucide-react";
-import { createClient } from "@supabase/supabase-js";
+import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { query, queryOne } from "@/lib/db";
 import { buildMeta } from "@/lib/seo";
 import CommentForm from "@/components/blog/CommentForm";
+import AutorBadge from "@/components/blog/AutorBadge";
 import ShareButtons from "@/components/blog/ShareButtons";
 
 export const dynamic = "force-dynamic";
@@ -24,51 +25,23 @@ type Post = {
   creado_en: string;
 };
 
-function sb() {
-  return createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SECRET_KEY!);
-}
-
-function withTimeout(ms: number) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), ms);
-  return { signal: controller.signal, cancel: () => clearTimeout(timeout) };
-}
-
 async function getPost(slug: string): Promise<Post | null> {
-  const { signal, cancel } = withTimeout(1500);
   try {
-    const { data, error } = await sb()
-      .from("entradas_blog")
-      .select("*")
-      .eq("slug", slug)
-      .eq("publicado", true)
-      .abortSignal(signal)
-      .single();
-    if (error) return null;
-    return data ?? null;
-  } catch {
+    return await queryOne<Post>("SELECT * FROM entradas_blog WHERE slug = ? AND publicado = 1 LIMIT 1", [slug]);
+  } catch (e) {
+    console.error("[novedades] Error leyendo artículo:", (e as Error).message);
     return null;
-  } finally {
-    cancel();
   }
 }
 
 async function getComments(slug: string): Promise<Comment[]> {
-  const { signal, cancel } = withTimeout(1500);
   try {
-    const { data, error } = await sb()
-      .from("comments")
-      .select("id, nombre, comentario, creado_en")
-      .eq("slug", slug)
-      .eq("aprobado", true)
-      .order("creado_en", { ascending: true })
-      .abortSignal(signal);
-    if (error) return [];
-    return data ?? [];
+    return await query<Comment>(
+      "SELECT id, nombre, comentario, creado_en FROM comments WHERE slug = ? AND aprobado = 1 ORDER BY creado_en ASC",
+      [slug]
+    );
   } catch {
     return [];
-  } finally {
-    cancel();
   }
 }
 
@@ -116,9 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
         </h1>
 
         <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-[#616569]/55">
-          <span className="flex items-center gap-1.5">
-            <User size={14} /> {post.autor ?? "Clínica Ser Humano"}
-          </span>
+          <AutorBadge autor={post.autor} className="text-[#616569]" />
           <span className="flex items-center gap-1.5">
             <Calendar size={14} /> {fecha}
           </span>
