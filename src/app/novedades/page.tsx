@@ -3,7 +3,9 @@ import { query } from "@/lib/db";
 import { buildMeta } from "@/lib/seo";
 import AutorBadge from "@/components/blog/AutorBadge";
 
-export const dynamic = "force-dynamic";
+// Se genera una vez y se renueva cada 5 min (o al instante cuando se edita desde el panel).
+// Así Next.js puede precargarla y el clic en "Novedades" es inmediato.
+export const revalidate = 300;
 
 export const metadata = buildMeta({
   title: "Novedades | Clínica Ser Humano",
@@ -27,6 +29,9 @@ async function getPosts(): Promise<Post[]> {
     );
   } catch (e) {
     console.error("[novedades] Error leyendo artículos:", (e as Error).message);
+    // En producción se relanza el error: así Next.js conserva la versión anterior de la
+    // página en lugar de guardar una vacía (o un 404) si la base de datos falla un momento.
+    if (process.env.NEXT_PHASE !== "phase-production-build") throw e;
     return [];
   }
 }

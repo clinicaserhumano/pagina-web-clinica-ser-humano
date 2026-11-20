@@ -1,5 +1,6 @@
 import { execute, query } from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { revalidarBlog } from "@/lib/revalidate-blog";
 import Link from "next/link";
 
 type Comment = {
@@ -23,6 +24,7 @@ async function approveComment(formData: FormData) {
   const id = Number(formData.get("id"));
   await execute("UPDATE comments SET aprobado = 1 WHERE id = ?", [id]);
   revalidatePath("/admin/comentarios");
+  revalidarBlog();
   revalidatePath("/admin");
 }
 
@@ -31,6 +33,7 @@ async function deleteComment(formData: FormData) {
   const id = Number(formData.get("id"));
   await execute("DELETE FROM comments WHERE id = ?", [id]);
   revalidatePath("/admin/comentarios");
+  revalidarBlog();
   revalidatePath("/admin");
 }
 

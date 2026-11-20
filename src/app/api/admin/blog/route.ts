@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidarBlog } from "@/lib/revalidate-blog";
 import { DUPLICATE_KEY, execute, query } from "@/lib/db";
 
 export async function GET() {
@@ -34,6 +35,7 @@ export async function POST(req: NextRequest) {
         Boolean(publicado),
       ],
     );
+    revalidarBlog();
     return NextResponse.json({ ok: true, id: insertId }, { status: 201 });
   } catch (e) {
     const err = e as { code?: string; message: string };

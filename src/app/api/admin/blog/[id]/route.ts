@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidarBlog } from "@/lib/revalidate-blog";
 import { DUPLICATE_KEY, execute } from "@/lib/db";
 
 /** Columnas que se pueden editar desde el panel (lista blanca: nunca se usan
@@ -23,6 +24,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
   try {
     await execute(`UPDATE entradas_blog SET ${sets.join(", ")}, actualizado_en = UTC_TIMESTAMP() WHERE id = ?`, [...values, id]);
+    revalidarBlog();
     return NextResponse.json({ ok: true });
   } catch (e) {
     const err = e as { code?: string; message: string };
@@ -35,6 +37,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
   const id = Number(params.id);
   try {
     await execute("DELETE FROM entradas_blog WHERE id = ?", [id]);
+    revalidarBlog();
     return NextResponse.json({ ok: true });
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 500 });

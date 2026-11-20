@@ -7,7 +7,9 @@ import CommentForm from "@/components/blog/CommentForm";
 import AutorBadge from "@/components/blog/AutorBadge";
 import ShareButtons from "@/components/blog/ShareButtons";
 
-export const dynamic = "force-dynamic";
+// Se genera una vez y se renueva cada 5 min (o al instante cuando se edita desde el panel).
+// Así Next.js puede precargarla y el clic en "Novedades" es inmediato.
+export const revalidate = 300;
 
 type Comment = { id: number; nombre: string; comentario: string; creado_en: string };
 type Props = { params: { slug: string } };
@@ -30,6 +32,9 @@ async function getPost(slug: string): Promise<Post | null> {
     return await queryOne<Post>("SELECT * FROM entradas_blog WHERE slug = ? AND publicado = 1 LIMIT 1", [slug]);
   } catch (e) {
     console.error("[novedades] Error leyendo artículo:", (e as Error).message);
+    // En producción se relanza el error: así Next.js conserva la versión anterior de la
+    // página en lugar de guardar una vacía (o un 404) si la base de datos falla un momento.
+    if (process.env.NEXT_PHASE !== "phase-production-build") throw e;
     return null;
   }
 }
@@ -40,6 +45,18 @@ async function getComments(slug: string): Promise<Comment[]> {
       "SELECT id, nombre, comentario, creado_en FROM comments WHERE slug = ? AND aprobado = 1 ORDER BY creado_en ASC",
       [slug]
     );
+  } catch (e) {
+    // En producción se relanza el error: así Next.js conserva la versión anterior de la
+    // página en lugar de guardar una vacía (o un 404) si la base de datos falla un momento.
+    if (process.env.NEXT_PHASE !== "phase-production-build") throw e;
+    return [];
+  }
+}
+
+/** Artículos publicados que se generan al compilar; los nuevos se generan en su primera visita */
+export async function generateStaticParams() {
+  try {
+    return await query<{ slug: string }>("SELECT slug FROM entradas_blog WHERE publicado = 1");
   } catch {
     return [];
   }

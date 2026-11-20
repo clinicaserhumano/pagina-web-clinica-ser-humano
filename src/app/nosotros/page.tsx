@@ -136,7 +136,7 @@ export default function NosotrosPage() {
               controlsList="nodownload noplaybackrate nofullscreen"
               className="h-full w-full object-cover object-center"
             >
-              <source src="/videos/quienes-somos-1012.mp4" media="(min-width: 1024px)" type="video/mp4" />
+              <source src="/videos/quienes-somos-1012-1280.mp4" media="(min-width: 1024px)" type="video/mp4" />
             </video>
           </Reveal>
         </div>

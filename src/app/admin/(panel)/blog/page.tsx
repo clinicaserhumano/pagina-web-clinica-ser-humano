@@ -1,5 +1,6 @@
 import { execute, query } from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { revalidarBlog } from "@/lib/revalidate-blog";
 import Link from "next/link";
 
 // El panel siempre lee datos actuales de la base de datos (nunca una copia de la compilación)
@@ -26,6 +27,7 @@ async function eliminarEntrada(formData: FormData) {
   const id = Number(formData.get("id"));
   await execute("DELETE FROM entradas_blog WHERE id = ?", [id]);
   revalidatePath("/admin/blog");
+  revalidarBlog();
 }
 
 async function togglePublicado(formData: FormData) {
@@ -34,7 +36,7 @@ async function togglePublicado(formData: FormData) {
   const actual = formData.get("publicado") === "true";
   await execute("UPDATE entradas_blog SET publicado = ?, actualizado_en = UTC_TIMESTAMP() WHERE id = ?", [!actual, id]);
   revalidatePath("/admin/blog");
-  revalidatePath("/novedades");
+  revalidarBlog();
 }
 
 function formatDate(iso: string) {
